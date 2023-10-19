@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-import { supabase } from "../supabase";
+import { supabase } from "../../supabase";
 import { Button, Input } from "react-native-elements";
 
-export default function Auth() {
+const EmailLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ export default function Auth() {
   }
 
   return (
-    <View style={styles.container}>
+    <>
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Input
           label="Email"
@@ -67,15 +67,11 @@ export default function Auth() {
           onPress={() => signUpWithEmail()}
         />
       </View>
-    </View>
+    </>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    padding: 12,
-  },
   verticallySpaced: {
     paddingTop: 4,
     paddingBottom: 4,
@@ -91,3 +87,5 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
+export default EmailLogin;
