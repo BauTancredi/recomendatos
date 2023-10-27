@@ -9,7 +9,7 @@ const Auth = () => {
   return (
     <View style={styles.appContainer}>
       <EmailLogin />
-      <GoogleLogin />
+      {Platform.OS === "android" && <GoogleLogin />}
       {Platform.OS === "ios" && <AppleLogin />}
     </View>
   );
