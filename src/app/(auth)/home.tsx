@@ -6,7 +6,7 @@ import { Text, View, Button } from "react-native";
 
 WebBrowser.maybeCompleteAuthSession();
 
-const HomePageScreen = () => {
+const HomeScreen = () => {
   const { user } = useUser();
   const { signOut } = useAuth();
 
@@ -27,4 +27,4 @@ const HomePageScreen = () => {
   );
 };
 
-export default HomePageScreen;
+export default HomeScreen;
