@@ -1,32 +1,47 @@
+import React from "react";
+import { useWarmUpBrowser } from "./hooks/useWarmUpBrowser";
 import { SafeAreaView, Text, StyleSheet } from "react-native";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import SignUpScreen from "./components/SignUpScreen";
 import tw from "twrnc";
+import { StatusBar } from "expo-status-bar";
+import HomePageScreen from "./components/HomePageScreen";
 
-const clerkKey = process.env.EXPO_PBULIC_CLERK_PUBLISHABLE_KEY!;
+const clerkKey = process.env.EXPO_PUBLIC_API_KEY!;
+
+// Token
+// Expo router
+// Mail y numero de telefono
 
 export default function App() {
+  useWarmUpBrowser();
+  console.log(clerkKey);
+
   return (
-    <ClerkProvider
-      publishableKey={"pk_test_Y3V0ZS1yaGluby04LmNsZXJrLmFjY291bnRzLmRldiQ"}
-    >
-      <SafeAreaView style={styles.container}>
+    <ClerkProvider publishableKey={clerkKey}>
+      <SafeAreaView style={styles.appContainer}>
         <SignedIn>
-          <Text style={tw`bg-blue-100`}>You are Signed in</Text>
+          <Text style={tw`bg-blue-100 self-center `}>
+            <HomePageScreen />
+          </Text>
         </SignedIn>
         <SignedOut>
           <SignUpScreen />
         </SignedOut>
       </SafeAreaView>
+      <StatusBar style="auto" />
     </ClerkProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: "#fff",
+    // backgroundColor: "red",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    justifyContent: "center",
+    color: "black",
+    textAlign: "center",
+    width: "100%",
   },
 });
