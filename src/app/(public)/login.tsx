@@ -1,9 +1,11 @@
 import React from "react";
-
-// import * as WebBrowser from "expo-web-browser";
-import { useWarmUpBrowser } from "../../hooks/useWarmUpBrowser";
 import { Text, StyleSheet, Platform, View } from "react-native";
-import ContinueWithButton from "../../components/buttons/ContinueWithButton";
+// import * as WebBrowser from "expo-web-browser";
+
+import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
+import ContinueWithButton from "@/components/buttons/ContinueWithButton";
+
+// WebBrowser.maybeCompleteAuthSession();
 
 const LoginScreen = () => {
   // Warm up the android browser to improve UX
