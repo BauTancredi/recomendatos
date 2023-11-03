@@ -10,19 +10,30 @@ const HomeScreen = () => {
   const { user } = useUser();
   const { signOut } = useAuth();
 
+  const deletePhoneNumber = async () => {
+    await user?.phoneNumbers[0].destroy();
+  };
+
+  const createPhoneNumber = async () => {
+    await user?.createPhoneNumber({
+      phoneNumber: "+5491141643790",
+    });
+  };
+
   return (
     <View>
       <Text> {user?.firstName} </Text>
       <Text> {user?.lastName} </Text>
       <Text> {user?.fullName} </Text>
-      <Text> {JSON.stringify(user?.phoneNumbers)} </Text>
-      <Text> {JSON.stringify(user?.emailAddresses)} </Text>
+      <Text> {user?.phoneNumbers[0].phoneNumber} </Text>
       <Button
         title="Sign Out"
         onPress={() => {
           signOut();
         }}
       />
+      <Button title="Delete phone" onPress={deletePhoneNumber} />
+      <Button title="Create phone" onPress={createPhoneNumber} />
     </View>
   );
 };

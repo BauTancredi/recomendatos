@@ -2,7 +2,7 @@ import React from "react";
 import { Pressable, Text } from "react-native";
 import tw from "twrnc";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useOAuth } from "@clerk/clerk-expo";
+import { useOAuth, useAuth } from "@clerk/clerk-expo";
 
 interface ContinueWithButtonProps {
   title: string;
@@ -17,17 +17,14 @@ const ContinueWithButton = ({
   strategy,
 }: ContinueWithButtonProps) => {
   const { startOAuthFlow } = useOAuth({ strategy });
-  // const { isLoaded, userId, sessionId, getToken } = useAuth();
 
   const onPress = React.useCallback(async () => {
     try {
-      const { createdSessionId, setActive } = await startOAuthFlow();
+      const { createdSessionId, setActive, authSessionResult } =
+        await startOAuthFlow();
 
-      console.log("createdSessionId");
-      console.log("authSessionResult");
-
-      if (createdSessionId && setActive) {
-        setActive({ session: createdSessionId });
+      if (createdSessionId) {
+        setActive?.({ session: createdSessionId });
       } else {
         // Use signIn or signUp for next steps such as MFA
       }
