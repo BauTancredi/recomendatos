@@ -63,9 +63,10 @@ export default RootLayout;
 
 // TODO
 // [x] - Setup Linter
-// [] - Arreglar nombres de archivos y funciones
-// [] - Configurar github devuelta
-// [] - Arreglar ese minisegundo donde se ve page undefined
+// [x] - Arreglar nombres de archivos y funciones
+// [x] - Configurar github devuelta
+// [x] - Arreglar ese minisegundo donde se ve page undefined
 // [] - Configurar continuar con mail
-// [] - Arregar clerk
-// [] - Pulir el flujo de login. Try catch, etc, awaits, errores, if, etc.
+// [] - Arreglar clerk
+// [] - Pulir el flujo de login. Try catch, etc, awaits, errores, if, loading state
+//     (react-native-loading-spinner-overlay)
