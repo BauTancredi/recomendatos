@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
-const PhoneVerification = () => {
+const PreparePhoneVerification = () => {
   const [number, onChangeNumber] = useState("");
   const router = useRouter();
 
@@ -32,7 +32,7 @@ const PhoneVerification = () => {
   );
 };
 
-export default PhoneVerification;
+export default PreparePhoneVerification;
 
 const styles = StyleSheet.create({
   input: {

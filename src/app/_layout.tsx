@@ -21,7 +21,7 @@ const InitialLayout = () => {
     if (isSignedIn && !inTabsGroup) {
       // TODO: Pensar este IF. Deberia representar un usuario recien registrado.
       if (!user?.hasVerifiedPhoneNumber) {
-        router.replace("/prepare-phone-verification");
+        router.replace("/(auth)/(register)/preparePhoneVerification");
       } else {
         router.replace("/(auth)/(tabs)/(home)/home");
       }
@@ -62,7 +62,7 @@ const RootLayout = () => {
 export default RootLayout;
 
 // TODO
-// [] - Setup Linter
+// [x] - Setup Linter
 // [] - Arreglar nombres de archivos y funciones
 // [] - Configurar github devuelta
 // [] - Arreglar ese minisegundo donde se ve page undefined

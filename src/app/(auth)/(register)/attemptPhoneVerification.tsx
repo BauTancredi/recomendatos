@@ -9,7 +9,9 @@ const AttemptPhoneVerification = () => {
   const { user } = useUser();
 
   const handlePress = async () => {
-    await user?.phoneNumbers[0].prepareVerification();
+    await user?.phoneNumbers[0].attemptVerification({
+      code: number,
+    });
     router.replace("/(auth)/(tabs)/(home)/home");
   };
 
