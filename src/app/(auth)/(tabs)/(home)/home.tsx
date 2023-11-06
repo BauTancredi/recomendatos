@@ -1,8 +1,7 @@
-import React from "react";
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import * as WebBrowser from "expo-web-browser";
-
-import { Text, View, Button } from "react-native";
+import React from "react";
+import { Button, Text, View } from "react-native";
 
 WebBrowser.maybeCompleteAuthSession();
 

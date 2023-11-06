@@ -1,8 +1,8 @@
+import { useOAuth } from "@clerk/clerk-expo";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { Pressable, Text } from "react-native";
 import tw from "twrnc";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { useOAuth, useAuth } from "@clerk/clerk-expo";
 
 interface ContinueWithButtonProps {
   title: string;
@@ -22,6 +22,7 @@ const ContinueWithButton = ({
     try {
       const { createdSessionId, setActive, authSessionResult } =
         await startOAuthFlow();
+      console.log(authSessionResult);
 
       if (createdSessionId) {
         setActive?.({ session: createdSessionId });

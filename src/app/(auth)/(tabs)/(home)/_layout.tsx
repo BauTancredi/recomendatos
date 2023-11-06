@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { Stack, useRouter } from "expo-router";
-import { Drawer } from "expo-router/drawer";
 import {
   DrawerContentScrollView,
   DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import { useRouter } from "expo-router";
+import { Drawer } from "expo-router/drawer";
+import React from "react";
 
 function CustomDrawerContent(props: any) {
   const router = useRouter();
@@ -27,5 +26,3 @@ const _layout = () => {
 };
 
 export default _layout;
-
-const styles = StyleSheet.create({});

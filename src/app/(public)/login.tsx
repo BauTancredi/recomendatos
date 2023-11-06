@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, StyleSheet, Platform, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
+import React from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
 
-import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 import ContinueWithButton from "@/components/buttons/ContinueWithButton";
+import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 
 WebBrowser.maybeCompleteAuthSession();
 

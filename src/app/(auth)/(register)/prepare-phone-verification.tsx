@@ -1,11 +1,10 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { useUser } from "@clerk/clerk-expo";
-
-import React, { useEffect } from "react";
 import { useRouter } from "expo-router";
+import { useState } from "react";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
-const phoneVerification = () => {
-  const [number, onChangeNumber] = React.useState("");
+const PhoneVerification = () => {
+  const [number, onChangeNumber] = useState("");
   const router = useRouter();
 
   const { user } = useUser();
@@ -33,7 +32,7 @@ const phoneVerification = () => {
   );
 };
 
-export default phoneVerification;
+export default PhoneVerification;
 
 const styles = StyleSheet.create({
   input: {

@@ -1,10 +1,10 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
-import React from "react";
-import { useRouter } from "expo-router";
 import { useUser } from "@clerk/clerk-expo";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { Button, StyleSheet, TextInput, View } from "react-native";
 
-const attemptPhoneVerification = () => {
-  const [number, onChangeNumber] = React.useState("");
+const AttemptPhoneVerification = () => {
+  const [number, onChangeNumber] = useState("");
   const router = useRouter();
   const { user } = useUser();
 
@@ -27,7 +27,7 @@ const attemptPhoneVerification = () => {
   );
 };
 
-export default attemptPhoneVerification;
+export default AttemptPhoneVerification;
 
 const styles = StyleSheet.create({
   input: {
