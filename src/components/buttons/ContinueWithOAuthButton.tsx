@@ -20,10 +20,9 @@ const ContinueWithButton = ({
 
   const onPress = React.useCallback(async () => {
     try {
-      const { createdSessionId, setActive, authSessionResult } =
-        await startOAuthFlow();
-      console.log(authSessionResult);
+      const { createdSessionId, setActive } = await startOAuthFlow();
 
+      console.log("createdSessionId", createdSessionId);
       if (createdSessionId) {
         setActive?.({ session: createdSessionId });
       } else {

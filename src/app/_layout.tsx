@@ -21,7 +21,7 @@ const InitialLayout = () => {
     if (isSignedIn && !inTabsGroup) {
       // TODO: Pensar este IF. Deberia representar un usuario recien registrado.
       if (!user?.hasVerifiedPhoneNumber) {
-        router.replace("/(auth)/(register)/preparePhoneVerification");
+        router.push("/(auth)/(register)/preparePhoneVerification");
       } else {
         router.replace("/(auth)/(tabs)/(home)/home");
       }
@@ -53,7 +53,7 @@ const tokenCache = {
 
 const RootLayout = () => {
   return (
-    <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={clerkKey}>
       <InitialLayout />
     </ClerkProvider>
   );
@@ -66,7 +66,7 @@ export default RootLayout;
 // [x] - Arreglar nombres de archivos y funciones
 // [x] - Configurar github devuelta
 // [x] - Arreglar ese minisegundo donde se ve page undefined
-// [] - Configurar continuar con mail
-// [] - Arreglar clerk
-// [] - Pulir el flujo de login. Try catch, etc, awaits, errores, if, loading state
-//     (react-native-loading-spinner-overlay)
+// [x] - Arreglar clerk
+// [x] - Configurar continuar con mail
+// [] - Pulir el flujo de login. Try catch, etc, awaits, errores, if,
+//      loading state, react-hook-form, etc, (react-native-loading-spinner-overlay)

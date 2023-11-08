@@ -2,6 +2,7 @@ import { useUser } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const AttemptPhoneVerification = () => {
   const [number, onChangeNumber] = useState("");
@@ -12,7 +13,7 @@ const AttemptPhoneVerification = () => {
     await user?.phoneNumbers[0].attemptVerification({
       code: number,
     });
-    router.replace("/(auth)/(tabs)/(home)/home");
+    router.push("/(auth)/(tabs)/(home)/home");
   };
 
   return (
@@ -37,6 +38,5 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    marginTop: 100,
   },
 });

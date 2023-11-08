@@ -8,18 +8,18 @@ const PreparePhoneVerification = () => {
   const router = useRouter();
 
   const { user } = useUser();
+  console.log(user);
 
   const handlePress = async () => {
     // await user?.createPhoneNumber({
-    //   phoneNumber: "+5491141643790",
+    //   phoneNumber: number,
     // });
     await user?.phoneNumbers[0].prepareVerification();
-    router.push("/attemptPhoneVerification");
+    router.push("/(auth)/(register)/attemptPhoneVerification");
   };
 
   return (
     <View>
-      <Text>{user?.phoneNumbers[0]?.phoneNumber}</Text>
       <TextInput
         style={styles.input}
         onChangeText={onChangeNumber}
@@ -28,6 +28,7 @@ const PreparePhoneVerification = () => {
         keyboardType="phone-pad"
       />
       <Button title="Enviar codigo" onPress={handlePress} />
+      <Text>{user?.phoneNumbers[0]?.phoneNumber}</Text>
     </View>
   );
 };

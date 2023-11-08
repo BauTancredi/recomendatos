@@ -2,7 +2,8 @@ import * as WebBrowser from "expo-web-browser";
 import React from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 
-import ContinueWithButton from "@/components/buttons/ContinueWithButton";
+import ContinueWithMailButton from "@/components/buttons/ContinueWithMailButton";
+import ContinueWithOAuthButton from "@/components/buttons/ContinueWithOAuthButton";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 
 WebBrowser.maybeCompleteAuthSession();
@@ -23,20 +24,20 @@ const LoginScreen = () => {
         </Text>
       </View>
       <View style={styles.buttonsContainer}>
-        {/* <ContinueWithButton title="mi mail" icon="mail" /> */}
-        <ContinueWithButton
+        <ContinueWithMailButton />
+        <ContinueWithOAuthButton
           title="Google"
           icon="logo-google"
           strategy="oauth_google"
         />
         {Platform.OS === "ios" && (
-          <ContinueWithButton
+          <ContinueWithOAuthButton
             title="Apple"
             icon="logo-apple"
             strategy="oauth_apple"
           />
         )}
-        <ContinueWithButton
+        <ContinueWithOAuthButton
           title="Facebook"
           icon="logo-facebook"
           strategy="oauth_facebook"

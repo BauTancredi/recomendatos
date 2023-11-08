@@ -1,7 +1,7 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import * as WebBrowser from "expo-web-browser";
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Button, SafeAreaView, Text, View } from "react-native";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -20,20 +20,23 @@ const HomeScreen = () => {
   };
 
   return (
-    <View>
-      <Text> {user?.firstName} </Text>
-      <Text> {user?.lastName} </Text>
-      <Text> {user?.fullName} </Text>
-      <Text> {user?.phoneNumbers[0].phoneNumber} </Text>
-      <Button
-        title="Sign Out"
-        onPress={() => {
-          signOut();
-        }}
-      />
-      <Button title="Delete phone" onPress={deletePhoneNumber} />
-      <Button title="Create phone" onPress={createPhoneNumber} />
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text> {user?.firstName} </Text>
+        <Text> {user?.lastName} </Text>
+        <Text> {user?.fullName} </Text>
+        <Text> {user?.emailAddresses[0].emailAddress} </Text>
+        <Text> {user?.phoneNumbers[0].phoneNumber} </Text>
+        <Button
+          title="Sign Out"
+          onPress={() => {
+            signOut();
+          }}
+        />
+        <Button title="Delete phone" onPress={deletePhoneNumber} />
+        <Button title="Create phone" onPress={createPhoneNumber} />
+      </View>
+    </SafeAreaView>
   );
 };
 
