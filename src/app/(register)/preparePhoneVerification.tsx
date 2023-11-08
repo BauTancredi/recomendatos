@@ -22,10 +22,7 @@ const PreparePhoneVerification = () => {
 
       router.push("/(register)/attemptPhoneVerification");
     } catch (err: any) {
-      console.error(
-        "OAuth error - Prepare Phone Verification:",
-        err.errors[0].message
-      );
+      console.error("OAuth error - Prepare Phone Verification:", err.errors[0].message);
     }
   };
 

@@ -17,10 +17,7 @@ const AttemptPhoneVerification = () => {
 
       router.push("/(tabs)/home");
     } catch (err: any) {
-      console.error(
-        "OAuth error - Attempt Phone Verification:",
-        err.errors[0].message
-      );
+      console.error("OAuth error - Attempt Phone Verification:", err.errors[0].message);
     }
   };
 
