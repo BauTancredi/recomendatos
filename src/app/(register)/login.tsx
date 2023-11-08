@@ -1,9 +1,18 @@
-import { useOAuth } from "@clerk/clerk-expo";
+import { useOAuth, useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
-import React from "react";
-import { Platform, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import React, { useState } from "react";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 
 import ContinueWithButton from "@/components/buttons/ContinueWithButton";
+import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 
@@ -17,6 +26,9 @@ const LoginScreen = () => {
   useWarmUpBrowser();
 
   const router = useRouter();
+  const [emailAddress, setEmailAddress] = useState("");
+  const { isLoaded } = useSignUp();
+  const { signIn } = useSignIn();
 
   const { startOAuthFlow: googleAuth } = useOAuth({ strategy: "oauth_google" });
   const { startOAuthFlow: appleAuth } = useOAuth({ strategy: "oauth_apple" });
@@ -42,6 +54,38 @@ const LoginScreen = () => {
     }
   };
 
+  const onSignUpPress = async () => {
+    if (!isLoaded) {
+      return;
+    }
+
+    try {
+      const completeSignIn = await signIn?.create({
+        identifier: emailAddress,
+      });
+
+      if (completeSignIn?.status === "needs_first_factor") {
+        router.push({
+          pathname: "/(register)/password",
+          params: {
+            emailAddress,
+          },
+        });
+      }
+    } catch (err: any) {
+      // Need to handle the case where the user is not found
+      if (err.errors[0].code === "form_identifier_not_found") {
+        router.push({
+          pathname: "/(register)/register",
+          params: {
+            emailAddress,
+          },
+        });
+      }
+      // console.error("Register error", JSON.stringify(err));
+    }
+  };
+
   return (
     <SafeAreaView style={[defaultStyles.container]}>
       <View style={[defaultStyles.container, styles.loginContainer]}>
@@ -54,12 +98,41 @@ const LoginScreen = () => {
           </Text>
         </View>
         <View style={{ gap: 20 }}>
-          <View style={{ gap: 10 }}>
-            <ContinueWithButton
-              title="Email"
-              icon="mail"
-              onPress={() => router.push("/(register)/register")}
+          <View>
+            <TextInput
+              style={defaultStyles.inputField}
+              onChangeText={setEmailAddress}
+              value={emailAddress}
+              placeholder="Correo electronico"
+              keyboardType="phone-pad"
             />
+            <TouchableOpacity
+              style={[defaultStyles.btn, { marginTop: 10 }]}
+              onPress={onSignUpPress}
+            >
+              <Text style={defaultStyles.btnText}>Continuar</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.seperatorView}>
+            <View
+              style={{
+                flex: 1,
+                borderBottomColor: "black",
+                borderBottomWidth: StyleSheet.hairlineWidth,
+              }}
+            />
+            <Text style={styles.seperator}>o</Text>
+            <View
+              style={{
+                flex: 1,
+                borderBottomColor: "black",
+                borderBottomWidth: StyleSheet.hairlineWidth,
+              }}
+            />
+          </View>
+
+          <View style={{ gap: 10 }}>
             <ContinueWithButton
               title="Google"
               icon="logo-google"
@@ -95,5 +168,16 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   loginContainer: {
     justifyContent: "space-between",
+  },
+  seperatorView: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+    marginVertical: 15,
+  },
+  seperator: {
+    fontFamily: "mon-sb",
+    color: Colors.grey,
+    fontSize: 16,
   },
 });

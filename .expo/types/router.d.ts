@@ -7,7 +7,7 @@ declare module "expo-router" {
   export * from 'expo-router/build';
 
   // prettier-ignore
-  type StaticRoutes = `/` | `/(auth)/(register)/_layout` | `/_layout` | `/(auth)/(tabs)/(home)/_layout` | `/(auth)/(tabs)/(test)/_layout` | `/(auth)/(tabs)/_layout` | `/(auth)/_layout` | `/(public)/_layout` | `/(register)/login` | `/login` | `/(register)/register` | `/register` | `/(register)/preparePhoneVerification` | `/preparePhoneVerification` | `/(register)/attemptPhoneVerification` | `/attemptPhoneVerification` | `/(tabs)/home` | `/home` | `/(tabs)/test` | `/test`;
+  type StaticRoutes = `/` | `/(auth)/(register)/_layout` | `/_layout` | `/(auth)/(tabs)/(home)/_layout` | `/(auth)/(tabs)/(test)/_layout` | `/(auth)/(tabs)/_layout` | `/(auth)/_layout` | `/(public)/_layout` | `/(register)/login` | `/login` | `/(register)/register` | `/register` | `/(register)/preparePhoneVerification` | `/preparePhoneVerification` | `/(register)/attemptPhoneVerification` | `/attemptPhoneVerification` | `/(tabs)/home` | `/home` | `/(tabs)/test` | `/test` | `/(register)/password` | `/password`;
   // prettier-ignore
   type DynamicRoutes<T extends string> = never;
   // prettier-ignore

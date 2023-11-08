@@ -10,10 +10,15 @@ const AttemptPhoneVerification = () => {
   const { user } = useUser();
 
   const handlePress = async () => {
-    // await user?.phoneNumbers[0].attemptVerification({
-    //   code: number,
-    // });
-    router.push("/(tabs)/home");
+    try {
+      await user?.phoneNumbers[0].attemptVerification({
+        code: number,
+      });
+
+      router.push("/(tabs)/home");
+    } catch (err) {
+      console.error("OAuth error - Attempt Phone Verification", err);
+    }
   };
 
   return (

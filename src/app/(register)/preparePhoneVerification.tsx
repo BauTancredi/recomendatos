@@ -9,14 +9,21 @@ const PreparePhoneVerification = () => {
   const router = useRouter();
 
   const { user } = useUser();
-  console.log(user);
 
   const handlePress = async () => {
-    // await user?.createPhoneNumber({
-    //   phoneNumber: number,
-    // });
-    // await user?.phoneNumbers[0].prepareVerification();
-    router.push("/(register)/attemptPhoneVerification");
+    try {
+      await user?.createPhoneNumber({
+        phoneNumber: "+5491141643790",
+      });
+
+      await user?.reload();
+
+      await user?.phoneNumbers[0].prepareVerification();
+
+      router.push("/(register)/attemptPhoneVerification");
+    } catch (err) {
+      console.error("OAuth error - Prepare Phone Verification", err);
+    }
   };
 
   return (

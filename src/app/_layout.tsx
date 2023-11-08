@@ -91,5 +91,23 @@ const InitialLayout = () => {
 // [x] - Arreglar ese minisegundo donde se ve page undefined
 // [x] - Arreglar clerk
 // [x] - Configurar continuar con mail
-// [] - Pulir el flujo de login. Try catch, etc, awaits, errores, if,
-//      loading state, react-hook-form, etc, (react-native-loading-spinner-overlay)
+
+// [x] - Oauth
+// [x] - Verificar telefono - 1 pantalla
+// [x] - Verificar telefono - 2 pantalla
+// [x] - Registro mail estilo AirBnb
+// [x] - Separador
+// [x] - Recuperar contraseña
+// [] - Revisar routas y cuando es push y cuando es replace
+// [] - Pantalla estilo modal
+// [] - React Hook Form + Zod
+// [] - Revisar TODOs
+// [] - Type Clerk errors
+
+// [] - Usuario vs Profesional
+// [] - Onboarding
+// [] - Terminar registro
+// [] - Supabase
+// [] - React Query
+// [] - Zustand
+// [] - Reanimated
