@@ -72,12 +72,12 @@ const InitialLayout = () => {
     if (isSignedIn && !inTabsGroup) {
       // TODO: Pensar este IF. Deberia representar un usuario recien registrado.
       if (!user?.hasVerifiedPhoneNumber) {
-        router.push("/(auth)/(register)/preparePhoneVerification");
+        router.push("/(register)/preparePhoneVerification");
       } else {
-        router.replace("/(auth)/(tabs)/(home)/home");
+        router.replace("/(tabs)/home");
       }
     } else if (!isSignedIn) {
-      router.replace("/login");
+      router.replace("/(register)/login");
     }
   }, [isSignedIn]);
 

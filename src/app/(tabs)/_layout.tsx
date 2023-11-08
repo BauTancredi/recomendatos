@@ -4,20 +4,20 @@ import React from "react";
 const PrivateLayout = () => {
   return (
     <Tabs
-      screenOptions={{
-        headerShown: false,
-      }}
+    // screenOptions={{
+    //   headerShown: false,
+    // }}
     >
       <Tabs.Screen
-        name="(home)"
+        name="home"
         options={{
-          title: "Home",
+          tabBarLabel: "Home",
         }}
       />
       <Tabs.Screen
-        name="(test)"
+        name="test"
         options={{
-          title: "Test",
+          tabBarLabel: "Test",
         }}
       />
     </Tabs>

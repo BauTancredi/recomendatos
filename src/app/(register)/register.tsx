@@ -37,7 +37,7 @@ const RegisterWithMail = () => {
       });
 
       await setActive({ session: createdSessionId });
-      router.push("/(auth)/(register)/preparePhoneVerification");
+      router.push("/(register)/preparePhoneVerification");
 
       //   console.log("2");
 

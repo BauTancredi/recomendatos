@@ -1,7 +1,8 @@
 import { useUser } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
+import { defaultStyles } from "@/constants/Styles";
 
 const PreparePhoneVerification = () => {
   const [number, onChangeNumber] = useState("");
@@ -14,14 +15,14 @@ const PreparePhoneVerification = () => {
     // await user?.createPhoneNumber({
     //   phoneNumber: number,
     // });
-    await user?.phoneNumbers[0].prepareVerification();
-    router.push("/(auth)/(register)/attemptPhoneVerification");
+    // await user?.phoneNumbers[0].prepareVerification();
+    router.push("/(register)/attemptPhoneVerification");
   };
 
   return (
-    <View>
+    <View style={defaultStyles.container}>
       <TextInput
-        style={styles.input}
+        style={[defaultStyles.inputField, { marginTop: 20 }]}
         onChangeText={onChangeNumber}
         value={number}
         placeholder="Numero de telefono"
@@ -34,12 +35,3 @@ const PreparePhoneVerification = () => {
 };
 
 export default PreparePhoneVerification;
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});

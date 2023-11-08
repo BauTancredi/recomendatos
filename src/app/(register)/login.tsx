@@ -58,7 +58,7 @@ const LoginScreen = () => {
             <ContinueWithButton
               title="Email"
               icon="mail"
-              onPress={() => router.push("/(public)/registerWithMail")}
+              onPress={() => router.push("/(register)/register")}
             />
             <ContinueWithButton
               title="Google"

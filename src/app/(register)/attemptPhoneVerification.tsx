@@ -1,8 +1,8 @@
 import { useUser } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Button, StyleSheet, TextInput, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Button, TextInput, View } from "react-native";
+import { defaultStyles } from "@/constants/Styles";
 
 const AttemptPhoneVerification = () => {
   const [number, onChangeNumber] = useState("");
@@ -10,19 +10,19 @@ const AttemptPhoneVerification = () => {
   const { user } = useUser();
 
   const handlePress = async () => {
-    await user?.phoneNumbers[0].attemptVerification({
-      code: number,
-    });
-    router.push("/(auth)/(tabs)/(home)/home");
+    // await user?.phoneNumbers[0].attemptVerification({
+    //   code: number,
+    // });
+    router.push("/(tabs)/home");
   };
 
   return (
-    <View>
+    <View style={defaultStyles.container}>
       <TextInput
-        style={styles.input}
+        style={[defaultStyles.inputField, { marginTop: 20 }]}
         onChangeText={onChangeNumber}
         value={number}
-        placeholder="Numero de telefono"
+        placeholder="Codigo de verificacion"
         keyboardType="numeric"
       />
       <Button title="Verificar" onPress={handlePress} />
@@ -31,12 +31,3 @@ const AttemptPhoneVerification = () => {
 };
 
 export default AttemptPhoneVerification;
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});

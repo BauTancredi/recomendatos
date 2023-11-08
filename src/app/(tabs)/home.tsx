@@ -26,7 +26,7 @@ const HomeScreen = () => {
         <Text> {user?.lastName} </Text>
         <Text> {user?.fullName} </Text>
         <Text> {user?.emailAddresses[0].emailAddress} </Text>
-        <Text> {user?.phoneNumbers[0].phoneNumber} </Text>
+        {/* <Text> {user?.phoneNumbers[0].phoneNumber} </Text> */}
         <Button
           title="Sign Out"
           onPress={() => {
