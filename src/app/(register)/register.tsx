@@ -1,5 +1,5 @@
 import { useSignUp } from "@clerk/clerk-expo";
-import { useLocalSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { Button, TextInput, View } from "react-native";
 
@@ -16,6 +16,7 @@ const RegisterWithMail = () => {
   const [lastName, setLastName] = useState("");
 
   const { isLoaded, signUp, setActive } = useSignUp();
+  const router = useRouter();
 
   const onSignUpPress = async () => {
     if (!isLoaded) {
@@ -31,7 +32,9 @@ const RegisterWithMail = () => {
       });
 
       if (createdSessionId) {
+        // router.replace("/(register)/preparePhoneVerification");
         setActive!({ session: createdSessionId });
+        router.back();
       }
     } catch (err: any) {
       console.error("Register error", JSON.stringify(err));

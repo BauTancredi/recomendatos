@@ -1,5 +1,5 @@
 import { useSignIn } from "@clerk/clerk-expo";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Button, TextInput, View, Text, TouchableOpacity } from "react-native";
 
@@ -13,6 +13,7 @@ const AttemptPhoneVerification = () => {
   const { emailAddress } = useLocalSearchParams<{ emailAddress: string }>();
 
   const { signIn, setActive } = useSignIn();
+  const router = useRouter();
 
   // Request a passowrd reset code by email
   const onRequestReset = async () => {
@@ -38,6 +39,7 @@ const AttemptPhoneVerification = () => {
       });
 
       // Set the user session active, which will log in the user automatically
+
       await setActive!({ session: result?.createdSessionId });
     } catch (err: any) {
       alert(err.errors[0].message);
@@ -52,7 +54,10 @@ const AttemptPhoneVerification = () => {
       });
 
       // This indicates the user is signed in
-      await setActive!({ session: completeSignIn?.createdSessionId });
+      if (completeSignIn?.createdSessionId) {
+        await setActive!({ session: completeSignIn?.createdSessionId });
+        router.back();
+      }
 
       // router.push("/(tabs)/home");
     } catch (err) {

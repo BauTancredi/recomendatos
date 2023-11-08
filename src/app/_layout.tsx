@@ -70,11 +70,11 @@ const InitialLayout = () => {
     const inTabsGroup = segments[0] === "(auth)";
 
     if (isSignedIn && !inTabsGroup) {
-      // TODO: Pensar este IF. Deberia representar un usuario recien registrado.
+      // TODO: Pensar este IF. Deberia representar un usuario recien registrado. Tambien los modales. Revisar cuando es push y cuando replace
       if (!user?.hasVerifiedPhoneNumber) {
-        router.push("/(register)/preparePhoneVerification");
+        router.replace("/(register)/preparePhoneVerification");
       } else {
-        router.replace("/(tabs)/home");
+        router.push("/(tabs)/home");
       }
     } else if (!isSignedIn) {
       router.replace("/(register)/login");
@@ -98,8 +98,7 @@ const InitialLayout = () => {
 // [x] - Registro mail estilo AirBnb
 // [x] - Separador
 // [x] - Recuperar contraseña
-// [] - Revisar routas y cuando es push y cuando es replace
-// [] - Pantalla estilo modal
+// [x] - Pantalla estilo modal
 // [] - React Hook Form + Zod
 // [] - Revisar TODOs
 // [] - Type Clerk errors
