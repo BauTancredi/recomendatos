@@ -1,37 +1,14 @@
 import { ClerkProvider, useAuth, useUser } from "@clerk/clerk-expo";
-import { Slot, useRouter, useSegments } from "expo-router";
+import { useFonts } from "expo-font";
+import { Slot, useRouter, useSegments, SplashScreen } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 
 import { useEffect } from "react";
 
 const clerkKey = process.env.EXPO_PUBLIC_API_KEY!;
 
-const InitialLayout = () => {
-  const { isLoaded, isSignedIn } = useAuth();
-  const { user } = useUser();
-  const segments = useSegments();
-  const router = useRouter();
-
-  // UseFocusEffect
-  useEffect(() => {
-    if (!isLoaded) return;
-
-    const inTabsGroup = segments[0] === "(auth)";
-
-    if (isSignedIn && !inTabsGroup) {
-      // TODO: Pensar este IF. Deberia representar un usuario recien registrado.
-      if (!user?.hasVerifiedPhoneNumber) {
-        router.push("/(auth)/(register)/preparePhoneVerification");
-      } else {
-        router.replace("/(auth)/(tabs)/(home)/home");
-      }
-    } else if (!isSignedIn) {
-      router.replace("/login");
-    }
-  }, [isSignedIn]);
-
-  return <Slot />;
-};
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
 const tokenCache = {
   async getToken(key: string) {
@@ -51,15 +28,61 @@ const tokenCache = {
   },
 };
 
-const RootLayout = () => {
+export default function RootLayout() {
+  const [loaded, error] = useFonts({
+    mon: require("../assets/fonts/Montserrat-Regular.ttf"),
+    "mon-sb": require("../assets/fonts/Montserrat-SemiBold.ttf"),
+    "mon-b": require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
+  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+  useEffect(() => {
+    if (error) throw error;
+  }, [error]);
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <ClerkProvider publishableKey={clerkKey}>
+      {/* <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}> */}
       <InitialLayout />
     </ClerkProvider>
   );
-};
+}
 
-export default RootLayout;
+const InitialLayout = () => {
+  const { isLoaded, isSignedIn } = useAuth();
+  const { user } = useUser();
+  const segments = useSegments();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    const inTabsGroup = segments[0] === "(auth)";
+
+    if (isSignedIn && !inTabsGroup) {
+      // TODO: Pensar este IF. Deberia representar un usuario recien registrado.
+      if (!user?.hasVerifiedPhoneNumber) {
+        router.push("/(auth)/(register)/preparePhoneVerification");
+      } else {
+        router.replace("/(auth)/(tabs)/(home)/home");
+      }
+    } else if (!isSignedIn) {
+      router.replace("/login");
+    }
+  }, [isSignedIn]);
+
+  return <Slot />;
+};
 
 // TODO
 // [x] - Setup Linter

@@ -1,53 +1,92 @@
-import * as WebBrowser from "expo-web-browser";
+import { useOAuth } from "@clerk/clerk-expo";
+import { useRouter } from "expo-router";
 import React from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, Text, View, SafeAreaView } from "react-native";
 
-import ContinueWithMailButton from "@/components/buttons/ContinueWithMailButton";
-import ContinueWithOAuthButton from "@/components/buttons/ContinueWithOAuthButton";
+import ContinueWithButton from "@/components/buttons/ContinueWithButton";
+import { defaultStyles } from "@/constants/Styles";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 
-WebBrowser.maybeCompleteAuthSession();
+enum Strategy {
+  Google = "oauth_google",
+  Apple = "oauth_apple",
+  Facebook = "oauth_facebook",
+}
 
 const LoginScreen = () => {
-  // Warm up the android browser to improve UX
-  // https://docs.expo.dev/guides/authentication/#improving-user-experience
   useWarmUpBrowser();
 
+  const router = useRouter();
+
+  const { startOAuthFlow: googleAuth } = useOAuth({ strategy: "oauth_google" });
+  const { startOAuthFlow: appleAuth } = useOAuth({ strategy: "oauth_apple" });
+  const { startOAuthFlow: facebookAuth } = useOAuth({
+    strategy: "oauth_facebook",
+  });
+
+  const onSelectAuth = async (strategy: Strategy) => {
+    const selectedAuth = {
+      [Strategy.Google]: googleAuth,
+      [Strategy.Apple]: appleAuth,
+      [Strategy.Facebook]: facebookAuth,
+    }[strategy];
+
+    try {
+      const { createdSessionId, setActive } = await selectedAuth();
+
+      if (createdSessionId) {
+        setActive!({ session: createdSessionId });
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  };
+
   return (
-    <View style={styles.loginContainer}>
-      <View style={{ alignItems: "center" }}>
-        <Text>Hola</Text>
-        <Text>Bienvenido a RecomenDatos</Text>
-        <Text style={styles.textCenter}>
-          Registrate o inicia sesion para comenzar a formar parte de nuestra
-          comunidad.
-        </Text>
+    <SafeAreaView style={[defaultStyles.container]}>
+      <View style={[defaultStyles.container, styles.loginContainer]}>
+        <View style={{ alignItems: "center" }}>
+          <Text>Hola</Text>
+          <Text>Bienvenido a RecomenDatos</Text>
+          <Text style={defaultStyles.textCenter}>
+            Registrate o inicia sesion para comenzar a formar parte de nuestra
+            comunidad.
+          </Text>
+        </View>
+        <View style={{ gap: 20 }}>
+          <View style={{ gap: 10 }}>
+            <ContinueWithButton
+              title="Email"
+              icon="mail"
+              onPress={() => router.push("/(public)/registerWithMail")}
+            />
+            <ContinueWithButton
+              title="Google"
+              icon="logo-google"
+              onPress={() => onSelectAuth(Strategy.Google)}
+            />
+            {Platform.OS === "ios" && (
+              <ContinueWithButton
+                title="Apple"
+                icon="logo-apple"
+                onPress={() => onSelectAuth(Strategy.Apple)}
+              />
+            )}
+            <ContinueWithButton
+              title="Facebook"
+              icon="logo-facebook"
+              onPress={() => onSelectAuth(Strategy.Facebook)}
+            />
+          </View>
+          <View style={{ alignItems: "center" }}>
+            <Text style={defaultStyles.textCenter}>
+              Al registrarte en RecomenDatos estás aceptando nuestros términos y
+              condiciones y políticas de privacidad
+            </Text>
+          </View>
+        </View>
       </View>
-      <View style={styles.buttonsContainer}>
-        <ContinueWithMailButton />
-        <ContinueWithOAuthButton
-          title="Google"
-          icon="logo-google"
-          strategy="oauth_google"
-        />
-        {Platform.OS === "ios" && (
-          <ContinueWithOAuthButton
-            title="Apple"
-            icon="logo-apple"
-            strategy="oauth_apple"
-          />
-        )}
-        <ContinueWithOAuthButton
-          title="Facebook"
-          icon="logo-facebook"
-          strategy="oauth_facebook"
-        />
-      </View>
-      <Text style={styles.termsAndConditions}>
-        Al registrarte en RecomenDatos estás aceptando nuestros términos y
-        condiciones y políticas de privacidad
-      </Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -55,26 +94,6 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   loginContainer: {
-    flex: 1,
-    paddingHorizontal: 16,
-    textAlign: "center",
-    gap: 1,
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "space-around",
-    backgroundColor: "#fff",
-  },
-  buttonsContainer: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  termsAndConditions: {
-    position: "absolute",
-    bottom: 5,
-    textAlign: "center",
-  },
-  textCenter: {
-    textAlign: "center",
+    justifyContent: "space-between",
   },
 });

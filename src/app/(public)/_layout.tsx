@@ -3,14 +3,11 @@ import React from "react";
 
 const PublicLayout = () => {
   return (
-    <Stack>
-      <Stack.Screen
-        name="login"
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}
+    />
   );
 };
 
