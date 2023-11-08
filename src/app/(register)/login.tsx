@@ -82,7 +82,7 @@ const LoginScreen = () => {
           },
         });
       }
-      // console.error("Register error", JSON.stringify(err));
+      console.error("Register error - ", err.errors[0].message);
     }
   };
 

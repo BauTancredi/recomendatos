@@ -21,8 +21,11 @@ const PreparePhoneVerification = () => {
       await user?.phoneNumbers[0].prepareVerification();
 
       router.push("/(register)/attemptPhoneVerification");
-    } catch (err) {
-      console.error("OAuth error - Prepare Phone Verification", err);
+    } catch (err: any) {
+      console.error(
+        "OAuth error - Prepare Phone Verification:",
+        err.errors[0].message
+      );
     }
   };
 

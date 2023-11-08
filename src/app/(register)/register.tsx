@@ -32,12 +32,11 @@ const RegisterWithMail = () => {
       });
 
       if (createdSessionId) {
-        // router.replace("/(register)/preparePhoneVerification");
         setActive!({ session: createdSessionId });
         router.back();
       }
     } catch (err: any) {
-      console.error("Register error", JSON.stringify(err));
+      console.log("Register error: ", err.errors[0].message);
     }
   };
 

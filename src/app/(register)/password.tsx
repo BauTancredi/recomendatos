@@ -25,7 +25,7 @@ const AttemptPhoneVerification = () => {
         identifier: emailAddress,
       });
     } catch (err: any) {
-      console.log(err.errors[0].message);
+      console.log("Password reset request error: ", err.errors[0].message);
     }
   };
 
@@ -38,11 +38,9 @@ const AttemptPhoneVerification = () => {
         password,
       });
 
-      // Set the user session active, which will log in the user automatically
-
       await setActive!({ session: result?.createdSessionId });
     } catch (err: any) {
-      alert(err.errors[0].message);
+      console.log("Password reset error: ", err.errors[0].message);
     }
   };
 
@@ -58,10 +56,8 @@ const AttemptPhoneVerification = () => {
         await setActive!({ session: completeSignIn?.createdSessionId });
         router.back();
       }
-
-      // router.push("/(tabs)/home");
-    } catch (err) {
-      console.error("Register error - Password", JSON.stringify(err));
+    } catch (err: any) {
+      console.error("Login error - Password", err.errors[0].message);
     }
   };
 
