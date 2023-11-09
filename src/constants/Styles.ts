@@ -47,7 +47,14 @@ export const defaultStyles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "mon-sb",
   },
+  btnDisabled: {
+    opacity: 0.5,
+  },
   textCenter: {
     textAlign: "center",
+  },
+  textError: {
+    color: Colors.error,
+    fontFamily: "mon",
   },
 });

@@ -1,34 +1,92 @@
 import { useSignUp } from "@clerk/clerk-expo";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { Button, TextInput, View } from "react-native";
+import { TextInput, TouchableOpacity, View, Text, Alert } from "react-native";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import Button from "@/components/buttons/Button";
 
 import { defaultStyles } from "@/constants/Styles";
+import ControlledInput from "@/components/inputs/ControlledInput";
+
+type FormData = {
+  emailAddress: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+};
+
+const schema = z.object({
+  emailAddress: z
+    .string({
+      required_error: "El correo electronico es requerido",
+      invalid_type_error: "Name must be a string",
+    })
+    .email("El correo electronico no es valido"),
+  firstName: z.string({
+    required_error: "El nombre es requerido",
+    invalid_type_error: "Name must be a string",
+  }),
+  lastName: z.string({
+    required_error: "El apellido es requerido",
+    invalid_type_error: "Name must be a string",
+  }),
+  // Validar lo siguiente para la contraseña:
+  // [x] - Al menos 8 caracteres
+  // [x] - Al menos una letra mayúscula
+  // [x] - Al menos una numero
+  // [x] - No puede contener espacios
+  // [] - No puede contener el nombre o apellido
+  // [] - No puede contener el correo electrónico
+  password: z
+    .string({
+      required_error: "La contraseña es requerida",
+      invalid_type_error: "Name must be a string",
+    })
+    .min(8, "Password must be at least 8 characters")
+    .refine((password) => /[A-Z]/.test(password), {
+      message: "Password must contain at least one uppercase letter",
+    })
+    .refine((password) => /\d/.test(password), {
+      message: "Password must contain at least one number",
+    })
+    .refine((password) => !/\s/.test(password), {
+      message: "Password cannot contain spaces",
+    }),
+});
 
 const RegisterWithMail = () => {
   const { emailAddress: emailAddressParam } = useLocalSearchParams<{
     emailAddress: string;
   }>();
 
-  const [emailAddress, setEmailAddress] = useState(emailAddressParam);
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const {
+    formState: { errors, isValid },
+    control,
+    handleSubmit,
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      emailAddress: emailAddressParam,
+    },
+    mode: "onBlur",
+  });
 
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
 
-  const onSignUpPress = async () => {
+  const onSignUpPress = async (data: FormData) => {
     if (!isLoaded) {
       return;
     }
 
     try {
       const { createdSessionId } = await signUp.create({
-        emailAddress,
-        password,
-        firstName,
-        lastName,
+        emailAddress: data.emailAddress,
+        password: data.password,
+        firstName: data.firstName,
+        lastName: data.lastName,
       });
 
       if (createdSessionId) {
@@ -36,40 +94,46 @@ const RegisterWithMail = () => {
         router.back();
       }
     } catch (err: any) {
+      Alert.alert(err.errors[0].message);
       console.log("Register error: ", err.errors[0].message);
     }
   };
 
   return (
-    <View style={[defaultStyles.container, { gap: 10, marginTop: 10 }]}>
-      <TextInput
-        placeholder="firstName"
-        value={firstName}
-        onChangeText={setFirstName}
-        style={defaultStyles.inputField}
-      />
-      <TextInput
-        placeholder="lastName"
-        value={lastName}
-        onChangeText={setLastName}
-        style={defaultStyles.inputField}
-      />
-      <TextInput
-        autoCapitalize="none"
-        placeholder="simon@galaxies.dev"
-        value={emailAddress}
-        onChangeText={setEmailAddress}
-        style={defaultStyles.inputField}
-      />
-      <TextInput
-        placeholder="password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        style={defaultStyles.inputField}
+    <View style={[defaultStyles.container, { gap: 2, paddingVertical: 20 }]}>
+      <ControlledInput
+        control={control}
+        name="firstName"
+        placeholder="Nombre"
+        errors={errors}
       />
 
-      <Button title="Continue" color="#6c47ff" onPress={onSignUpPress} />
+      <ControlledInput
+        control={control}
+        name="lastName"
+        placeholder="Apellido"
+        errors={errors}
+      />
+
+      <ControlledInput
+        control={control}
+        name="emailAddress"
+        placeholder="Correo electronico"
+        errors={errors}
+      />
+
+      <ControlledInput
+        control={control}
+        name="password"
+        placeholder="Contraseña"
+        errors={errors}
+      />
+
+      <Button
+        text="Verificar"
+        onPress={handleSubmit(onSignUpPress)}
+        isValid={isValid}
+      />
     </View>
   );
 };

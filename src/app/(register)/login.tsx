@@ -10,11 +10,16 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 
 import ContinueWithButton from "@/components/buttons/ContinueWithButton";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
+import ControlledInput from "@/components/inputs/ControlledInput";
+import Button from "@/components/buttons/Button";
 
 enum Strategy {
   Google = "oauth_google",
@@ -22,13 +27,34 @@ enum Strategy {
   Facebook = "oauth_facebook",
 }
 
+type FormData = {
+  emailAddress: string;
+};
+
+const schema = z.object({
+  emailAddress: z
+    .string({
+      required_error: "El correo electronico es requerido",
+      invalid_type_error: "Name must be a string",
+    })
+    .email("El correo electronico no es valido"),
+});
+
 const LoginScreen = () => {
   useWarmUpBrowser();
 
   const router = useRouter();
-  const [emailAddress, setEmailAddress] = useState("");
   const { isLoaded } = useSignUp();
   const { signIn } = useSignIn();
+
+  const {
+    formState: { errors, isValid },
+    control,
+    handleSubmit,
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    mode: "onBlur",
+  });
 
   const { startOAuthFlow: googleAuth } = useOAuth({ strategy: "oauth_google" });
   const { startOAuthFlow: appleAuth } = useOAuth({ strategy: "oauth_apple" });
@@ -54,21 +80,21 @@ const LoginScreen = () => {
     }
   };
 
-  const onSignUpPress = async () => {
+  const onSignUpPress = async (data: FormData) => {
     if (!isLoaded) {
       return;
     }
 
     try {
       const completeSignIn = await signIn?.create({
-        identifier: emailAddress,
+        identifier: data.emailAddress,
       });
 
       if (completeSignIn?.status === "needs_first_factor") {
         router.push({
           pathname: "/(register)/password",
           params: {
-            emailAddress,
+            emailAddress: data.emailAddress,
           },
         });
       }
@@ -78,7 +104,7 @@ const LoginScreen = () => {
         router.push({
           pathname: "/(register)/register",
           params: {
-            emailAddress,
+            emailAddress: data.emailAddress,
           },
         });
       }
@@ -99,19 +125,18 @@ const LoginScreen = () => {
         </View>
         <View style={{ gap: 20 }}>
           <View>
-            <TextInput
-              style={defaultStyles.inputField}
-              onChangeText={setEmailAddress}
-              value={emailAddress}
+            <ControlledInput
+              errors={errors}
+              control={control}
+              name="emailAddress"
               placeholder="Correo electronico"
-              keyboardType="phone-pad"
             />
-            <TouchableOpacity
-              style={[defaultStyles.btn, { marginTop: 10 }]}
-              onPress={onSignUpPress}
-            >
-              <Text style={defaultStyles.btnText}>Continuar</Text>
-            </TouchableOpacity>
+
+            <Button
+              text="Continuar"
+              onPress={handleSubmit(onSignUpPress)}
+              isValid={isValid}
+            />
           </View>
 
           <View style={styles.seperatorView}>

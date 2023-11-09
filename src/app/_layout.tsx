@@ -99,14 +99,22 @@ const InitialLayout = () => {
 // [x] - Separador
 // [x] - Recuperar contraseña
 // [x] - Pantalla estilo modal
-// [] - React Hook Form + Zod
+// [x] - Type Clerk errors
+// [x] - Mail ya registrado
+// [x] - Phone ya registrado
+// [x] - React Hook Form + Zod
+// [x] - Estilos minimos
 // [] - Revisar TODOs
-// [] - Type Clerk errors
+// [] - Revisar nombres de funciones, variables, etc
+// [] - Nivelar android y ios
+// [] - Armar readme
 
 // [] - Usuario vs Profesional
 // [] - Onboarding
 // [] - Terminar registro
+// [] - Mejorar manejo de Zod
 // [] - Supabase
 // [] - React Query
 // [] - Zustand
 // [] - Reanimated
+// [] - Accesibilidad
