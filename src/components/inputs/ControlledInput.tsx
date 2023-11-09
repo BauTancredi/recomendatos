@@ -26,6 +26,7 @@ const ControlledInput = ({
   name,
   style,
 }: Props) => {
+  console.log(errors);
   return (
     <View style={{ height: 64 }}>
       <Controller

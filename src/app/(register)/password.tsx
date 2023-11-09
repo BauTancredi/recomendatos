@@ -99,13 +99,13 @@ const AttemptPhoneVerification = () => {
       // This indicates the user is signed in
       if (completeSignIn?.createdSessionId) {
         await setActive!({ session: completeSignIn?.createdSessionId });
+        // router.back();
       }
     } catch (err: any) {
       console.error("Login error - Password", err.errors[0].message);
     }
   };
 
-  console.log(errors);
   return (
     <View style={[defaultStyles.container, { paddingTop: 20 }]}>
       {forgotPassword ? (

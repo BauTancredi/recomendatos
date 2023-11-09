@@ -70,7 +70,7 @@ const RegisterWithMail = () => {
     defaultValues: {
       emailAddress: emailAddressParam,
     },
-    mode: "onBlur",
+    mode: "onTouched",
   });
 
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -91,7 +91,7 @@ const RegisterWithMail = () => {
 
       if (createdSessionId) {
         setActive!({ session: createdSessionId });
-        router.back();
+        // router.back();
       }
     } catch (err: any) {
       Alert.alert(err.errors[0].message);

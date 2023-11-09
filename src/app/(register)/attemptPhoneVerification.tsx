@@ -39,7 +39,7 @@ const AttemptPhoneVerification = () => {
         code: data.verificationCode,
       });
 
-      router.push("/(tabs)/home");
+      // router.push("/(tabs)/home");
     } catch (err: any) {
       console.error(
         "OAuth error - Attempt Phone Verification:",

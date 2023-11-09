@@ -40,15 +40,7 @@ export default function RootLayout() {
     if (error) throw error;
   }, [error]);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
+  if (!loaded) return null;
 
   return (
     <ClerkProvider publishableKey={clerkKey}>
@@ -67,14 +59,16 @@ const InitialLayout = () => {
   useEffect(() => {
     if (!isLoaded) return;
 
+    SplashScreen.hideAsync();
+
     const inTabsGroup = segments[0] === "(auth)";
 
     if (isSignedIn && !inTabsGroup) {
-      // TODO: Pensar este IF. Deberia representar un usuario recien registrado. Tambien los modales. Revisar cuando es push y cuando replace
+      // Usuario recien registrado y no verifico el telefono
       if (!user?.hasVerifiedPhoneNumber) {
         router.replace("/(register)/preparePhoneVerification");
       } else {
-        router.push("/(tabs)/home");
+        router.replace("/(tabs)/home");
       }
     } else if (!isSignedIn) {
       router.replace("/(register)/login");
@@ -84,7 +78,6 @@ const InitialLayout = () => {
   return <Slot />;
 };
 
-// TODO
 // [x] - Setup Linter
 // [x] - Arreglar nombres de archivos y funciones
 // [x] - Configurar github devuelta
@@ -104,17 +97,19 @@ const InitialLayout = () => {
 // [x] - Phone ya registrado
 // [x] - React Hook Form + Zod
 // [x] - Estilos minimos
-// [] - Revisar TODOs
+// [x] - Revisar TODOs
 // [] - Revisar nombres de funciones, variables, etc
-// [] - Nivelar android y ios
-// [] - Armar readme
+// [] - Test android y ios
 
+// [] - Armar readme
 // [] - Usuario vs Profesional
 // [] - Onboarding
 // [] - Terminar registro
 // [] - Mejorar manejo de Zod
 // [] - Supabase
+// [] - Splash screen
 // [] - React Query
 // [] - Zustand
 // [] - Reanimated
 // [] - Accesibilidad
+// [] - Mensajes en Clerk
