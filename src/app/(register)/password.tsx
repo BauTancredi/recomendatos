@@ -1,14 +1,14 @@
 import { useSignIn } from "@clerk/clerk-expo";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { useState } from "react";
-import { TextInput, View, Text, TouchableOpacity } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocalSearchParams } from "expo-router";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { View, Text } from "react-native";
 import * as z from "zod";
 import Button from "@/components/buttons/Button";
 
-import { defaultStyles } from "@/constants/Styles";
 import ControlledInput from "@/components/inputs/ControlledInput";
+import { defaultStyles } from "@/constants/Styles";
 
 const schema = z.object({
   password: z.string({

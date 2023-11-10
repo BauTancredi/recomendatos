@@ -1,6 +1,6 @@
-import { Text, TextInput, View } from "react-native";
 import React from "react";
 import { Controller } from "react-hook-form";
+import { Text, TextInput, View } from "react-native";
 
 import { defaultStyles } from "@/constants/Styles";
 
@@ -26,7 +26,6 @@ const ControlledInput = ({
   name,
   style,
 }: Props) => {
-  console.log(errors);
   return (
     <View style={{ height: 64 }}>
       <Controller

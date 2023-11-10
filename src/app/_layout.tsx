@@ -44,7 +44,7 @@ export default function RootLayout() {
 
   return (
     <ClerkProvider publishableKey={clerkKey}>
-      {/* <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}> */}
+      {/* // <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}> */}
       <InitialLayout />
     </ClerkProvider>
   );
@@ -68,7 +68,7 @@ const InitialLayout = () => {
       if (!user?.hasVerifiedPhoneNumber) {
         router.replace("/(register)/preparePhoneVerification");
       } else {
-        router.replace("/(tabs)/home");
+        // router.replace("/(tabs)/home");
       }
     } else if (!isSignedIn) {
       router.replace("/(register)/login");
@@ -77,39 +77,3 @@ const InitialLayout = () => {
 
   return <Slot />;
 };
-
-// [x] - Setup Linter
-// [x] - Arreglar nombres de archivos y funciones
-// [x] - Configurar github devuelta
-// [x] - Arreglar ese minisegundo donde se ve page undefined
-// [x] - Arreglar clerk
-// [x] - Configurar continuar con mail
-
-// [x] - Oauth
-// [x] - Verificar telefono - 1 pantalla
-// [x] - Verificar telefono - 2 pantalla
-// [x] - Registro mail estilo AirBnb
-// [x] - Separador
-// [x] - Recuperar contraseña
-// [x] - Pantalla estilo modal
-// [x] - Type Clerk errors
-// [x] - Mail ya registrado
-// [x] - Phone ya registrado
-// [x] - React Hook Form + Zod
-// [x] - Estilos minimos
-// [x] - Revisar TODOs
-// [] - Revisar nombres de funciones, variables, etc
-// [] - Test android y ios
-
-// [] - Armar readme
-// [] - Usuario vs Profesional
-// [] - Onboarding
-// [] - Terminar registro
-// [] - Mejorar manejo de Zod
-// [] - Supabase
-// [] - Splash screen
-// [] - React Query
-// [] - Zustand
-// [] - Reanimated
-// [] - Accesibilidad
-// [] - Mensajes en Clerk

@@ -1,14 +1,14 @@
 import { useSignUp } from "@clerk/clerk-expo";
-import { useRouter, useLocalSearchParams } from "expo-router";
-import React, { useState } from "react";
-import { TextInput, TouchableOpacity, View, Text, Alert } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLocalSearchParams } from "expo-router";
 import { useForm } from "react-hook-form";
+import { View, Alert } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
-import Button from "@/components/buttons/Button";
 
-import { defaultStyles } from "@/constants/Styles";
+import Button from "@/components/buttons/Button";
 import ControlledInput from "@/components/inputs/ControlledInput";
+import { defaultStyles } from "@/constants/Styles";
 
 type FormData = {
   emailAddress: string;
@@ -62,7 +62,7 @@ const RegisterWithMail = () => {
   }>();
 
   const {
-    formState: { errors, isValid },
+    formState: { errors, isValid, isLoading },
     control,
     handleSubmit,
   } = useForm<FormData>({
@@ -70,11 +70,10 @@ const RegisterWithMail = () => {
     defaultValues: {
       emailAddress: emailAddressParam,
     },
-    mode: "onTouched",
+    mode: "onBlur",
   });
 
   const { isLoaded, signUp, setActive } = useSignUp();
-  const router = useRouter();
 
   const onSignUpPress = async (data: FormData) => {
     if (!isLoaded) {
@@ -101,6 +100,7 @@ const RegisterWithMail = () => {
 
   return (
     <View style={[defaultStyles.container, { gap: 2, paddingVertical: 20 }]}>
+      <Spinner visible={isLoading} />
       <ControlledInput
         control={control}
         name="firstName"

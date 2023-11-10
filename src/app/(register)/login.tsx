@@ -1,25 +1,16 @@
 import { useOAuth, useSignUp, useSignIn } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
-import React, { useState } from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
-import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "expo-router";
+import { useForm } from "react-hook-form";
+import { Platform, StyleSheet, Text, View, SafeAreaView } from "react-native";
 import * as z from "zod";
 
+import Button from "@/components/buttons/Button";
 import ContinueWithButton from "@/components/buttons/ContinueWithButton";
+import ControlledInput from "@/components/inputs/ControlledInput";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
-import ControlledInput from "@/components/inputs/ControlledInput";
-import Button from "@/components/buttons/Button";
 
 enum Strategy {
   Google = "oauth_google",
@@ -71,7 +62,10 @@ const LoginScreen = () => {
     }[strategy];
 
     try {
-      const { createdSessionId, setActive } = await selectedAuth();
+      const { createdSessionId, setActive, authSessionResult } =
+        await selectedAuth();
+      console.log("createdSessionId", createdSessionId);
+      console.log("authSessionResult", authSessionResult);
 
       if (createdSessionId) {
         setActive!({ session: createdSessionId });
@@ -109,7 +103,7 @@ const LoginScreen = () => {
           },
         });
       }
-      console.error("Register error - ", err.errors[0].message);
+      // console.error("Register error - ", err.errors[0].message);
     }
   };
 

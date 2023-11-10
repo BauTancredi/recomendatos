@@ -1,12 +1,12 @@
 import { useUser } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
-import { Alert, View } from "react-native";
-import { defaultStyles } from "@/constants/Styles";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
+import { Alert, View } from "react-native";
 import * as z from "zod";
-import ControlledInput from "@/components/inputs/ControlledInput";
 import Button from "@/components/buttons/Button";
+import ControlledInput from "@/components/inputs/ControlledInput";
+import { defaultStyles } from "@/constants/Styles";
 
 const schema = z.object({
   phoneNumber: z
@@ -52,7 +52,7 @@ const PreparePhoneVerification = () => {
 
       console.error(
         "OAuth error - Prepare Phone Verification:",
-        err.errors[0].message
+        err.errors[0].message,
       );
     }
   };

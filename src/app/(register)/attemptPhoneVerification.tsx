@@ -1,13 +1,13 @@
 import { useUser } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
-import { View } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
+import { View } from "react-native";
 import * as z from "zod";
 
 import Button from "@/components/buttons/Button";
-import { defaultStyles } from "@/constants/Styles";
 import ControlledInput from "@/components/inputs/ControlledInput";
+import { defaultStyles } from "@/constants/Styles";
 
 const schema = z.object({
   verificationCode: z.string({
@@ -39,11 +39,11 @@ const AttemptPhoneVerification = () => {
         code: data.verificationCode,
       });
 
-      // router.push("/(tabs)/home");
+      router.push("/(tabs)/home");
     } catch (err: any) {
       console.error(
         "OAuth error - Attempt Phone Verification:",
-        err.errors[0].message
+        err.errors[0].message,
       );
     }
   };
