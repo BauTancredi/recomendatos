@@ -8,7 +8,6 @@ import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
-import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 
 type FormData = {
@@ -25,14 +24,18 @@ const schema = z.object({
       invalid_type_error: "Name must be a string",
     })
     .email("El correo electronico no es valido"),
-  firstName: z.string({
-    required_error: "El nombre es requerido",
-    invalid_type_error: "Name must be a string",
-  }),
-  lastName: z.string({
-    required_error: "El apellido es requerido",
-    invalid_type_error: "Name must be a string",
-  }),
+  firstName: z
+    .string({
+      required_error: "El nombre es requerido",
+      invalid_type_error: "Name must be a string",
+    })
+    .min(1, "El nombre es requerido"),
+  lastName: z
+    .string({
+      required_error: "El apellido es requerido",
+      invalid_type_error: "Name must be a string",
+    })
+    .min(1, "El apellido es requerido"),
   // Validar lo siguiente para la contraseña:
   // [x] - Al menos 8 caracteres
   // [x] - Al menos una letra mayúscula
@@ -71,7 +74,7 @@ const RegisterScreen = () => {
     defaultValues: {
       emailAddress: emailAddressParam,
     },
-    mode: "onBlur",
+    mode: "onChange",
   });
 
   const { isLoaded, signUp, setActive } = useSignUp();

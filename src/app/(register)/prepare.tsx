@@ -16,8 +16,8 @@ const schema = z.object({
       required_error: "El numero es requerido",
       invalid_type_error: "Name must be a string",
     })
-    .min(10, "El numero debe tener 10 digitos")
-    .startsWith("+54", "El numero debe empezar con +54"),
+    .startsWith("+54", "El numero debe empezar con +54")
+    .min(10, "El numero debe tener 10 digitos"),
 });
 
 type FormData = {
@@ -56,6 +56,16 @@ const PrepareScreen = () => {
     }
   };
 
+  // const onResend = async () => {
+  //   try {
+  //     await user?.phoneNumbers[0].prepareVerification();
+  //   } catch (err: any) {
+  //     Alert.alert(err.errors[0].message);
+
+  //     console.error("OAuth error - Prepare Phone Verification:", err.errors[0].message);
+  //   }
+  // };
+
   return (
     <View style={[defaultStyles.container, { paddingVertical: 20 }]}>
       <Spinner visible={isSubmitting} />
@@ -73,6 +83,8 @@ const PrepareScreen = () => {
         onPress={handleSubmit(onPrepareVerification)}
         isValid={isValid}
       />
+
+      {/* <PrimaryButton text="Enviar nuevamente" onPress={handleSubmit(onResend)} isValid={isValid} /> */}
     </View>
   );
 };

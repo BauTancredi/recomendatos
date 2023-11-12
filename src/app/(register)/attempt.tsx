@@ -31,7 +31,7 @@ const AttemptScreen = () => {
     handleSubmit,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    mode: "all",
+    mode: "onChange",
   });
 
   const onAttemptVerification = async (data: FormData) => {
@@ -47,7 +47,7 @@ const AttemptScreen = () => {
   };
 
   return (
-    <View style={defaultStyles.container}>
+    <View style={[defaultStyles.container, { paddingVertical: 20 }]}>
       <Spinner visible={isSubmitting} />
 
       <ControlledInput

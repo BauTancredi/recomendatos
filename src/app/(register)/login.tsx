@@ -47,8 +47,8 @@ const LoginScreen = () => {
     handleSubmit,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    mode: "all",
-    reValidateMode: "onBlur",
+    mode: "onBlur",
+    // reValidateMode: "onBlur",
   });
 
   const { startOAuthFlow: googleAuth } = useOAuth({ strategy: "oauth_google" });

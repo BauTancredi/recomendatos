@@ -61,7 +61,7 @@ const PasswordScreen = () => {
     handleSubmit,
   } = useForm<FormData>({
     resolver: zodResolver(forgotPassword ? newPasswordSchema : passwordSchema),
-    mode: "onBlur",
+    mode: "onChange",
   });
 
   // Request a passowrd reset code by email
