@@ -3,6 +3,8 @@ import * as WebBrowser from "expo-web-browser";
 import React from "react";
 import { Button, SafeAreaView, Text, View } from "react-native";
 
+import { defaultStyles } from "@/constants/Styles";
+
 WebBrowser.maybeCompleteAuthSession();
 
 const HomeScreen = () => {
@@ -20,7 +22,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={defaultStyles.safeArea}>
       <View>
         <Text> {user?.firstName} </Text>
         <Text> {user?.lastName} </Text>

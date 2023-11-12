@@ -1,11 +1,17 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform, StatusBar } from "react-native";
 import Colors from "@/constants/Colors";
 
 export const defaultStyles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    backgroundColor: "#FDFFFF",
+  },
   container: {
     flex: 1,
     backgroundColor: "#FDFFFF",
     paddingHorizontal: 16,
+    paddingVertical: 8,
   },
   inputField: {
     height: 44,

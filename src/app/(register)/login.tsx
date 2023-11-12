@@ -111,7 +111,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <SafeAreaView style={[defaultStyles.container]}>
+    <SafeAreaView style={defaultStyles.safeArea}>
       <Spinner visible={isSubmitting || loading} />
 
       <View style={[defaultStyles.container, styles.loginContainer]}>
