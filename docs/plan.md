@@ -1,69 +1,76 @@
 Semana 13/11 - 19/11
-
 Semana 20/11 - 26/11
+[] Pantalla de verificado
+[] Usuario vs Profesional
+[] Onboarding
 Semana 27/11 - 3/12
-[] - Usuario vs Profesional
-[] - Onboarding
-[] - Terminar registro
 Semana 4/12 - 10/12
+[] Terminar registro
 Semana 11/12 - 17/12
-[] - Home
 Semana 18/12 - 24/12
+[] Home
 Semana 25/12 - 31/12
-[] - Perfil
 Semana 1/1 - 7/1
+[] Perfil
 Semana 8/1 - 14/1
-[] - Favoritos
+[] Favoritos
 Semana 15/1 - 21/1
-[] - Cerca de mi
 Semana 22/1 - 28/1
+[] Cerca de mi
 Semana 29/1 - 4/2
-[] - Drawer
+[] Drawer
 Semana 5/2 - 11/2
 Semana 12/2 - 18/2
 Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
-[] - Mejorar manejo de Zod
-[] - Splash screen
-[] - Accesibilidad
-[] - Mensajes en Clerk (error, sms, mail)
-[] - Reanimated
-[] - React Query
-[] - Zustand
-[] - Supabase
-[] - Logica de reenviar mensaje
-[] - Analitcs
-[] - Banners
-[] - Compartir app
-[] - Cafecito
-[] - QR
-[] - Notificaciones
-[] - i18n
-[] - Sentry
-[] - Bugs
+PENDIENTES VARIOS
+[] Mejorar manejo de Zod
+[] Splash screen
+[] Accesibilidad
+[] Mensajes en Clerk (error, sms, mail)
+[] Logica de reenviar mensaje
+[] Bugs
 
-[x] - Setup Linter
-[x] - Arreglar nombres de archivos y funciones
-[x] - Configurar github devuelta
-[x] - Arreglar ese minisegundo donde se ve page undefined
-[x] - Arreglar clerk
-[x] - Configurar continuar con mail
-[x] - Oauth
-[x] - Verificar telefono - 1 pantalla
-[x] - Verificar telefono - 2 pantalla
-[x] - Registro mail estilo AirBnb
-[x] - Separador
-[x] - Recuperar contraseña
-[x] - Pantalla estilo modal
-[x] - Type Clerk errors
-[x] - Mail ya registrado
-[x] - Phone ya registrado
-[x] - React Hook Form + Zod
-[x] - Estilos minimos
-[x] - Revisar TODOs
-[x] - Test android y ios
-[x] - Revisar nombres de funciones, variables, etc
-[x] - Unused imports
-[x] - Loading state
-[x] - Mensaje de error on blur
+FEATURES
+[] Banners
+[] Compartir app
+[] Cafecito
+[] QR
+[] Notificaciones
+[] i18n
+
+TECH
+[] React Query
+[] Zustand
+[] Supabase
+[] Reanimated
+[] Sentry
+[] Analitcs
+
+--------o---------
+
+[x] Setup Linter
+[x] Arreglar nombres de archivos y funciones
+[x] Configurar github devuelta
+[x] Arreglar ese minisegundo donde se ve page undefined
+[x] Arreglar clerk
+[x] Configurar continuar con mail
+[x] Oauth
+[x] Verificar telefono - 1 pantalla
+[x] Verificar telefono - 2 pantalla
+[x] Registro mail estilo AirBnb
+[x] Separador
+[x] Recuperar contraseña
+[x] Pantalla estilo modal
+[x] Type Clerk errors
+[x] Mail ya registrado
+[x] Phone ya registrado
+[x] React Hook Form + Zod
+[x] Estilos minimos
+[x] Revisar TODOs
+[x] Test android y ios
+[x] Revisar nombres de funciones, variables, etc
+[x] Unused imports
+[x] Loading state
+[x] Mensaje de error on blur
