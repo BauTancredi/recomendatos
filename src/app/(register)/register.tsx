@@ -8,6 +8,7 @@ import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
+import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 
 type FormData = {
@@ -62,7 +63,7 @@ const RegisterScreen = () => {
   }>();
 
   const {
-    formState: { errors, isValid, isLoading },
+    formState: { errors, isValid, isSubmitting },
     control,
     handleSubmit,
   } = useForm<FormData>({
@@ -100,7 +101,7 @@ const RegisterScreen = () => {
 
   return (
     <View style={[defaultStyles.container, { gap: 2, paddingVertical: 20 }]}>
-      <Spinner visible={isLoading} />
+      <Spinner visible={isSubmitting} />
       <ControlledInput control={control} name="firstName" placeholder="Nombre" errors={errors} />
 
       <ControlledInput control={control} name="lastName" placeholder="Apellido" errors={errors} />

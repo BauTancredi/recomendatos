@@ -1,8 +1,10 @@
 import { useOAuth, useSignUp, useSignIn } from "@clerk/clerk-expo";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Platform, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
 import ContinueWithButton from "@/components/buttons/ContinueWithButton";
@@ -33,13 +35,14 @@ const schema = z.object({
 
 const LoginScreen = () => {
   useWarmUpBrowser();
+  const [loading, setLoading] = React.useState(false);
 
   const router = useRouter();
   const { isLoaded } = useSignUp();
   const { signIn } = useSignIn();
 
   const {
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
     control,
     handleSubmit,
   } = useForm<FormData>({
@@ -62,6 +65,7 @@ const LoginScreen = () => {
     }[strategy];
 
     try {
+      setLoading(true);
       const { createdSessionId, setActive } = await selectedAuth();
 
       if (createdSessionId) {
@@ -69,6 +73,8 @@ const LoginScreen = () => {
       }
     } catch (err) {
       console.error("OAuth error", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -106,6 +112,8 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView style={[defaultStyles.container]}>
+      <Spinner visible={isSubmitting || loading} />
+
       <View style={[defaultStyles.container, styles.loginContainer]}>
         <View style={{ alignItems: "center" }}>
           <Text>Hola</Text>

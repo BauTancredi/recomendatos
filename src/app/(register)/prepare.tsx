@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
 import { Alert, View } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -29,7 +30,7 @@ const PrepareScreen = () => {
   const { user } = useUser();
 
   const {
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
     control,
     handleSubmit,
   } = useForm<FormData>({
@@ -57,6 +58,8 @@ const PrepareScreen = () => {
 
   return (
     <View style={[defaultStyles.container, { paddingVertical: 20 }]}>
+      <Spinner visible={isSubmitting} />
+
       <ControlledInput
         control={control}
         name="phoneNumber"

@@ -17,7 +17,7 @@ const RegisterLayout = () => {
       <Stack.Screen name="login" options={{ headerShown: false }} />
 
       <Stack.Screen
-        name="preparePhoneVerification"
+        name="prepare"
         options={{
           headerTitle: "Verificar telefono",
           headerLeft: () => (
@@ -29,7 +29,7 @@ const RegisterLayout = () => {
       />
 
       <Stack.Screen
-        name="attemptPhoneVerification"
+        name="attempt"
         options={{
           headerTitle: "Verificar telefono",
           headerLeft: () => (

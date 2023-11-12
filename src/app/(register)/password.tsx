@@ -4,6 +4,7 @@ import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { View, Text } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -55,7 +56,7 @@ const PasswordScreen = () => {
   const { signIn, setActive } = useSignIn();
 
   const {
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
     control,
     handleSubmit,
   } = useForm<FormData>({
@@ -109,6 +110,7 @@ const PasswordScreen = () => {
 
   return (
     <View style={[defaultStyles.container, { paddingTop: 20 }]}>
+      <Spinner visible={isSubmitting} />
       {forgotPassword ? (
         <View>
           <ControlledInput
