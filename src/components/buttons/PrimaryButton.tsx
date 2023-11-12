@@ -8,15 +8,11 @@ interface Props {
   text: string;
 }
 
-const Button = ({ onPress, isValid = true, text }: Props) => {
+const PrimaryButton = ({ onPress, isValid = true, text }: Props) => {
   return (
     <TouchableOpacity
       disabled={!isValid}
-      style={[
-        defaultStyles.btn,
-        !isValid && defaultStyles.btnDisabled,
-        { marginTop: 10 },
-      ]}
+      style={[defaultStyles.btn, !isValid && defaultStyles.btnDisabled, { marginTop: 10 }]}
       onPress={onPress}
     >
       <Text style={defaultStyles.btnText}>{text}</Text>
@@ -24,4 +20,4 @@ const Button = ({ onPress, isValid = true, text }: Props) => {
   );
 };
 
-export default Button;
+export default PrimaryButton;

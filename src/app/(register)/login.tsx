@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { Platform, StyleSheet, Text, View, SafeAreaView } from "react-native";
 import * as z from "zod";
 
-import Button from "@/components/buttons/Button";
 import ContinueWithButton from "@/components/buttons/ContinueWithButton";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
@@ -62,10 +62,7 @@ const LoginScreen = () => {
     }[strategy];
 
     try {
-      const { createdSessionId, setActive, authSessionResult } =
-        await selectedAuth();
-      console.log("createdSessionId", createdSessionId);
-      console.log("authSessionResult", authSessionResult);
+      const { createdSessionId, setActive } = await selectedAuth();
 
       if (createdSessionId) {
         setActive!({ session: createdSessionId });
@@ -114,8 +111,7 @@ const LoginScreen = () => {
           <Text>Hola</Text>
           <Text>Bienvenido a RecomenDatos</Text>
           <Text style={defaultStyles.textCenter}>
-            Registrate o inicia sesion para comenzar a formar parte de nuestra
-            comunidad.
+            Registrate o inicia sesion para comenzar a formar parte de nuestra comunidad.
           </Text>
         </View>
         <View style={{ gap: 20 }}>
@@ -127,7 +123,7 @@ const LoginScreen = () => {
               placeholder="Correo electronico"
             />
 
-            <Button
+            <PrimaryButton
               text="Continuar"
               onPress={handleSubmit(onSignUpPress)}
               isValid={isValid}
@@ -173,8 +169,8 @@ const LoginScreen = () => {
           </View>
           <View style={{ alignItems: "center" }}>
             <Text style={defaultStyles.textCenter}>
-              Al registrarte en RecomenDatos estás aceptando nuestros términos y
-              condiciones y políticas de privacidad
+              Al registrarte en RecomenDatos estás aceptando nuestros términos y condiciones y
+              políticas de privacidad
             </Text>
           </View>
         </View>

@@ -5,18 +5,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { View, Text } from "react-native";
 import * as z from "zod";
-import Button from "@/components/buttons/Button";
 
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
 
-const schema = z.object({
+const passwordSchema = z.object({
   password: z.string({
     required_error: "Por favor ingrese su contraseña",
     invalid_type_error: "Name must be a string",
   }),
 });
-const schema2 = z.object({
+
+const newPasswordSchema = z.object({
   verificationCode: z.string({
     required_error: "Por favor ingrese el codigo",
     invalid_type_error: "Name must be a string",
@@ -44,7 +45,7 @@ type FormData = {
   newPassword: string;
 };
 
-const AttemptPhoneVerification = () => {
+const PasswordScreen = () => {
   const [forgotPassword, setForgotPassword] = useState(false);
 
   const { emailAddress: emailAddressParam } = useLocalSearchParams<{
@@ -58,7 +59,7 @@ const AttemptPhoneVerification = () => {
     control,
     handleSubmit,
   } = useForm<FormData>({
-    resolver: zodResolver(forgotPassword ? schema2 : schema),
+    resolver: zodResolver(forgotPassword ? newPasswordSchema : passwordSchema),
     mode: "onBlur",
   });
 
@@ -89,7 +90,7 @@ const AttemptPhoneVerification = () => {
     }
   };
 
-  const handlePress = async (data: FormData) => {
+  const onSignIn = async (data: FormData) => {
     try {
       const completeSignIn = await signIn?.create({
         identifier: emailAddressParam,
@@ -124,15 +125,15 @@ const AttemptPhoneVerification = () => {
             errors={errors}
           />
 
-          <Button text="Enviar codigo" onPress={onRequestReset} />
+          <PrimaryButton text="Enviar codigo" onPress={onRequestReset} />
 
-          <Button
+          <PrimaryButton
             text="Resetear contraseña"
             onPress={handleSubmit(onReset)}
             isValid={isValid}
           />
 
-          <Button text="Cancelar" onPress={() => setForgotPassword(false)} />
+          <PrimaryButton text="Cancelar" onPress={() => setForgotPassword(false)} />
         </View>
       ) : (
         <>
@@ -144,17 +145,14 @@ const AttemptPhoneVerification = () => {
           />
 
           <View style={{ alignItems: "flex-end" }}>
-            <Text
-              style={{ fontFamily: "mon-sb" }}
-              onPress={() => setForgotPassword(true)}
-            >
+            <Text style={{ fontFamily: "mon-sb" }} onPress={() => setForgotPassword(true)}>
               Olvide mi contraseña
             </Text>
           </View>
 
-          <Button
+          <PrimaryButton
             text="Iniciar sesion"
-            onPress={handleSubmit(handlePress)}
+            onPress={handleSubmit(onSignIn)}
             // isValid={isValid}
           />
         </>
@@ -163,4 +161,4 @@ const AttemptPhoneVerification = () => {
   );
 };
 
-export default AttemptPhoneVerification;
+export default PasswordScreen;

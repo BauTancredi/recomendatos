@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import React from "react";
 
-const PrivateLayout = () => {
+const TabsLayout = () => {
   return (
     <Tabs
     // screenOptions={{
@@ -24,4 +24,4 @@ const PrivateLayout = () => {
   );
 };
 
-export default PrivateLayout;
+export default TabsLayout;

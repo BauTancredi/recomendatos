@@ -66,7 +66,7 @@ const InitialLayout = () => {
     if (isSignedIn && !inTabsGroup) {
       // Usuario recien registrado y no verifico el telefono
       if (!user?.hasVerifiedPhoneNumber) {
-        router.replace("/(register)/preparePhoneVerification");
+        router.replace("/(register)/prepare");
       } else {
         // router.replace("/(tabs)/home");
       }

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import * as z from "zod";
 
-import Button from "@/components/buttons/Button";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
 
@@ -20,7 +20,7 @@ type FormData = {
   verificationCode: string;
 };
 
-const AttemptPhoneVerification = () => {
+const AttemptScreen = () => {
   const router = useRouter();
   const { user } = useUser();
 
@@ -33,7 +33,7 @@ const AttemptPhoneVerification = () => {
     mode: "all",
   });
 
-  const handlePress = async (data: FormData) => {
+  const onAttemptVerification = async (data: FormData) => {
     try {
       await user?.phoneNumbers[0].attemptVerification({
         code: data.verificationCode,
@@ -41,10 +41,7 @@ const AttemptPhoneVerification = () => {
 
       router.push("/(tabs)/home");
     } catch (err: any) {
-      console.error(
-        "OAuth error - Attempt Phone Verification:",
-        err.errors[0].message,
-      );
+      console.error("OAuth error - Attempt Phone Verification:", err.errors[0].message);
     }
   };
 
@@ -58,13 +55,13 @@ const AttemptPhoneVerification = () => {
         // keyboardType="numeric"
       />
 
-      <Button
+      <PrimaryButton
         text="Enviar codigo"
-        onPress={handleSubmit(handlePress)}
+        onPress={handleSubmit(onAttemptVerification)}
         isValid={isValid}
       />
     </View>
   );
 };
 
-export default AttemptPhoneVerification;
+export default AttemptScreen;

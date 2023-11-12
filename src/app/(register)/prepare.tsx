@@ -4,7 +4,8 @@ import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
 import { Alert, View } from "react-native";
 import * as z from "zod";
-import Button from "@/components/buttons/Button";
+
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
 
@@ -22,7 +23,7 @@ type FormData = {
   phoneNumber: string;
 };
 
-const PreparePhoneVerification = () => {
+const PrepareScreen = () => {
   const router = useRouter();
 
   const { user } = useUser();
@@ -36,7 +37,7 @@ const PreparePhoneVerification = () => {
     mode: "onChange",
   });
 
-  const handlePress = async (data: FormData) => {
+  const onPrepareVerification = async (data: FormData) => {
     try {
       await user?.createPhoneNumber({
         phoneNumber: data.phoneNumber,
@@ -46,14 +47,11 @@ const PreparePhoneVerification = () => {
 
       await user?.phoneNumbers[0].prepareVerification();
 
-      router.push("/(register)/attemptPhoneVerification");
+      router.push("/(register)/attempt");
     } catch (err: any) {
       Alert.alert(err.errors[0].message);
 
-      console.error(
-        "OAuth error - Prepare Phone Verification:",
-        err.errors[0].message,
-      );
+      console.error("OAuth error - Prepare Phone Verification:", err.errors[0].message);
     }
   };
 
@@ -67,13 +65,13 @@ const PreparePhoneVerification = () => {
         // keyboardType="phone-pad"
       />
 
-      <Button
+      <PrimaryButton
         text="Enviar codigo"
-        onPress={handleSubmit(handlePress)}
+        onPress={handleSubmit(onPrepareVerification)}
         isValid={isValid}
       />
     </View>
   );
 };
 
-export default PreparePhoneVerification;
+export default PrepareScreen;

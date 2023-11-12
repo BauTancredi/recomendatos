@@ -19,13 +19,7 @@ interface Props {
   style?: any;
 }
 
-const ControlledInput = ({
-  control,
-  errors,
-  placeholder,
-  name,
-  style,
-}: Props) => {
+const ControlledInput = ({ control, errors, placeholder, name, style }: Props) => {
   return (
     <View style={{ height: 64 }}>
       <Controller
@@ -42,9 +36,7 @@ const ControlledInput = ({
         )}
       />
 
-      {errors[name] && (
-        <Text style={defaultStyles.textError}>{errors[name].message}</Text>
-      )}
+      {errors[name] && <Text style={defaultStyles.textError}>{errors[name].message}</Text>}
     </View>
   );
 };

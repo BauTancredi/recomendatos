@@ -6,7 +6,7 @@ import { View, Alert } from "react-native";
 import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
-import Button from "@/components/buttons/Button";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
 
@@ -56,7 +56,7 @@ const schema = z.object({
     }),
 });
 
-const RegisterWithMail = () => {
+const RegisterScreen = () => {
   const { emailAddress: emailAddressParam } = useLocalSearchParams<{
     emailAddress: string;
   }>();
@@ -101,19 +101,9 @@ const RegisterWithMail = () => {
   return (
     <View style={[defaultStyles.container, { gap: 2, paddingVertical: 20 }]}>
       <Spinner visible={isLoading} />
-      <ControlledInput
-        control={control}
-        name="firstName"
-        placeholder="Nombre"
-        errors={errors}
-      />
+      <ControlledInput control={control} name="firstName" placeholder="Nombre" errors={errors} />
 
-      <ControlledInput
-        control={control}
-        name="lastName"
-        placeholder="Apellido"
-        errors={errors}
-      />
+      <ControlledInput control={control} name="lastName" placeholder="Apellido" errors={errors} />
 
       <ControlledInput
         control={control}
@@ -122,20 +112,11 @@ const RegisterWithMail = () => {
         errors={errors}
       />
 
-      <ControlledInput
-        control={control}
-        name="password"
-        placeholder="Contraseña"
-        errors={errors}
-      />
+      <ControlledInput control={control} name="password" placeholder="Contraseña" errors={errors} />
 
-      <Button
-        text="Verificar"
-        onPress={handleSubmit(onSignUpPress)}
-        isValid={isValid}
-      />
+      <PrimaryButton text="Verificar" onPress={handleSubmit(onSignUpPress)} isValid={isValid} />
     </View>
   );
 };
 
-export default RegisterWithMail;
+export default RegisterScreen;

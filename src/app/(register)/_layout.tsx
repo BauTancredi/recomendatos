@@ -4,7 +4,7 @@ import { Stack, router } from "expo-router";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 
-const PublicLayout = () => {
+const RegisterLayout = () => {
   const { signOut } = useAuth();
 
   const handleSignOut = async () => {
@@ -75,4 +75,4 @@ const PublicLayout = () => {
   );
 };
 
-export default PublicLayout;
+export default RegisterLayout;

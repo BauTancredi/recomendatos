@@ -5,14 +5,7 @@ module.exports = {
     "import/order": [
       1,
       {
-        groups: [
-          "external",
-          "builtin",
-          "internal",
-          "sibling",
-          "parent",
-          "index",
-        ],
+        groups: ["external", "builtin", "internal", "sibling", "parent", "index"],
         pathGroups: [
           {
             pattern: "components",
@@ -41,6 +34,12 @@ module.exports = {
           order: "asc",
           caseInsensitive: true,
         },
+      },
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        printWidth: 100,
       },
     ],
   },
