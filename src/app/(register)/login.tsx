@@ -79,6 +79,7 @@ const LoginScreen = () => {
   };
 
   const onSignUpPress = async (data: FormData) => {
+    console.log("a");
     if (!isLoaded) {
       return;
     }
@@ -106,7 +107,7 @@ const LoginScreen = () => {
           },
         });
       }
-      // console.error("Register error - ", err.errors[0].message);
+      console.error("Register error - ", err.errors[0].message);
     }
   };
 

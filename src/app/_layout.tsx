@@ -1,6 +1,6 @@
 import { ClerkProvider, useAuth, useUser } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
-import { Slot, useRouter, useSegments, SplashScreen } from "expo-router";
+import { Slot, useRouter, SplashScreen } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 
 import { useEffect } from "react";
@@ -53,7 +53,6 @@ export default function RootLayout() {
 const InitialLayout = () => {
   const { isLoaded, isSignedIn } = useAuth();
   const { user } = useUser();
-  const segments = useSegments();
   const router = useRouter();
 
   useEffect(() => {
@@ -61,16 +60,16 @@ const InitialLayout = () => {
 
     SplashScreen.hideAsync();
 
-    const inTabsGroup = segments[0] === "(auth)";
+    console.log("isSignedIn", isSignedIn);
 
-    if (isSignedIn && !inTabsGroup) {
-      // Usuario recien registrado y no verifico el telefono
-      if (!user?.hasVerifiedPhoneNumber) {
-        router.replace("/(register)/prepare");
-      } else {
-        // router.replace("/(tabs)/home");
-      }
+    if (isSignedIn && user?.hasVerifiedPhoneNumber) {
+      console.log(1);
+      router.replace("/(tabs)/home");
+    } else if (isSignedIn && !user?.hasVerifiedPhoneNumber) {
+      console.log(2);
+      router.replace("/(register)/prepare");
     } else if (!isSignedIn) {
+      console.log(3);
       router.replace("/(register)/login");
     }
   }, [isSignedIn]);

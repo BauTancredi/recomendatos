@@ -1,6 +1,6 @@
 Semana 13/11 - 19/11
 Semana 20/11 - 26/11
-[] Pantalla de verificado
+[x] Pantalla de verificado
 [] Usuario vs Profesional
 [] Onboarding
 Semana 27/11 - 3/12
@@ -25,16 +25,18 @@ Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
+[] Volver a testear si hace falta usar el router en el login
 [] Mejorar manejo de Zod
 [] Splash screen
 [] Accesibilidad
 [] Mensajes en Clerk (error, sms, mail)
-[] Logica de reenviar mensaje
+[] Logica de reenviar sms
 [] Bugs
+[] Hard update
 
 FEATURES
 [] Banners
-[] Compartir app
+[] Compartir app (expo-share)
 [] Cafecito
 [] QR
 [] Notificaciones
@@ -46,7 +48,10 @@ TECH
 [] Supabase
 [] Reanimated
 [] Sentry
+[] Haptics
 [] Analitcs
+[] EAS Updates
+[] EAS Insights
 
 --------o---------
 

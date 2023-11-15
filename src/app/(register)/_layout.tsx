@@ -8,12 +8,17 @@ const RegisterLayout = () => {
   const { signOut } = useAuth();
 
   const handleSignOut = async () => {
+    console.log("a");
     await signOut();
     router.back();
   };
 
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        gestureEnabled: false,
+      }}
+    >
       <Stack.Screen name="login" options={{ headerShown: false }} />
 
       <Stack.Screen
@@ -48,6 +53,7 @@ const RegisterLayout = () => {
           headerTitleStyle: {
             fontFamily: "mon-sb",
           },
+          gestureEnabled: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()}>
               <Ionicons name="chevron-back" size={22} />
@@ -71,6 +77,8 @@ const RegisterLayout = () => {
           ),
         }}
       />
+
+      <Stack.Screen name="success" options={{ headerShown: false }} />
     </Stack>
   );
 };
