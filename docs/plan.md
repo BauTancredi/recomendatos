@@ -1,11 +1,11 @@
 Semana 13/11 - 19/11
 Semana 20/11 - 26/11
 [x] Pantalla de verificado
-[] Usuario vs Profesional
-[] Onboarding
+[x] Usuario vs Profesional
+[x] Onboarding
 Semana 27/11 - 3/12
 Semana 4/12 - 10/12
-[] Terminar registro
+[] Terminar registro (Guardar data relevante de usuarios en metadata)
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
 [] Home
@@ -25,7 +25,8 @@ Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
-[] Volver a testear si hace falta usar el router en el login
+[x] Volver a testear si hace falta usar el router en el login
+[] App crash
 [] Mejorar manejo de Zod
 [] Splash screen
 [] Accesibilidad
@@ -44,8 +45,8 @@ FEATURES
 
 TECH
 [] React Query
-[] Zustand
 [] Supabase
+[] Zustand
 [] Reanimated
 [] Sentry
 [] Haptics

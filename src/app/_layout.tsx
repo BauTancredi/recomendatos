@@ -54,24 +54,30 @@ const InitialLayout = () => {
   const { isLoaded, isSignedIn } = useAuth();
   const { user } = useUser();
   const router = useRouter();
+  console.log("isSignedIn", isSignedIn);
 
   useEffect(() => {
     if (!isLoaded) return;
 
     SplashScreen.hideAsync();
 
-    console.log("isSignedIn", isSignedIn);
+    const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000);
 
-    if (isSignedIn && user?.hasVerifiedPhoneNumber) {
-      console.log(1);
-      router.replace("/(tabs)/home");
-    } else if (isSignedIn && !user?.hasVerifiedPhoneNumber) {
-      console.log(2);
-      router.replace("/(register)/prepare");
-    } else if (!isSignedIn) {
-      console.log(3);
-      router.replace("/(register)/login");
-    }
+    router.replace("/(new-user)/welcome");
+    // if (isSignedIn) {
+    //   if (user?.hasVerifiedPhoneNumber) {
+    //     if (user?.createdAt && fiveMinAgo < user?.createdAt) {
+    //       // TODO: Check also for metadata
+    //       router.replace("/(new-user)/welcome");
+    //     } else {
+    //       router.replace("/(tabs)/home");
+    //     }
+    //   } else {
+    //     router.replace("/(register)/prepare");
+    //   }
+    // } else {
+    //   router.replace("/(register)/login");
+    // }
   }, [isSignedIn]);
 
   return <Slot />;

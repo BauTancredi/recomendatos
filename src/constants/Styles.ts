@@ -57,6 +57,7 @@ export const defaultStyles = StyleSheet.create({
     opacity: 0.5,
   },
   textCenter: {
+    fontFamily: "mon",
     textAlign: "center",
   },
   textError: {
