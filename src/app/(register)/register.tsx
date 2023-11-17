@@ -118,7 +118,7 @@ const RegisterScreen = () => {
 
       <ControlledInput control={control} name="password" placeholder="Contraseña" errors={errors} />
 
-      <PrimaryButton text="Verificar" onPress={handleSubmit(onSignUpPress)} isValid={isValid} />
+      <PrimaryButton text="Verificar" onPress={handleSubmit(onSignUpPress)} disabled={!isValid} />
     </View>
   );
 };

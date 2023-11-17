@@ -81,7 +81,7 @@ const PrepareScreen = () => {
       <PrimaryButton
         text="Enviar codigo"
         onPress={handleSubmit(onPrepareVerification)}
-        isValid={isValid}
+        disabled={!isValid}
       />
 
       {/* <PrimaryButton text="Enviar nuevamente" onPress={handleSubmit(onResend)} isValid={isValid} /> */}

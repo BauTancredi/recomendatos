@@ -4,15 +4,15 @@ import { defaultStyles } from "@/constants/Styles";
 
 interface Props {
   onPress: () => void;
-  isValid?: boolean;
   text: string;
+  disabled?: boolean;
 }
 
-const PrimaryButton = ({ onPress, isValid = true, text }: Props) => {
+const PrimaryButton = ({ onPress, text, disabled }: Props) => {
   return (
     <TouchableOpacity
-      disabled={!isValid}
-      style={[defaultStyles.btn, !isValid && defaultStyles.btnDisabled, { marginTop: 10 }]}
+      disabled={disabled}
+      style={[defaultStyles.btn, disabled && defaultStyles.btnDisabled, { marginTop: 10 }]}
       onPress={onPress}
     >
       <Text style={defaultStyles.btnText}>{text}</Text>

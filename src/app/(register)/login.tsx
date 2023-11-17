@@ -135,7 +135,7 @@ const LoginScreen = () => {
             <PrimaryButton
               text="Continuar"
               onPress={handleSubmit(onSignUpPress)}
-              isValid={isValid}
+              disabled={!isValid}
             />
           </View>
 

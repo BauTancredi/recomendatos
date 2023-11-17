@@ -61,7 +61,7 @@ const AttemptScreen = () => {
       <PrimaryButton
         text="Enviar codigo"
         onPress={handleSubmit(onAttemptVerification)}
-        isValid={isValid}
+        disabled={!isValid}
       />
     </View>
   );

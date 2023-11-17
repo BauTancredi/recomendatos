@@ -132,7 +132,7 @@ const PasswordScreen = () => {
           <PrimaryButton
             text="Resetear contraseña"
             onPress={handleSubmit(onReset)}
-            isValid={isValid}
+            disabled={!isValid}
           />
 
           <PrimaryButton text="Cancelar" onPress={() => setForgotPassword(false)} />
@@ -156,6 +156,7 @@ const PasswordScreen = () => {
             text="Iniciar sesion"
             onPress={handleSubmit(onSignIn)}
             // isValid={isValid}
+            disabled={!isValid}
           />
         </>
       )}
