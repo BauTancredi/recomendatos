@@ -20,6 +20,20 @@ const WelcomeLayout = () => {
           headerShadowVisible: false,
         }}
       />
+      <Stack.Screen
+        name="location"
+        options={{
+          headerBackVisible: true,
+          headerBackTitleVisible: true,
+          headerBackTitle: "",
+          headerTitle: "",
+          headerStyle: {
+            backgroundColor: "#fdffff",
+          },
+          headerTintColor: Colors.primary,
+          headerShadowVisible: false,
+        }}
+      />
     </Stack>
   );
 };

@@ -1,11 +1,14 @@
 Semana 13/11 - 19/11
 Semana 20/11 - 26/11
-[x] Pantalla de verificado
-[x] Usuario vs Profesional
-[x] Onboarding
+[x] Pantalla de verificado 15/11
+[x] Usuario vs Profesional 15/11
+[x] Onboarding 15/11
 Semana 27/11 - 3/12
 Semana 4/12 - 10/12
-[] Terminar registro (Guardar data relevante de usuarios en metadata)
+[] Terminar registro (Guardar data relevante de usuarios en metadata y proveedor en supabase)
+[] Cargar valores dinamicamente
+[] Guardar los valores en estado
+[] Guardar los valores en clerk
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
 [] Home
@@ -14,7 +17,7 @@ Semana 1/1 - 7/1
 [] Perfil
 Semana 8/1 - 14/1
 [] Favoritos
-Semana 15/1 - 21/1
+Semana 15/1 - 21/1|
 Semana 22/1 - 28/1
 [] Cerca de mi
 Semana 29/1 - 4/2

@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
+import { defaultStyles } from "@/constants/Styles";
 
 const steps = {
   user: [
@@ -70,7 +71,7 @@ const OnboardingScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[defaultStyles.container, styles.container]}>
       <Text style={styles.title}>{stepTwo[currentStep].title}</Text>
       <Text style={styles.description}>{stepTwo[currentStep].description}</Text>
       <Button title="Back" onPress={handleBack} disabled={currentStep === 0} />
