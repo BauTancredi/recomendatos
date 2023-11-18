@@ -10,6 +10,7 @@ import * as z from "zod";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
+import { TEXT_CONSTANTS } from "@/constants/texts";
 
 const passwordSchema = z.object({
   password: z.string({
@@ -135,7 +136,7 @@ const PasswordScreen = () => {
             disabled={!isValid}
           />
 
-          <PrimaryButton text="Cancelar" onPress={() => setForgotPassword(false)} />
+          <PrimaryButton text={TEXT_CONSTANTS.CANCEL} onPress={() => setForgotPassword(false)} />
         </View>
       ) : (
         <>

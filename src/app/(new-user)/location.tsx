@@ -114,7 +114,7 @@ const LocationScreen = () => {
         selectedOption={localidad}
       />
       <PrimaryButton
-        text="Continuar"
+        text={TEXT_CONSTANTS.CONTINUE}
         onPress={handleContinue}
         disabled={!selectedCombo.zona || !selectedCombo.localidad || isLoading}
       />

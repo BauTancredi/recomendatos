@@ -38,6 +38,7 @@ PENDIENTES VARIOS
 [] Bugs
 [] Hard update
 [] Spinner al boton y desactivarlo
+[] Terminos y condiciones
 
 FEATURES
 [] Banners
@@ -50,6 +51,7 @@ FEATURES
 TECH
 [] React Query
 [] Supabase
+[] Reglas de commits, branches
 [] Zustand
 [] Reanimated
 [] Sentry
