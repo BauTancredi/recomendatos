@@ -1,75 +1,79 @@
-import { Ionicons, Entypo } from "@expo/vector-icons";
+import { useUser } from "@clerk/clerk-expo";
+import { Entypo } from "@expo/vector-icons";
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetFlatList,
   BottomSheetBackdropProps,
 } from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
-import React, { useCallback, useMemo, useRef } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import locations from "@/assets/data/locations.json";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import SelectButton from "@/components/buttons/SelectButton";
 import { defaultStyles } from "@/constants/Styles";
-
-const data = {
-  zonas: [
-    {
-      id: 1,
-      name: "Zona Norte",
-    },
-    {
-      id: 2,
-      name: "Zona Sur",
-    },
-    {
-      id: 3,
-      name: "Zona Oeste",
-    },
-  ],
-  localidades: [
-    {
-      id: 1,
-      name: "Cali",
-    },
-    {
-      id: 2,
-      name: "Bogota",
-    },
-    {
-      id: 3,
-      name: "Medellin",
-    },
-  ],
-};
-
-interface Option {
-  id: number;
-  name: string;
-}
+import { TEXT_CONSTANTS } from "@/constants/texts";
+import { Option, SelectedCombo } from "@/interfaces/location";
 
 const LocationScreen = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const { user } = useUser();
   const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentList, setCurrentList] = useState<Option[]>(locations.zonas);
+  const [selectedCombo, setSelectedCombo] = useState<SelectedCombo>({
+    zona: null,
+    localidad: null,
+  });
 
   const snapPoints = useMemo(() => {
     // calculate the height based on the number of items + header height
-
-    const height = 130 + 50 * data.zonas.length; // replace 50 with the height of your list items
+    const height = 130 + 50 * currentList.length; // replace 50 with the height of your list items
     return [height];
-  }, [data]);
+  }, [currentList]);
 
-  const openBottomSheet = () => {
+  const openBottomSheet = (type: "zona" | "localidad") => {
+    if (type === "zona") {
+      setCurrentList(locations.zonas);
+      setSelectedCombo((prev) => ({ ...prev, localidad: null }));
+    }
+
     bottomSheetRef.current?.expand();
   };
 
   const handleOptionPress = (item: Option) => {
-    console.log(item);
+    if (item.localidades) {
+      setCurrentList(item.localidades);
+      setSelectedCombo((prev) => ({
+        ...prev,
+        zona: {
+          id: item.id,
+          name: item.name,
+        },
+      }));
+    } else {
+      setSelectedCombo((prev) => ({ ...prev, localidad: item }));
+    }
+
     bottomSheetRef.current?.close();
   };
 
-  const handleContinue = () => {
-    // save user data in clerk
-    router.push("/(tabs)/home");
+  const handleContinue = async () => {
+    try {
+      setIsLoading(true);
+      await user?.update({
+        unsafeMetadata: {
+          searchLocation: selectedCombo,
+        },
+      });
+      router.push("/(tabs)/home");
+    } catch (error) {
+      console.error("Update error - Search Location: ", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const renderItem = useCallback(
@@ -89,21 +93,31 @@ const LocationScreen = () => {
     []
   );
 
+  const { zona, localidad } = selectedCombo;
+
   return (
     <View style={defaultStyles.container}>
-      <Text style={defaultStyles.textCenter}>Ya casi estas! </Text>
+      {/* <Spinner visible={isLoading} /> */}
+      <Text style={defaultStyles.textCenter}>Ya casi estas!</Text>
       <Text style={defaultStyles.textCenter}>
         Indica tu localidad para encontrar proveedores que trabajen en tu zona.
       </Text>
-      <TouchableOpacity style={styles.select} onPress={() => openBottomSheet()}>
-        <Text>Selecciona tu zona</Text>
-        <Ionicons name="chevron-down" size={22} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.select} onPress={() => openBottomSheet()}>
-        <Text>Selecciona tu localidad</Text>
-        <Ionicons name="chevron-down" size={22} />
-      </TouchableOpacity>
-      <PrimaryButton text="Continuar" onPress={handleContinue} />
+      <SelectButton
+        onPress={() => openBottomSheet("zona")}
+        text={TEXT_CONSTANTS.SELECT_ZONE}
+        selectedOption={zona}
+      />
+      <SelectButton
+        onPress={() => openBottomSheet("localidad")}
+        disabled={!zona}
+        text={TEXT_CONSTANTS.SELECT_LOCATION}
+        selectedOption={localidad}
+      />
+      <PrimaryButton
+        text="Continuar"
+        onPress={handleContinue}
+        disabled={!selectedCombo.zona || !selectedCombo.localidad || isLoading}
+      />
       <BottomSheet
         ref={bottomSheetRef}
         index={-1}
@@ -117,9 +131,8 @@ const LocationScreen = () => {
           <Text style={{ fontFamily: "mon", fontSize: 16 }}>
             Selecciona la zona en la que deseas buscar proveedores.
           </Text>
-
           <BottomSheetFlatList
-            data={data.zonas}
+            data={currentList}
             keyExtractor={(i) => i.id.toString()}
             renderItem={renderItem}
             scrollEnabled={false}
@@ -130,19 +143,7 @@ const LocationScreen = () => {
   );
 };
 
-export default LocationScreen;
-
 const styles = StyleSheet.create({
-  select: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    padding: 10,
-    marginVertical: 10,
-  },
   contentContainer: {
     flex: 1,
     paddingHorizontal: 16,
@@ -157,3 +158,5 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 });
+
+export default LocationScreen;

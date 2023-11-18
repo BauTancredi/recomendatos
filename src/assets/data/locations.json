@@ -1,0 +1,33 @@
+{
+  "zonas": [
+    {
+      "id": 1,
+      "name": "ZonaA",
+      "localidades": [
+        { "id": 1, "name": "Localidad1A" },
+        { "id": 2, "name": "Localidad2A" },
+        { "id": 3, "name": "Localidad3A" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ZonaB",
+      "localidades": [
+        { "id": 4, "name": "Localidad1B" },
+        { "id": 5, "name": "Localidad2B" },
+        { "id": 6, "name": "Localidad3B" },
+        { "id": 7, "name": "Localidad1B" },
+        { "id": 8, "name": "Localidad2B" },
+        { "id": 9, "name": "Localidad3B" },
+        { "id": 10, "name": "Localidad1B" },
+        { "id": 11, "name": "Localidad2B" },
+        { "id": 12, "name": "Localidad3B" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ZonaC",
+      "localidades": [{ "id": 13, "name": "Localidad1C" }]
+    }
+  ]
+}

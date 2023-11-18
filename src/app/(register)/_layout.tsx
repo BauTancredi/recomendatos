@@ -8,7 +8,6 @@ const RegisterLayout = () => {
   const { signOut } = useAuth();
 
   const handleSignOut = async () => {
-    console.log("a");
     await signOut();
     router.back();
   };

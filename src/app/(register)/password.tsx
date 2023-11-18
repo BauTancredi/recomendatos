@@ -72,7 +72,7 @@ const PasswordScreen = () => {
         identifier: emailAddressParam,
       });
     } catch (err: any) {
-      console.log("Password reset request error: ", err.errors[0].message);
+      console.error("Password reset request error: ", err.errors[0].message);
     }
   };
 
@@ -87,7 +87,7 @@ const PasswordScreen = () => {
 
       await setActive!({ session: result?.createdSessionId });
     } catch (err: any) {
-      console.log("Password reset error: ", err.errors[0].message);
+      console.error("Password reset error: ", err.errors[0].message);
     }
   };
 

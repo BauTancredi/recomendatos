@@ -98,7 +98,7 @@ const RegisterScreen = () => {
       }
     } catch (err: any) {
       Alert.alert(err.errors[0].message);
-      console.log("Register error: ", err.errors[0].message);
+      console.error("Register error: ", err.errors[0].message);
     }
   };
 

@@ -4,6 +4,7 @@ import React from "react";
 import { Button, SafeAreaView, Text, View } from "react-native";
 
 import { defaultStyles } from "@/constants/Styles";
+import { SelectedCombo } from "@/interfaces/location";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -21,6 +22,8 @@ const HomeScreen = () => {
     });
   };
 
+  const selectedCombo = user?.unsafeMetadata?.searchLocation as SelectedCombo;
+
   return (
     <SafeAreaView style={defaultStyles.safeArea}>
       <View>
@@ -28,7 +31,11 @@ const HomeScreen = () => {
         <Text> {user?.lastName} </Text>
         <Text> {user?.fullName} </Text>
         <Text> {user?.emailAddresses[0].emailAddress} </Text>
-        {/* <Text> {user?.phoneNumbers[0].phoneNumber} </Text> */}
+        <Text> {user?.phoneNumbers[0].phoneNumber} </Text>
+        <View>
+          <Text> {selectedCombo?.zona?.name} </Text>
+          <Text> {selectedCombo?.localidad?.name} </Text>
+        </View>
         <Button
           title="Sign Out"
           onPress={() => {

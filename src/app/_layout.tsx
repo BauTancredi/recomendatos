@@ -43,8 +43,8 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <ClerkProvider publishableKey={clerkKey}>
-      {/* // <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}> */}
+    // <ClerkProvider publishableKey={clerkKey}>
+    <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
       <InitialLayout />
     </ClerkProvider>
   );
@@ -63,7 +63,7 @@ const InitialLayout = () => {
 
     const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000);
 
-    router.replace("/(new-user)/welcome");
+    router.replace("/(new-user)/location");
     // if (isSignedIn) {
     //   if (user?.hasVerifiedPhoneNumber) {
     //     if (user?.createdAt && fiveMinAgo < user?.createdAt) {

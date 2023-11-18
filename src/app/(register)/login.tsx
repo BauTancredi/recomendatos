@@ -79,7 +79,6 @@ const LoginScreen = () => {
   };
 
   const onSignUpPress = async (data: FormData) => {
-    console.log("a");
     if (!isLoaded) {
       return;
     }
