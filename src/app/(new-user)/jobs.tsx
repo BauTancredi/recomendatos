@@ -1,13 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Link, useLocalSearchParams, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, Switch, FlatList, Image, StyleSheet } from "react-native";
 
-import jobs from "@/assets/data/jobs.json";
+import availableJobs from "@/assets/data/jobs.json";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/ProgressSteps";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
+import { useProviderStore } from "@/stores/useProviderStore";
 interface Element {
   id: string;
   title: string;
@@ -16,8 +17,12 @@ interface Element {
 }
 
 const JobsScreen = () => {
-  const [elements, setElements] = useState<Element[]>(jobs);
-  const [selected, setSelected] = useState<string[]>([]);
+  const jobs = useProviderStore((state) => state.jobs);
+  const addJob = useProviderStore((state) => state.addJob);
+  const removeJob = useProviderStore((state) => state.removeJob);
+
+  const [elements, setElements] = useState<Element[]>(availableJobs);
+  const [selected, setSelected] = useState<string[]>(jobs);
 
   const router = useRouter();
 
@@ -28,8 +33,12 @@ const JobsScreen = () => {
   const toggleSelect = (id: string) => {
     if (selected.includes(id)) {
       setSelected(selected.filter((el) => el !== id));
+
+      removeJob(id);
     } else {
       setSelected([...selected, id]);
+
+      addJob(id);
     }
   };
 

@@ -5,10 +5,20 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/ProgressSteps";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
+import { useProviderStore } from "@/stores/useProviderStore";
 
 const BioScreen = () => {
+  const providerStore = useProviderStore();
+
   const handleContinue = () => {
-    console.log("continue");
+    console.log("continue", providerStore);
+    console.log(
+      "continue",
+      providerStore.bio,
+      providerStore.address,
+      providerStore.jobs,
+      providerStore.type
+    );
   };
 
   return (
@@ -23,6 +33,8 @@ const BioScreen = () => {
           numberOfLines={10}
           style={styles.input}
           placeholder="Mas de 20 años de experiencia"
+          onChangeText={(text) => providerStore.setBio(text)}
+          value={providerStore.bio}
         />
       </View>
       <PrimaryButton text={TEXT_CONSTANTS.CONTINUE} onPress={handleContinue} />
