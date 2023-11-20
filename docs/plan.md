@@ -6,9 +6,7 @@ Semana 20/11 - 26/11
 Semana 27/11 - 3/12
 Semana 4/12 - 10/12
 [] Terminar registro (Guardar data relevante de usuarios en metadata y proveedor en supabase)
-[x] Cargar valores dinamicamente
-[x] Guardar los valores en estado
-[x] Guardar los valores en clerk
+
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
 [] Home
@@ -39,6 +37,7 @@ PENDIENTES VARIOS
 [] Hard update
 [] Spinner al boton y desactivarlo
 [] Terminos y condiciones
+[] Not found page
 
 FEATURES
 [] Banners

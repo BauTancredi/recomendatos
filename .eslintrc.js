@@ -40,6 +40,7 @@ module.exports = {
       "error",
       {
         printWidth: 100,
+        trailingComma: "es5",
       },
     ],
   },

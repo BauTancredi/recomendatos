@@ -12,7 +12,11 @@ const PrimaryButton = ({ onPress, text, disabled }: Props) => {
   return (
     <TouchableOpacity
       disabled={disabled}
-      style={[defaultStyles.btn, disabled && defaultStyles.btnDisabled, { marginTop: 10 }]}
+      style={[
+        defaultStyles.btn,
+        disabled && defaultStyles.btnDisabled,
+        { marginTop: 10, alignSelf: "stretch" },
+      ]}
       onPress={onPress}
     >
       <Text style={defaultStyles.btnText}>{text}</Text>

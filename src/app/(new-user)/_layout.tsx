@@ -34,6 +34,70 @@ const WelcomeLayout = () => {
           headerShadowVisible: false,
         }}
       />
+      <Stack.Screen
+        name="provider-type"
+        options={{
+          headerBackVisible: true,
+          headerBackTitleVisible: true,
+          headerBackTitle: "",
+          headerTitle: "",
+          headerStyle: {
+            backgroundColor: "#fdffff",
+          },
+          headerTintColor: Colors.primary,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="welcome-provider"
+        options={{
+          headerBackVisible: true,
+          headerBackTitleVisible: true,
+          headerBackTitle: "",
+          headerTitle: "Atras",
+          headerStyle: {
+            backgroundColor: "#fdffff",
+          },
+          headerTintColor: Colors.primary,
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="jobs"
+        options={{
+          headerBackVisible: true,
+          headerBackTitle: "Atras",
+          headerTitle: "Oficios",
+          headerStyle: {
+            backgroundColor: "#fdffff",
+          },
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="address"
+        options={{
+          headerBackVisible: true,
+          headerBackTitle: "Atras",
+          headerTitle: "Dirección Comercial",
+          headerStyle: {
+            backgroundColor: "#fdffff",
+          },
+          headerShadowVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="bio"
+        options={{
+          headerBackVisible: true,
+          headerBackTitle: "Atras",
+          headerTitle: "Bio",
+          headerStyle: {
+            backgroundColor: "#fdffff",
+          },
+          headerShadowVisible: false,
+        }}
+      />
     </Stack>
   );
 };

@@ -54,7 +54,7 @@ const InitialLayout = () => {
   const { isLoaded, isSignedIn } = useAuth();
   const { user } = useUser();
   const router = useRouter();
-  console.log("isSignedIn", isSignedIn);
+  // console.log("isSignedIn", isSignedIn);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -63,7 +63,7 @@ const InitialLayout = () => {
 
     const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000);
 
-    router.replace("/(new-user)/location");
+    router.replace("/(new-user)/provider-type");
     // if (isSignedIn) {
     //   if (user?.hasVerifiedPhoneNumber) {
     //     if (user?.createdAt && fiveMinAgo < user?.createdAt) {
