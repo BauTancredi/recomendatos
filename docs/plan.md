@@ -28,6 +28,7 @@ Semana 26/2 - 4/3
 PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
 [] App crash
+[] RLS Policy
 [] Mejorar manejo de Zod
 [] Splash screen
 [] Accesibilidad
@@ -49,9 +50,9 @@ FEATURES
 
 TECH
 [] React Query
-[] Supabase
+[x] Supabase
 [] Reglas de commits, branches
-[] Zustand
+[x] Zustand
 [] Reanimated
 [] Sentry
 [] Haptics

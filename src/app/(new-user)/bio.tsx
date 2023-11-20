@@ -6,11 +6,12 @@ import ProgressSteps from "@/components/ProgressSteps";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";
+import { supabase } from "@/utils/supabase";
 
 const BioScreen = () => {
   const providerStore = useProviderStore();
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     console.log("continue", providerStore);
     console.log(
       "continue",
@@ -19,6 +20,14 @@ const BioScreen = () => {
       providerStore.jobs,
       providerStore.type
     );
+    const { error } = await supabase.from("providers").insert({
+      bio: providerStore.bio,
+      // address: providerStore.address,
+      // jobs: providerStore.jobs,
+      type: providerStore.type,
+    });
+
+    console.log("error", error);
   };
 
   return (
