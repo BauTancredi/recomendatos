@@ -1,7 +1,7 @@
 export interface Option {
-  id: number;
-  name: string;
-  localidades?: Option[];
+  id: string;
+  title: string;
+  children?: Option[];
 }
 
 export interface SelectedCombo {

@@ -6,13 +6,13 @@ import { defaultStyles } from "@/constants/Styles";
 const SuccessScreen = () => {
   const router = useRouter();
 
-  // useLayoutEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     router.replace("/home");
-  //   }, 5000);
+  useLayoutEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/home");
+    }, 5000);
 
-  //   return () => clearTimeout(timer);
-  // }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <SafeAreaView style={defaultStyles.safeArea}>

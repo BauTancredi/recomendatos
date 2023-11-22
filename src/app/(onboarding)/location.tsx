@@ -22,7 +22,7 @@ const LocationScreen = () => {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [currentList, setCurrentList] = useState<Option[]>(locations.zonas);
+  const [currentList, setCurrentList] = useState<Option[]>(locations);
   const [selectedCombo, setSelectedCombo] = useState<SelectedCombo>({
     zona: null,
     localidad: null,
@@ -36,7 +36,7 @@ const LocationScreen = () => {
 
   const openBottomSheet = (type: "zona" | "localidad") => {
     if (type === "zona") {
-      setCurrentList(locations.zonas);
+      setCurrentList(locations);
       setSelectedCombo((prev) => ({ ...prev, localidad: null }));
     }
 
@@ -44,13 +44,13 @@ const LocationScreen = () => {
   };
 
   const handleOptionPress = (item: Option) => {
-    if (item.localidades) {
-      setCurrentList(item.localidades);
+    if (item.children) {
+      setCurrentList(item.children);
       setSelectedCombo((prev) => ({
         ...prev,
         zona: {
           id: item.id,
-          name: item.name,
+          title: item.title,
         },
       }));
     } else {
@@ -79,7 +79,7 @@ const LocationScreen = () => {
   const renderItem = useCallback(
     ({ item }: { item: Option }) => (
       <TouchableOpacity style={styles.item} onPress={() => handleOptionPress(item)}>
-        <Text>{item.name}</Text>
+        <Text>{item.title}</Text>
         <Entypo name="circle" size={22} />
       </TouchableOpacity>
     ),

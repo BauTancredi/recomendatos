@@ -6,8 +6,9 @@ Semana 20/11 - 26/11
 [x] Registro proveedor (Guardar data relevante de usuarios en metadata y proveedor en supabase) 19/11
 [x] Armar logica de tablas basica 21/11
 [x] RLS Policy 21/11
-[x] Flujo completo de registro (loading state, mensajes de error, zonas)
-[] App crash
+[x] Flujo completo de registro (loading state, mensajes de error, zonas) 22/11
+[x] App crash
+[] Limpiar codigo
 [] Crear tablas y handlear que se envia a supabase
 [] Reglas de commits, branches
 Semana 27/11 - 3/12

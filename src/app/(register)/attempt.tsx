@@ -40,7 +40,7 @@ const AttemptScreen = () => {
         code: data.verificationCode,
       });
 
-      router.replace("/(register)/success");
+      router.push("/(register)/success");
     } catch (err: any) {
       console.error("OAuth error - Attempt Phone Verification:", err.errors[0].message);
     }

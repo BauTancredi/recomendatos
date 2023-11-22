@@ -16,7 +16,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({ onPress, disabled, text, se
     onPress={onPress}
     disabled={disabled}
   >
-    <Text>{selectedOption?.name || text}</Text>
+    <Text>{selectedOption?.title || text}</Text>
     <Ionicons name="chevron-down" size={22} />
   </TouchableOpacity>
 );
