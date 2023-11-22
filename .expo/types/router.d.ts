@@ -7,7 +7,7 @@ declare module "expo-router" {
   export * from 'expo-router/build';
 
   // prettier-ignore
-  type StaticRoutes = `/` | `/(new-user)/_layout` | `/_layout` | `/(new-user)/address` | `/address` | `/(new-user)/bio` | `/bio` | `/(new-user)/jobs` | `/jobs` | `/(new-user)/location` | `/location` | `/(new-user)/onboarding` | `/onboarding` | `/(new-user)/provider-type` | `/provider-type` | `/(new-user)/shops` | `/shops` | `/(new-user)/welcome-provider` | `/welcome-provider` | `/(new-user)/welcome` | `/welcome` | `/(register)/_layout` | `/(register)/attempt` | `/attempt` | `/(register)/login` | `/login` | `/(register)/password` | `/password` | `/(register)/prepare` | `/prepare` | `/(register)/register` | `/register` | `/(register)/success` | `/success` | `/(tabs)/_layout` | `/(tabs)/home` | `/home` | `/(tabs)/test` | `/test`;
+  type StaticRoutes = `/` | `/(new-user)/_layout` | `/_layout` | `/(register)/_layout` | `/(register)/attempt` | `/attempt` | `/(register)/login` | `/login` | `/(register)/password` | `/password` | `/(register)/prepare` | `/prepare` | `/(register)/register` | `/register` | `/(register)/success` | `/success` | `/(tabs)/_layout` | `/(tabs)/home` | `/home` | `/(tabs)/test` | `/test` | `/(onboarding)/provider-location` | `/provider-location` | `/(onboarding)/welcome` | `/welcome` | `/(onboarding)/shops` | `/shops` | `/(onboarding)/onboarding` | `/onboarding` | `/(onboarding)/provider-type` | `/provider-type` | `/(onboarding)/location` | `/location` | `/(onboarding)/bio` | `/bio` | `/(onboarding)/jobs` | `/jobs` | `/(onboarding)/address` | `/address` | `/(onboarding)/welcome-provider` | `/welcome-provider`;
   // prettier-ignore
   type DynamicRoutes<T extends string> = never;
   // prettier-ignore

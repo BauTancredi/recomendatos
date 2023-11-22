@@ -4,6 +4,7 @@ import { Slot, useRouter, SplashScreen } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 
 import { useEffect } from "react";
+import { initializeSupabase } from "@/utils/supabase";
 
 const clerkKey = process.env.EXPO_PUBLIC_API_KEY!;
 
@@ -51,10 +52,18 @@ export default function RootLayout() {
 }
 
 const InitialLayout = () => {
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isLoaded, isSignedIn, getToken } = useAuth();
   const { user } = useUser();
   const router = useRouter();
-  // console.log("isSignedIn", isSignedIn);
+
+  useEffect(() => {
+    const fetchTokenAndInitialize = async () => {
+      const token = await getToken({ template: "supabase" });
+      initializeSupabase(token!);
+    };
+
+    fetchTokenAndInitialize();
+  }, [getToken]);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -63,12 +72,12 @@ const InitialLayout = () => {
 
     const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000);
 
-    router.replace("/(new-user)/provider-type");
+    router.replace("/(onboarding)/provider-type");
     // if (isSignedIn) {
     //   if (user?.hasVerifiedPhoneNumber) {
     //     if (user?.createdAt && fiveMinAgo < user?.createdAt) {
     //       // TODO: Check also for metadata
-    //       router.replace("/(new-user)/welcome");
+    //       router.replace("/(onboarding)/welcome");
     //     } else {
     //       router.replace("/(tabs)/home");
     //     }

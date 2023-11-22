@@ -64,9 +64,9 @@ const OnboardingScreen = () => {
 
   const handleContinue = () => {
     if (type === "user") {
-      router.push("/(new-user)/location");
+      router.push("/(onboarding)/location");
     } else if (type === "provider") {
-      router.push("/(new-user)/provider-type");
+      router.push("/(onboarding)/provider-type");
     }
   };
 

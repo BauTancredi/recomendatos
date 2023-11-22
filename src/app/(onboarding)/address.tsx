@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
@@ -12,10 +12,17 @@ import { useProviderStore } from "@/stores/useProviderStore";
 const AddressScreen = () => {
   const router = useRouter();
   const setAddress = useProviderStore((state) => state.setAddress);
+  const address = useProviderStore((state) => state.address);
+
+  useEffect(() => {
+    return () => {
+      setAddress({ description: "", location: { lat: 0, lng: 0 } });
+    };
+  }, []);
 
   return (
     <View style={[defaultStyles.container, { paddingBottom: 40, justifyContent: "space-between" }]}>
-      <ProgressSteps progress={3} />
+      <ProgressSteps progress={2} />
       <Text style={[defaultStyles.textCenter]}>
         Si el servicio que brindas cuenta con una ubicación física, indícala aquí.
       </Text>
@@ -23,7 +30,7 @@ const AddressScreen = () => {
         <GooglePlacesAutocomplete
           placeholder="Search"
           query={{
-            key: "AIzaSyAEfK65F0K1nauMnfWcLxKY22OVtwc488E",
+            key: process.env.EXPO_PUBLIC_GOOGLE_API_KEY!,
             language: "en",
             components: "country:ar",
           }}
@@ -45,8 +52,9 @@ const AddressScreen = () => {
       <PrimaryButton
         text={TEXT_CONSTANTS.CONTINUE}
         onPress={() => {
-          router.push("/(new-user)/bio");
+          router.push("/(onboarding)/bio");
         }}
+        disabled={!address.description}
       />
     </View>
   );

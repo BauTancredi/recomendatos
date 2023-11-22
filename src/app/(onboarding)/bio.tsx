@@ -1,3 +1,4 @@
+import { useUser } from "@clerk/clerk-expo";
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
@@ -6,34 +7,48 @@ import ProgressSteps from "@/components/ProgressSteps";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";
-import { supabase } from "@/utils/supabase";
+import { getSupabase } from "@/utils/supabase";
 
 const BioScreen = () => {
   const providerStore = useProviderStore();
+  const supabase = getSupabase();
+  const { user } = useUser();
 
   const handleContinue = async () => {
-    console.log("continue", providerStore);
-    console.log(
-      "continue",
-      providerStore.bio,
-      providerStore.address,
-      providerStore.jobs,
-      providerStore.type
-    );
     const { error } = await supabase.from("providers").insert({
       bio: providerStore.bio,
-      // address: providerStore.address,
-      // jobs: providerStore.jobs,
+      // address_description: providerStore.address.description,
+      // address_lat: providerStore.address.location.lat,
+      // address_lng: providerStore.address.location.lng,
       type: providerStore.type,
+      first_name: user?.firstName,
+      last_name: user?.lastName,
     });
 
-    console.log("error", error);
+    if (error) {
+      console.log("Supabase error:", error.message);
+      return;
+    }
+
+    for (const job of providerStore.jobs) {
+      const { error } = await supabase.from("provider_job").insert({
+        clerk_id: user?.id,
+        job_id: job,
+      });
+
+      if (error) {
+        console.log("Supabase error:", error.message);
+        return;
+      }
+    }
+
+    console.log("Provider created");
   };
 
   return (
     <View style={[defaultStyles.container, { paddingBottom: 40, justifyContent: "space-between" }]}>
       <View>
-        <ProgressSteps progress={4} />
+        <ProgressSteps progress={3} />
         <Text style={[defaultStyles.textCenter, { marginVertical: 20 }]}>
           Cuentanos un poco de ti...
         </Text>
@@ -46,7 +61,11 @@ const BioScreen = () => {
           value={providerStore.bio}
         />
       </View>
-      <PrimaryButton text={TEXT_CONSTANTS.CONTINUE} onPress={handleContinue} />
+      <PrimaryButton
+        text={TEXT_CONSTANTS.CONTINUE}
+        onPress={handleContinue}
+        disabled={providerStore.bio.length < 10}
+      />
     </View>
   );
 };
@@ -57,6 +76,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     textAlignVertical: "top",
+    width: "100%",
+    marginHorizontal: 0,
   },
 });
 

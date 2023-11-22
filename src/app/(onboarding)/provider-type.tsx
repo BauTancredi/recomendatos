@@ -20,7 +20,7 @@ const ProviderTypeScreen = () => {
           style={styles.card}
           onPress={() => {
             setType("provider");
-            router.push("/(new-user)/jobs");
+            router.push("/(onboarding)/welcome-provider");
           }}
         >
           <Image
@@ -33,7 +33,7 @@ const ProviderTypeScreen = () => {
           style={styles.card}
           onPress={() => {
             setType("shop");
-            router.push("/(new-user)/shops");
+            router.push("/(onboarding)/welcome-provider");
           }}
         >
           <Image

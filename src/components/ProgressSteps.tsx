@@ -8,7 +8,7 @@ interface Props {
 }
 
 const ProgressSteps: React.FC<Props> = ({ progress }) => {
-  const steps = [1, 2, 3, 4];
+  const steps = [1, 2, 3];
 
   return (
     <View style={styles.progressContainer}>
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
     marginBottom: 0,
-    paddingHorizontal: 20,
+    // paddingHorizontal: 16,
   },
   progressItem: {
-    width: 70,
+    width: 100,
     backgroundColor: Colors.grey,
     height: 5,
   },

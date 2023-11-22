@@ -1,15 +1,20 @@
 Semana 13/11 - 19/11
-Semana 20/11 - 26/11
 [x] Pantalla de verificado 15/11
 [x] Usuario vs Profesional 15/11
 [x] Onboarding 15/11
+Semana 20/11 - 26/11
+[x] Registro proveedor (Guardar data relevante de usuarios en metadata y proveedor en supabase) 19/11
+[x] Armar logica de tablas basica 21/11
+[x] RLS Policy 21/11
+[x] Flujo completo de registro (loading state, mensajes de error, zonas)
+[] App crash
+[] Crear tablas y handlear que se envia a supabase
+[] Reglas de commits, branches
 Semana 27/11 - 3/12
+[] Home
 Semana 4/12 - 10/12
-[] Terminar registro (Guardar data relevante de usuarios en metadata y proveedor en supabase)
-
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
-[] Home
 Semana 25/12 - 31/12
 Semana 1/1 - 7/1
 [] Perfil
@@ -28,7 +33,6 @@ Semana 26/2 - 4/3
 PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
 [] App crash
-[] RLS Policy
 [] Mejorar manejo de Zod
 [] Splash screen
 [] Accesibilidad
@@ -59,6 +63,9 @@ TECH
 [] Analitcs
 [] EAS Updates
 [] EAS Insights
+[x] RLS Policy
+[x] Back up db y clerk
+[] Webhooks sync Clerk y Supabase
 
 --------o---------
 

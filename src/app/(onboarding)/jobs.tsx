@@ -42,6 +42,7 @@ const JobsScreen = () => {
     }
   };
 
+  // TODO: Add a useEffect to open the options if the job is already selected
   useEffect(() => {
     setElements([...elements]);
   }, [selected]);
@@ -122,8 +123,9 @@ const JobsScreen = () => {
       <PrimaryButton
         text={TEXT_CONSTANTS.CONTINUE}
         onPress={() => {
-          router.push("/(new-user)/address");
+          router.push("/(onboarding)/provider-location");
         }}
+        disabled={selected.length === 0}
       />
     </View>
   );

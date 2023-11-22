@@ -9,8 +9,8 @@ interface Address {
 }
 
 interface ProviderStore {
-  type: string;
-  setType: (type: string) => void;
+  type: "provider" | "shop" | "";
+  setType: (type: "provider" | "shop") => void;
   jobs: string[];
   addJob: (job: string) => void;
   removeJob: (job: string) => void;
@@ -26,7 +26,7 @@ interface ProviderStore {
 
 export const useProviderStore = create<ProviderStore>((set) => ({
   type: "",
-  setType: (type: string) => set({ type }),
+  setType: (type: "provider" | "shop") => set({ type }),
   jobs: [],
   addJob: (job: string) => set((state) => ({ jobs: [...state.jobs, job] })),
   removeJob: (job: string) => set((state) => ({ jobs: state.jobs.filter((j) => j !== job) })),

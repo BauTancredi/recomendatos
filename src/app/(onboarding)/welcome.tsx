@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
       <View style={[defaultStyles.container, styles.welcomeContainer]}>
         <Text style={defaultStyles.textCenter}>RecomenDatos</Text>
         <Text style={defaultStyles.textCenter}>Que te trae por aca?</Text>
-        <Link href={{ pathname: "/(new-user)/onboarding", params: { type: "user" } }} asChild>
+        <Link href={{ pathname: "/(onboarding)/onboarding", params: { type: "user" } }} asChild>
           <TouchableOpacity style={styles.card}>
             <Image
               source={{ uri: "https://placehold.co/600x400/png" }}
@@ -18,7 +18,7 @@ const WelcomeScreen = () => {
             <Text style={defaultStyles.textCenter}>Buscar datos</Text>
           </TouchableOpacity>
         </Link>
-        <Link href={{ pathname: "/(new-user)/onboarding", params: { type: "provider" } }} asChild>
+        <Link href={{ pathname: "/(onboarding)/onboarding", params: { type: "provider" } }} asChild>
           <TouchableOpacity style={styles.card}>
             <Image
               source={{ uri: "https://placehold.co/600x400/png" }}
