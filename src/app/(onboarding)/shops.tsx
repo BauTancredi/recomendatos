@@ -1,9 +1,8 @@
-import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import { FlatList, StyleSheet, Switch, Text, View, Image } from "react-native";
 
-import jobs from "./jobs";
+import shops from "@/assets/data/shops.json";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/ProgressSteps";
 import { defaultStyles } from "@/constants/Styles";
@@ -14,65 +13,6 @@ interface Element {
   title: string;
   children?: Element[];
 }
-
-const shops = [
-  {
-    id: "1",
-    title: "Peluqueria",
-  },
-  {
-    id: "2",
-    title: "Barberia",
-  },
-  {
-    id: "3",
-    title: "Estetica",
-  },
-  {
-    id: "4",
-    title: "Manicure",
-  },
-  {
-    id: "5",
-    title: "Pedicure",
-  },
-  {
-    id: "6",
-    title: "Depilacion",
-  },
-  {
-    id: "7",
-    title: "Masajes",
-  },
-  {
-    id: "8",
-    title: "Tatuajes",
-  },
-  {
-    id: "9",
-    title: "Spa",
-  },
-  {
-    id: "10",
-    title: "Maquillaje",
-  },
-  {
-    id: "11",
-    title: "Masajes",
-  },
-  {
-    id: "12",
-    title: "Tatuajes",
-  },
-  {
-    id: "13",
-    title: "Spa",
-  },
-  {
-    id: "14",
-    title: "Maquillaje",
-  },
-];
 
 const ShopsScreen = () => {
   const [elements, setElements] = useState<Element[]>(shops);

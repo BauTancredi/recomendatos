@@ -8,7 +8,7 @@ const SuccessScreen = () => {
 
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
-      router.replace("/home");
+      router.replace("/(onboarding)/welcome");
     }, 5000);
 
     return () => clearTimeout(timer);

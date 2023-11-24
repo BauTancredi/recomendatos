@@ -7,9 +7,9 @@ Semana 20/11 - 26/11
 [x] Armar logica de tablas basica 21/11
 [x] RLS Policy 21/11
 [x] Flujo completo de registro (loading state, mensajes de error, zonas) 22/11
-[x] App crash
-[] Limpiar codigo
-[] Crear tablas y handlear que se envia a supabase
+[x] App crash 22/11
+[x] Limpiar codigo
+[x] Cerrar teclado bio
 [] Reglas de commits, branches
 Semana 27/11 - 3/12
 [] Home
@@ -33,7 +33,7 @@ Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
-[] App crash
+[x] App crash
 [] Mejorar manejo de Zod
 [] Splash screen
 [] Accesibilidad
@@ -44,6 +44,7 @@ PENDIENTES VARIOS
 [] Spinner al boton y desactivarlo
 [] Terminos y condiciones
 [] Not found page
+[] Crear tablas y handlear que se envia a supabase
 
 FEATURES
 [] Banners
@@ -67,6 +68,7 @@ TECH
 [x] RLS Policy
 [x] Back up db y clerk
 [] Webhooks sync Clerk y Supabase
+[] Upsert y arrays en tabla
 
 --------o---------
 

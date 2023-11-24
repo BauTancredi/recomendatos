@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/clerk-expo";
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Keyboard } from "react-native";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/ProgressSteps";
@@ -15,38 +15,46 @@ const BioScreen = () => {
   const { user } = useUser();
 
   const handleContinue = async () => {
-    const { error } = await supabase.from("providers").insert({
+    const { error } = await supabase.from("providers").upsert({
       bio: providerStore.bio,
-      // address_description: providerStore.address.description,
-      // address_lat: providerStore.address.location.lat,
-      // address_lng: providerStore.address.location.lng,
+      address_description: providerStore.address?.description,
+      address_lat: providerStore.address?.location.lat,
+      address_lng: providerStore.address?.location.lng,
       type: providerStore.type,
+      // shops: providerStore.shops,
       first_name: user?.firstName,
       last_name: user?.lastName,
     });
 
     if (error) {
-      console.log("Supabase error:", error.message);
+      console.log("Supabase error:", error);
       return;
     }
 
-    for (const job of providerStore.jobs) {
-      const { error } = await supabase.from("provider_job").insert({
-        clerk_id: user?.id,
-        job_id: job,
-      });
+    // for (const job of providerStore.jobs) {
+    //   const { error } = await supabase.from("provider_job").insert({
+    //     clerk_id: user?.id,
+    //     job_id: job,
+    //   });
 
-      if (error) {
-        console.log("Supabase error:", error.message);
-        return;
-      }
-    }
+    //   if (error) {
+    //     console.log("Supabase error:", error.message);
+    //     return;
+    //   }
+    // }
+
+    await user?.update({
+      unsafeMetadata: {
+        finishedOnboarding: true,
+      },
+    });
 
     console.log("Provider created");
+    Keyboard.dismiss();
   };
 
   return (
-    <View style={[defaultStyles.container, { paddingBottom: 40, justifyContent: "space-between" }]}>
+    <View style={[defaultStyles.container, { paddingBottom: 40 }]}>
       <View>
         <ProgressSteps progress={3} />
         <Text style={[defaultStyles.textCenter, { marginVertical: 20 }]}>

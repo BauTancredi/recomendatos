@@ -4,7 +4,6 @@ import React from "react";
 import { Button, SafeAreaView, Text, View } from "react-native";
 
 import { defaultStyles } from "@/constants/Styles";
-import { SelectedCombo } from "@/interfaces/location";
 
 WebBrowser.maybeCompleteAuthSession();
 

@@ -63,11 +63,14 @@ const LocationScreen = () => {
   const handleContinue = async () => {
     try {
       setIsLoading(true);
+
       await user?.update({
         unsafeMetadata: {
           searchLocation: selectedCombo,
+          finishedOnboarding: true,
         },
       });
+
       router.push("/(tabs)/home");
     } catch (error) {
       console.error("Update error - Search Location: ", error);

@@ -56,8 +56,6 @@ const InitialLayout = () => {
   const { user } = useUser();
   const router = useRouter();
 
-  console.log("isSignedIn", isSignedIn);
-
   useEffect(() => {
     const fetchTokenAndInitialize = async () => {
       const token = await getToken({ template: "supabase" });
@@ -72,19 +70,18 @@ const InitialLayout = () => {
 
     SplashScreen.hideAsync();
 
-    const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000);
-
-    // router.replace("/(onboarding)/provider-type");
+    // router.replace("/(onboarding)/bio");
     if (isSignedIn) {
       if (user?.hasVerifiedPhoneNumber) {
-        if (user?.createdAt && fiveMinAgo < user?.createdAt) {
-          // TODO: Check also for metadata
+        if (!user?.unsafeMetadata.finishedOnboarding) {
           router.replace("/(onboarding)/welcome");
         } else {
           router.replace("/(tabs)/home");
         }
       } else {
-        router.replace("/(register)/prepare");
+        router.replace("/(onboarding)/welcome");
+
+        // router.replace("/(register)/prepare");
       }
     } else {
       router.replace("/(register)/login");
