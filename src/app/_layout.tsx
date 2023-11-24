@@ -79,9 +79,8 @@ const InitialLayout = () => {
           router.replace("/(tabs)/home");
         }
       } else {
-        router.replace("/(onboarding)/welcome");
-
-        // router.replace("/(register)/prepare");
+        // router.replace("/(onboarding)/welcome");
+        router.replace("/(register)/prepare");
       }
     } else {
       router.replace("/(register)/login");
