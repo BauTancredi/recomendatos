@@ -66,7 +66,7 @@ const HomeScreen = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
-            gap: 20,
+            gap: 10,
             marginVertical: 20,
           }}
         >
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
 
   carouselImage: {
-    width: 300,
+    width: 350,
     height: 150,
     borderRadius: 15,
   },

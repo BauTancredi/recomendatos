@@ -13,19 +13,21 @@ Semana 20/11 - 26/11
 [x] Reglas de commits, branches 24/11
 Semana 27/11 - 3/12
 [] Home
+[] Drawer
+[] Perfil
+[] Header
+[] Busqueda
 Semana 4/12 - 10/12
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
 Semana 1/1 - 7/1
-[] Perfil
 Semana 8/1 - 14/1
 [] Favoritos
 Semana 15/1 - 21/1|
 Semana 22/1 - 28/1
 [] Cerca de mi
 Semana 29/1 - 4/2
-[] Drawer
 Semana 5/2 - 11/2
 Semana 12/2 - 18/2
 Semana 19/2 - 25/2
