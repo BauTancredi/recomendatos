@@ -8,9 +8,9 @@ Semana 20/11 - 26/11
 [x] RLS Policy 21/11
 [x] Flujo completo de registro (loading state, mensajes de error, zonas) 22/11
 [x] App crash 22/11
-[x] Limpiar codigo
-[x] Cerrar teclado bio
-[] Reglas de commits, branches
+[x] Limpiar codigo 24/11
+[x] Cerrar teclado bio 24/11
+[x] Reglas de commits, branches 24/11
 Semana 27/11 - 3/12
 [] Home
 Semana 4/12 - 10/12
