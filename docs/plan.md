@@ -8,24 +8,20 @@ Semana 20/11 - 26/11
 [x] RLS Policy 21/11
 [x] Flujo completo de registro (loading state, mensajes de error, zonas) 22/11
 [x] App crash 22/11
-[x] Limpiar codigo
-[x] Cerrar teclado bio
-[] Reglas de commits, branches
+[x] Limpiar codigo 24/11
+[x] Cerrar teclado bio 24/11
+[x] Reglas de commits, branches 24/11
 Semana 27/11 - 3/12
-[] Home
+[x] Home 27/11
 Semana 4/12 - 10/12
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
 Semana 1/1 - 7/1
-[] Perfil
 Semana 8/1 - 14/1
-[] Favoritos
 Semana 15/1 - 21/1|
 Semana 22/1 - 28/1
-[] Cerca de mi
 Semana 29/1 - 4/2
-[] Drawer
 Semana 5/2 - 11/2
 Semana 12/2 - 18/2
 Semana 19/2 - 25/2
@@ -40,16 +36,31 @@ PENDIENTES VARIOS
 [] Mensajes en Clerk (error, sms, mail)
 [] Logica de reenviar sms
 [] Bugs
-[] Hard update
 [] Spinner al boton y desactivarlo
 [] Terminos y condiciones
 [] Not found page
 [] Crear tablas y handlear que se envia a supabase
+[] Barra de busqueda estilo rappi
+[] Hard update
+[] Reanimated
+[] Haptics
 
 FEATURES
-[] Banners
-[] Compartir app (expo-share)
+[] Sidebar
 [] Cafecito
+[] Compartir app (expo-share)
+[] Busqueda
+[] Header
+[] Perfil
+[] Datos reales
+[] Pendientes varios
+[] Banners
+
+[] Todo en ALTA
+
+[] Promos
+[] Favoritos
+
 [] QR
 [] Notificaciones
 [] i18n
@@ -57,11 +68,9 @@ FEATURES
 TECH
 [] React Query
 [x] Supabase
-[] Reglas de commits, branches
+[x] Reglas de commits, branches
 [x] Zustand
-[] Reanimated
 [] Sentry
-[] Haptics
 [] Analitcs
 [] EAS Updates
 [] EAS Insights
@@ -71,7 +80,7 @@ TECH
 [] Upsert y arrays en tabla
 
 --------o---------
-
+[] Datos reales
 [x] Setup Linter
 [x] Arreglar nombres de archivos y funciones
 [x] Configurar github devuelta
