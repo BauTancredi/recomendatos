@@ -12,7 +12,7 @@ Semana 20/11 - 26/11
 [x] Cerrar teclado bio 24/11
 [x] Reglas de commits, branches 24/11
 Semana 27/11 - 3/12
-[x] Home
+[x] Home 27/11
 Semana 4/12 - 10/12
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
@@ -26,16 +26,6 @@ Semana 5/2 - 11/2
 Semana 12/2 - 18/2
 Semana 19/2 - 25/2
 Semana 26/2 - 4/3
-
-[] Promos
-[] Favoritos
-[] Perfil
-[] Header
-[] Busqueda
-[] Sidebar
-[] Registro
-[] Cerca de mi
-[] Datos reales
 
 PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
@@ -51,17 +41,29 @@ PENDIENTES VARIOS
 [] Not found page
 [] Crear tablas y handlear que se envia a supabase
 [] Barra de busqueda estilo rappi
-
-FEATURES
-[] Banners
-[] Compartir app (expo-share)
-[] Cafecito
-[] QR
-[] Notificaciones
-[] i18n
 [] Hard update
 [] Reanimated
 [] Haptics
+
+FEATURES
+[] Sidebar
+[] Cafecito
+[] Compartir app (expo-share)
+[] Busqueda
+[] Header
+[] Perfil
+[] Datos reales
+[] Pendientes varios
+[] Banners
+
+[] Todo en ALTA
+
+[] Promos
+[] Favoritos
+
+[] QR
+[] Notificaciones
+[] i18n
 
 TECH
 [] React Query
