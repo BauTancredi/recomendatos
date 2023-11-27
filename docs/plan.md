@@ -17,6 +17,7 @@ Semana 27/11 - 3/12
 [] Perfil
 [] Header
 [] Busqueda
+[] Datos reales
 Semana 4/12 - 10/12
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
@@ -42,7 +43,6 @@ PENDIENTES VARIOS
 [] Mensajes en Clerk (error, sms, mail)
 [] Logica de reenviar sms
 [] Bugs
-[] Hard update
 [] Spinner al boton y desactivarlo
 [] Terminos y condiciones
 [] Not found page
@@ -55,6 +55,7 @@ FEATURES
 [] QR
 [] Notificaciones
 [] i18n
+[] Hard update
 
 TECH
 [] React Query
