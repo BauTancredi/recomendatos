@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, TextInput, StyleSheet, Keyboard } from "react-native";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import ProgressSteps from "@/components/ProgressSteps";
+import ProgressSteps from "@/components/aux/ProgressSteps";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";

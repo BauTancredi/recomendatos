@@ -5,7 +5,7 @@ import { View, Text, Switch, FlatList, Image, StyleSheet } from "react-native";
 
 import availableJobs from "@/assets/data/jobs.json";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import ProgressSteps from "@/components/ProgressSteps";
+import ProgressSteps from "@/components/aux/ProgressSteps";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";
