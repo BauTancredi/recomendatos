@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Mario Morales",
+    "categories": "Plomero - Gasista",
+    "rating": 4.7,
+    "ratingCount": 45
+  },
+  {
+    "id": 2,
+    "name": "Juan Perez",
+    "categories": "Servicio Tecnico",
+    "rating": 3.5,
+    "ratingCount": 7
+  }
+]

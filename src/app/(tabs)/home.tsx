@@ -3,8 +3,11 @@ import * as WebBrowser from "expo-web-browser";
 import React from "react";
 import { Image, Text, TextInput, View, StyleSheet, ScrollView } from "react-native";
 
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import providers from "@/assets/data/providers.json";
 import shops from "@/assets/data/shops.json";
+import FeaturesCategory from "@/components/cards/FeaturedCategory";
+import FeaturedProvider from "@/components/cards/FeaturedProvider";
+import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 
 WebBrowser.maybeCompleteAuthSession();
@@ -12,7 +15,7 @@ WebBrowser.maybeCompleteAuthSession();
 const HomeScreen = () => {
   // Fetch data from Supabase
   return (
-    <View style={[defaultStyles.container, { paddingHorizontal: 0 }]}>
+    <ScrollView style={[defaultStyles.container, { paddingHorizontal: 0 }]}>
       {/* Search bar */}
       <View style={{ paddingHorizontal: 16 }}>
         <View style={[defaultStyles.inputField, styles.inputSearchContainer]}>
@@ -32,26 +35,22 @@ const HomeScreen = () => {
             gap: 10,
             marginVertical: 20,
           }}
+          decelerationRate={0.5}
         >
-          <Image
-            source={{ uri: "https://placehold.co/600x400/png" }}
-            style={styles.carouselImage}
-          />
-          <Image
-            source={{ uri: "https://placehold.co/600x400/png" }}
-            style={styles.carouselImage}
-          />
-          <Image
-            source={{ uri: "https://placehold.co/600x400/png" }}
-            style={styles.carouselImage}
-          />
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Image
+              source={{ uri: "https://placehold.co/600x400/png" }}
+              style={styles.carouselImage}
+              key={index}
+            />
+          ))}
         </ScrollView>
       </View>
 
       {/* Que estas buscando */}
       <View style={{ paddingHorizontal: 16 }}>
         <Text style={{ fontSize: 20, fontFamily: "mon-b" }}>¿Qué estás buscando?</Text>
-        <Text style={{ fontSize: 16, color: Colors.dark, fontFamily: "mon" }}>
+        <Text style={{ fontSize: 16, color: Colors.grey, fontFamily: "mon" }}>
           Explora las categorías
         </Text>
 
@@ -74,7 +73,7 @@ const HomeScreen = () => {
       </View>
 
       {/* Categorias destacadas */}
-      <View style={{ paddingHorizontal: 16 }}>
+      <View style={{ paddingLeft: 16, gap: 20, marginVertical: 20 }}>
         <Text style={{ fontSize: 20, fontFamily: "mon-b" }}>Categorías destacadas</Text>
 
         <ScrollView
@@ -82,28 +81,25 @@ const HomeScreen = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             gap: 10,
-            marginVertical: 20,
           }}
+          decelerationRate={0.3}
         >
-          {shops.map((category, index) => (
-            <View style={styles.imageContainer} key={index}>
-              <Image
-                source={{ uri: "https://placehold.co/600x400/png" }}
-                style={styles.featuredCategoryImage}
-              />
-              <Text
-                style={[styles.imageText, { fontSize: 14 }]}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                {category.title}
-              </Text>
-            </View>
+          {shops.map((category) => (
+            <FeaturesCategory category={category} key={category.id} />
           ))}
         </ScrollView>
       </View>
+
       {/* Proveedores destacados */}
-    </View>
+      <View style={{ paddingHorizontal: 16, marginBottom: 32, gap: 20 }}>
+        <Text style={{ fontSize: 20, fontFamily: "mon-b" }}>Proveedores destacados</Text>
+        <View>
+          {providers.map((provider) => (
+            <FeaturedProvider provider={provider} key={provider.id} />
+          ))}
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -139,16 +135,11 @@ const styles = StyleSheet.create({
   providerTypeImageContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 20,
+    marginTop: 20,
   },
   providerTypeImage: {
     width: 170,
     height: 150,
-    borderRadius: 15,
-  },
-  featuredCategoryImage: {
-    width: 90,
-    height: 90,
     borderRadius: 15,
   },
 });
