@@ -6,9 +6,10 @@ interface Props {
   onPress: () => void;
   text: string;
   disabled?: boolean;
+  styles?: any;
 }
 
-const PrimaryButton = ({ onPress, text, disabled }: Props) => {
+const PrimaryButton = ({ onPress, text, disabled, styles }: Props) => {
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -16,6 +17,8 @@ const PrimaryButton = ({ onPress, text, disabled }: Props) => {
         defaultStyles.btn,
         disabled && defaultStyles.btnDisabled,
         { marginTop: 10, alignSelf: "stretch" },
+
+        styles,
       ]}
       onPress={onPress}
     >

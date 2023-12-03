@@ -70,21 +70,21 @@ const InitialLayout = () => {
 
     SplashScreen.hideAsync();
 
-    router.replace("/(tabs)/home");
-    // if (isSignedIn) {
-    //   if (user?.hasVerifiedPhoneNumber) {
-    //     if (!user?.unsafeMetadata.finishedOnboarding) {
-    //       router.replace("/(onboarding)/welcome");
-    //     } else {
-    //       router.replace("/(tabs)/home");
-    //     }
-    //   } else {
-    //     // router.replace("/(onboarding)/welcome");
-    //     router.replace("/(register)/prepare");
-    //   }
-    // } else {
-    //   router.replace("/(register)/login");
-    // }
+    // router.replace("/(tabs)/home");
+    if (isSignedIn) {
+      if (user?.hasVerifiedPhoneNumber) {
+        if (!user?.unsafeMetadata.finishedOnboarding) {
+          router.replace("/(onboarding)/welcome");
+        } else {
+          router.replace("/(tabs)/home");
+        }
+      } else {
+        // router.replace("/(onboarding)/welcome");
+        router.replace("/(register)/prepare");
+      }
+    } else {
+      router.replace("/(register)/login");
+    }
   }, [isSignedIn]);
 
   return <Slot />;

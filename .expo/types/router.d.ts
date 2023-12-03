@@ -2,18 +2,18 @@
 /* eslint-disable import/export */
 /* eslint-disable @typescript-eslint/ban-types */
 declare module "expo-router" {
-  import type { LinkProps as OriginalLinkProps } from 'expo-router/build/link/Link';
-  import type { Router as OriginalRouter } from 'expo-router/src/types';
-  export * from 'expo-router/build';
+  import type { LinkProps as OriginalLinkProps } from "expo-router/build/link/Link";
+  import type { Router as OriginalRouter } from "expo-router/src/types";
+  export * from "expo-router/build";
 
   // prettier-ignore
-  type StaticRoutes = `/` | `/(onboarding)/_layout` | `/_layout` | `/(onboarding)/address` | `/address` | `/(onboarding)/bio` | `/bio` | `/(onboarding)/jobs` | `/jobs` | `/(onboarding)/location` | `/location` | `/(onboarding)/onboarding` | `/onboarding` | `/(onboarding)/provider-location` | `/provider-location` | `/(onboarding)/provider-type` | `/provider-type` | `/(onboarding)/shops` | `/shops` | `/(onboarding)/welcome-provider` | `/welcome-provider` | `/(onboarding)/welcome` | `/welcome` | `/(register)/_layout` | `/(register)/attempt` | `/attempt` | `/(register)/login` | `/login` | `/(register)/password` | `/password` | `/(register)/prepare` | `/prepare` | `/(register)/register` | `/register` | `/(register)/success` | `/success` | `/(tabs)/(profile)/profile` | `/profile` | `/(tabs)/_layout` | `/(tabs)/home` | `/home` | `/(tabs)/test` | `/test`;
+  type StaticRoutes = `/` | `/(onboarding)/_layout` | `/_layout` | `/(onboarding)/address` | `/address` | `/(onboarding)/bio` | `/bio` | `/(onboarding)/jobs` | `/jobs` | `/(onboarding)/location` | `/location` | `/(onboarding)/onboarding` | `/onboarding` | `/(onboarding)/provider-location` | `/provider-location` | `/(onboarding)/provider-type` | `/provider-type` | `/(onboarding)/shops` | `/shops` | `/(onboarding)/welcome-provider` | `/welcome-provider` | `/(onboarding)/welcome` | `/welcome` | `/(register)/_layout` | `/(register)/attempt` | `/attempt` | `/(register)/login` | `/login` | `/(register)/password` | `/password` | `/(register)/prepare` | `/prepare` | `/(register)/register` | `/register` | `/(register)/success` | `/success` | `/(tabs)/(profile)/profile` | `/profile` | `/(tabs)/_layout` | `/(tabs)/home` | `/home` | `/(tabs)/(profile)/edit-user-profile` | `/edit-user-profile`;
   // prettier-ignore
   type DynamicRoutes<T extends string> = never;
   // prettier-ignore
   type DynamicRouteTemplate = never;
 
-  type RelativePathString = `./${string}` | `../${string}` | '..';
+  type RelativePathString = `./${string}` | `../${string}` | "..";
   type AbsoluteRoute = DynamicRouteTemplate | StaticRoutes;
   type ExternalPathString = `http${string}`;
   type ExpoRouterRoutes = DynamicRouteTemplate | StaticRoutes | RelativePathString;
@@ -43,7 +43,7 @@ declare module "expo-router" {
     ? never
     : S extends `${string}${SearchOrHash}`
     ? never
-    : S extends ''
+    : S extends ""
     ? never
     : S extends `(${string})`
     ? never
@@ -56,7 +56,7 @@ declare module "expo-router" {
    */
   type CatchAllRoutePart<S extends string> = S extends `${string}${SearchOrHash}`
     ? never
-    : S extends ''
+    : S extends ""
     ? never
     : S extends `${string}(${string})${string}`
     ? never
@@ -90,10 +90,10 @@ declare module "expo-router" {
    * /(group)/123/abc/[id]/[...rest] -> ['(group)', '123', 'abc', '[id]', '[...rest]'
    */
   type RouteSegments<Path> = Path extends `${infer PartA}/${infer PartB}`
-    ? PartA extends '' | '.'
+    ? PartA extends "" | "."
       ? [...RouteSegments<PartB>]
       : [PartA, ...RouteSegments<PartB>]
-    : Path extends ''
+    : Path extends ""
     ? []
     : [Path];
 
@@ -160,11 +160,11 @@ declare module "expo-router" {
    * Href  *
    *********/
 
-  export type Href<T> = T extends Record<'pathname', string> ? HrefObject<T> : Route<T>;
+  export type Href<T> = T extends Record<"pathname", string> ? HrefObject<T> : Route<T>;
 
   export type HrefObject<
-    R extends Record<'pathname', string>,
-    P = R['pathname']
+    R extends Record<"pathname", string>,
+    P = R["pathname"],
   > = P extends DynamicRouteTemplate
     ? { pathname: P; params: InputRouteParams<P> }
     : P extends Route<P>
@@ -175,13 +175,15 @@ declare module "expo-router" {
    * Expo Router Exports *
    ***********************/
 
-  export type Router = Omit<OriginalRouter, 'push' | 'replace' | 'setParams'> & {
+  export type Router = Omit<OriginalRouter, "push" | "replace" | "setParams"> & {
     /** Navigate to the provided href. */
     push: <T>(href: Href<T>) => void;
     /** Navigate to route without appending to the history. */
     replace: <T>(href: Href<T>) => void;
     /** Update the current route query params. */
-    setParams: <T = ''>(params?: T extends '' ? Record<string, string> : InputRouteParams<T>) => void;
+    setParams: <T = "">(
+      params?: T extends "" ? Record<string, string> : InputRouteParams<T>
+    ) => void;
   };
 
   /** The imperative router. */
@@ -210,11 +212,9 @@ declare module "expo-router" {
    * @param props.children Child elements to render the content.
    */
   export const Link: LinkComponent;
-  
+
   /** Redirects to the href as soon as the component is mounted. */
-  export const Redirect: <T>(
-    props: React.PropsWithChildren<{ href: Href<T> }>
-  ) => JSX.Element;
+  export const Redirect: <T>(props: React.PropsWithChildren<{ href: Href<T> }>) => JSX.Element;
 
   /************
    * Hooks *
@@ -222,19 +222,19 @@ declare module "expo-router" {
   export function useRouter(): Router;
 
   export function useLocalSearchParams<
-    T extends AllRoutes | UnknownOutputParams = UnknownOutputParams
+    T extends AllRoutes | UnknownOutputParams = UnknownOutputParams,
   >(): T extends AllRoutes ? SearchParams<T> : T;
 
   /** @deprecated renamed to `useGlobalSearchParams` */
   export function useSearchParams<
-    T extends AllRoutes | UnknownOutputParams = UnknownOutputParams
+    T extends AllRoutes | UnknownOutputParams = UnknownOutputParams,
   >(): T extends AllRoutes ? SearchParams<T> : T;
 
   export function useGlobalSearchParams<
-    T extends AllRoutes | UnknownOutputParams = UnknownOutputParams
+    T extends AllRoutes | UnknownOutputParams = UnknownOutputParams,
   >(): T extends AllRoutes ? SearchParams<T> : T;
 
   export function useSegments<
-    T extends AbsoluteRoute | RouteSegments<AbsoluteRoute> | RelativePathString
+    T extends AbsoluteRoute | RouteSegments<AbsoluteRoute> | RelativePathString,
   >(): T extends AbsoluteRoute ? RouteSegments<T> : T extends string ? string[] : T;
 }

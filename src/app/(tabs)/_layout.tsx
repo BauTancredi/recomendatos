@@ -35,13 +35,13 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="(profile)/profile"
+        name="(profile)"
         options={{
           tabBarLabel: "Perfil",
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="person" color={color} size={size} />
           ),
-          headerTitle: "Mi Perfil",
+          headerShown: false,
         }}
       />
     </Tabs>

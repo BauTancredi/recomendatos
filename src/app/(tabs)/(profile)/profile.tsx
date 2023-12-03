@@ -1,7 +1,9 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
+import { Link } from "expo-router";
 import React from "react";
 import { Text, View, Image, StyleSheet, Button } from "react-native";
 
+// import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 
 const HomeScreen = () => {
@@ -26,6 +28,14 @@ const HomeScreen = () => {
           signOut();
         }}
       />
+      <Link href="/edit-user-profile" asChild>
+        <Button
+          title="Editar perfil"
+          // onPress={() => {
+          //   signOut();
+          // }}
+        />
+      </Link>
     </View>
   );
 };
