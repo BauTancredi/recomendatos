@@ -14,6 +14,10 @@ Semana 20/11 - 26/11
 Semana 27/11 - 3/12
 [x] Home 27/11
 Semana 4/12 - 10/12
+[] Perfil ?? Certificados??
+[] Switch android baila
+[] Redirect bio
+[] Supabase error
 Semana 11/12 - 17/12
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
@@ -44,6 +48,10 @@ PENDIENTES VARIOS
 [] Hard update
 [] Reanimated
 [] Haptics
+[] Dev / Prod
+[] Switch android baila
+[] Redirect bio
+[] Supabase error
 
 FEATURES
 [] Sidebar
@@ -63,6 +71,7 @@ FEATURES
 
 [] QR
 [] Notificaciones
+[] Metodo de pago
 [] i18n
 
 TECH
@@ -78,9 +87,9 @@ TECH
 [x] Back up db y clerk
 [] Webhooks sync Clerk y Supabase
 [] Upsert y arrays en tabla
+[] MMKV
 
 --------o---------
-[] Datos reales
 [x] Setup Linter
 [x] Arreglar nombres de archivos y funciones
 [x] Configurar github devuelta
