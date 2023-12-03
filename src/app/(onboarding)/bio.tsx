@@ -2,8 +2,8 @@ import { useUser } from "@clerk/clerk-expo";
 import React from "react";
 import { View, Text, TextInput, StyleSheet, Keyboard } from "react-native";
 
-import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/aux/ProgressSteps";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";
@@ -15,21 +15,21 @@ const BioScreen = () => {
   const { user } = useUser();
 
   const handleContinue = async () => {
-    const { error } = await supabase.from("providers").upsert({
-      bio: providerStore.bio,
-      address_description: providerStore.address?.description,
-      address_lat: providerStore.address?.location.lat,
-      address_lng: providerStore.address?.location.lng,
-      type: providerStore.type,
-      // shops: providerStore.shops,
-      first_name: user?.firstName,
-      last_name: user?.lastName,
-    });
+    // const { error } = await supabase.from("providers").upsert({
+    //   bio: providerStore.bio,
+    //   address_description: providerStore.address?.description,
+    //   address_lat: providerStore.address?.location.lat,
+    //   address_lng: providerStore.address?.location.lng,
+    //   type: providerStore.type,
+    //   // shops: providerStore.shops,
+    //   first_name: user?.firstName,
+    //   last_name: user?.lastName,
+    // });
 
-    if (error) {
-      console.log("Supabase error:", error);
-      return;
-    }
+    // if (error) {
+    //   console.log("Supabase error:", error);
+    //   return;
+    // }
 
     // for (const job of providerStore.jobs) {
     //   const { error } = await supabase.from("provider_job").insert({

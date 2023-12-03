@@ -27,13 +27,14 @@ const HomeScreen = () => {
       {/* Carousel */}
       {/* react-native-pager-view */}
       {/* Indicador de imagen */}
-      <View style={{ paddingLeft: 16 }}>
+      <View>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             gap: 10,
             marginVertical: 20,
+            paddingLeft: 16,
           }}
           decelerationRate={0.5}
         >
@@ -73,14 +74,22 @@ const HomeScreen = () => {
       </View>
 
       {/* Categorias destacadas */}
-      <View style={{ paddingLeft: 16, gap: 20, marginVertical: 20 }}>
-        <Text style={{ fontSize: 20, fontFamily: "mon-b" }}>Categorías destacadas</Text>
+      <View
+        style={{
+          gap: 20,
+          marginVertical: 20,
+        }}
+      >
+        <Text style={{ fontSize: 20, fontFamily: "mon-b", paddingLeft: 16 }}>
+          Categorías destacadas
+        </Text>
 
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             gap: 10,
+            paddingLeft: 16,
           }}
           decelerationRate={0.3}
         >
