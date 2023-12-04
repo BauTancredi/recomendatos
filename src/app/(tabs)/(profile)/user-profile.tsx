@@ -1,9 +1,7 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
-import { Link } from "expo-router";
 import React from "react";
 import { Text, View, Image, StyleSheet, Button } from "react-native";
 
-// import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 
 const HomeScreen = () => {
@@ -23,7 +21,7 @@ const HomeScreen = () => {
         </Text>
       </View>
       <Button
-        title="Cerrar Sesión"
+        title="Cerrar sesión"
         onPress={() => {
           signOut();
         }}

@@ -52,8 +52,10 @@ PENDIENTES VARIOS
 [] Redirect bio
 [] Supabase error
 [] Estilos
-[] Altura controlledInput
+[] Altura controlledInput y label opcional
 [] Area code
+[] Alerts, Console Logs
+[] Constant texts
 
 FEATURES
 [] Sidebar

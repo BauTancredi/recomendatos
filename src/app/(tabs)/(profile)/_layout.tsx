@@ -1,4 +1,3 @@
-import { useUser } from "@clerk/clerk-expo";
 import { Stack, useRouter } from "expo-router";
 import React from "react";
 import { Button } from "react-native";
@@ -7,13 +6,21 @@ const ProfileLayout = () => {
   const router = useRouter();
 
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerBackVisible: true,
+        headerBackTitleVisible: false,
+        headerShadowVisible: false,
+        headerTintColor: "black",
+        headerTitleStyle: {
+          fontFamily: "mon-sb",
+        },
+      }}
+    >
       <Stack.Screen
-        name="profile"
+        name="user-profile"
         options={{
           headerTitle: "Mi Perfil",
-          headerShadowVisible: false,
-
           headerRight: () => (
             <Button
               title="Editar"
@@ -24,25 +31,18 @@ const ProfileLayout = () => {
           ),
         }}
       />
+
       <Stack.Screen
         name="edit-user-profile"
         options={{
           headerTitle: "Editar Perfil",
-          headerBackVisible: true,
-          headerShadowVisible: false,
-          headerBackTitleVisible: false,
-          // headerRight: () => (
-          //   <Button title="Guardar" onPress={saveChanges} disabled={!hasChanges} />
-          // ),
         }}
       />
+
       <Stack.Screen
         name="change-password"
         options={{
           headerTitle: "Cambiar Contraseña",
-          headerBackVisible: true,
-          headerBackTitleVisible: false,
-          headerShadowVisible: false,
           presentation: "modal",
         }}
       />

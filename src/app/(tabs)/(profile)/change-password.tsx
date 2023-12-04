@@ -83,7 +83,6 @@ const ChangePassword = () => {
           secureTextEntry
           style={styles.input}
         />
-        {/* <TextInput style={styles.input} placeholder="Contraseña actual" secureTextEntry /> */}
       </View>
       <View style={{ gap: 5 }}>
         <Text>Nueva contraseña</Text>
