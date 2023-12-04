@@ -51,7 +51,9 @@ PENDIENTES VARIOS
 [] Switch android baila
 [] Redirect bio
 [] Supabase error
-[] Estilos (Altura controlledInput)
+[] Estilos
+[] Altura controlledInput
+[] Area code
 
 FEATURES
 [] Sidebar

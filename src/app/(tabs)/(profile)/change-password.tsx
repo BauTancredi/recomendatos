@@ -60,11 +60,11 @@ const ChangePassword = () => {
         newPassword: data.newPassword,
         currentPassword: data.currentPassword,
       });
+
+      router.back();
     } catch (error: any) {
       Alert.alert("La contraseña actual es incorrecta.");
       console.error("Error saving changes: ", error.errors[0].message);
-    } finally {
-      router.back();
     }
   };
 

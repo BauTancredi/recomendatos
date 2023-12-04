@@ -2,8 +2,9 @@ import { ClerkProvider, useAuth, useUser } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
 import { Slot, useRouter, SplashScreen } from "expo-router";
 import * as SecureStore from "expo-secure-store";
-
 import { useEffect } from "react";
+import { RootSiblingParent } from "react-native-root-siblings";
+
 import { initializeSupabase } from "@/utils/supabase";
 
 const clerkKey = process.env.EXPO_PUBLIC_API_KEY!;
@@ -44,10 +45,11 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    // <ClerkProvider publishableKey={clerkKey}>
-    <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
-      <InitialLayout />
-    </ClerkProvider>
+    <RootSiblingParent>
+      <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
+        <InitialLayout />
+      </ClerkProvider>
+    </RootSiblingParent>
   );
 }
 

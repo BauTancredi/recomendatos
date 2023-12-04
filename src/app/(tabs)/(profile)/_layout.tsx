@@ -12,6 +12,8 @@ const ProfileLayout = () => {
         name="profile"
         options={{
           headerTitle: "Mi Perfil",
+          headerShadowVisible: false,
+
           headerRight: () => (
             <Button
               title="Editar"
@@ -27,6 +29,7 @@ const ProfileLayout = () => {
         options={{
           headerTitle: "Editar Perfil",
           headerBackVisible: true,
+          headerShadowVisible: false,
           headerBackTitleVisible: false,
           // headerRight: () => (
           //   <Button title="Guardar" onPress={saveChanges} disabled={!hasChanges} />
@@ -39,6 +42,7 @@ const ProfileLayout = () => {
           headerTitle: "Cambiar Contraseña",
           headerBackVisible: true,
           headerBackTitleVisible: false,
+          headerShadowVisible: false,
           presentation: "modal",
         }}
       />

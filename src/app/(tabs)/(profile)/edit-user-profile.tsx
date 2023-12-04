@@ -4,10 +4,21 @@ import BottomSheet, { BottomSheetBackdrop, BottomSheetBackdropProps } from "@gor
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as FileSystem from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
-import { Link, Stack } from "expo-router";
+import { Link, Stack, useRouter } from "expo-router";
 import React, { useCallback, useMemo, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { StyleSheet, View, Image, TextInput, Text, TouchableOpacity, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  Button,
+  Alert,
+} from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
+import Toast from "react-native-root-toast";
 import * as z from "zod";
 
 import ControlledInput from "@/components/inputs/ControlledInput";
@@ -18,6 +29,11 @@ import { defaultStyles } from "@/constants/Styles";
 // [x] Guardar cambios
 // [x] Cambiar contraseña
 // [x] Labels
+// [x] Guardar
+// [x] Contraseña
+// [x] Confirmar eliminar foto
+// [X] Toast perfil actualizado
+// [x] Spinner
 // [] Limpiar
 
 type FormData = {
@@ -40,15 +56,15 @@ const schema = z.object({
 
 const EditUserProfileScreen = () => {
   const { user } = useUser();
-
+  const router = useRouter();
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["35%"], []);
+  const snapPoints = useMemo(() => ["32%"], []);
   const areaCode = user?.phoneNumbers![0].phoneNumber.slice(0, 3);
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isDirty, isValid },
+    formState: { errors, isDirty, isValid, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -121,13 +137,29 @@ const EditUserProfileScreen = () => {
   };
 
   const deletePhoto = () => {
-    try {
-      user?.setProfileImage({ file: null });
-    } catch (error) {
-      console.error("Error deleting photo: ", error);
-    } finally {
-      bottomSheetRef.current?.close();
-    }
+    Alert.alert(
+      "Confirm Delete", // Alert Title
+      "Are you sure you want to delete this photo?", // Alert Message
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            try {
+              user?.setProfileImage({ file: null });
+            } catch (error) {
+              console.error("Error deleting photo: ", error);
+            } finally {
+              bottomSheetRef.current?.close();
+            }
+          },
+        },
+      ]
+    );
   };
 
   const renderBackdrop = useCallback(
@@ -144,6 +176,17 @@ const EditUserProfileScreen = () => {
         firstName: data.firstName,
         lastName: data.lastName,
       });
+
+      Toast.show("Tu perfil ha sido actualizado", {
+        duration: Toast.durations.SHORT,
+        position: -100,
+        shadow: true,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+      });
+
+      router.back();
     } catch (error: any) {
       console.error("Error saving changes: ", error.errors[0].message);
     }
@@ -151,6 +194,7 @@ const EditUserProfileScreen = () => {
 
   return (
     <>
+      <Spinner visible={isSubmitting} />
       <Stack.Screen
         options={{
           headerRight: () => (
@@ -176,7 +220,6 @@ const EditUserProfileScreen = () => {
             />
           </View>
         </View>
-
         <View
           style={{
             gap: 5,
@@ -192,7 +235,6 @@ const EditUserProfileScreen = () => {
             style={styles.input}
           />
         </View>
-
         <View
           style={{
             gap: 5,
@@ -208,7 +250,6 @@ const EditUserProfileScreen = () => {
             style={styles.input}
           />
         </View>
-
         <View
           style={{
             gap: 5,
@@ -280,7 +321,6 @@ const EditUserProfileScreen = () => {
             />
           </View>
         </View>
-
         <BottomSheet
           ref={bottomSheetRef}
           index={-1}
@@ -311,12 +351,14 @@ const EditUserProfileScreen = () => {
               <Ionicons name="image" size={24} color="black" />
               <Text>Seleccionar de la galeria</Text>
             </TouchableOpacity>
+
             <TouchableOpacity
               onPress={deletePhoto}
               style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
+              disabled={!user?.hasImage}
             >
-              <Ionicons name="trash" size={24} color={Colors.error} />
-              <Text style={{ color: Colors.error }}>Eliminar foto</Text>
+              <Ionicons name="trash" size={24} color={!user?.hasImage ? "grey" : Colors.error} />
+              <Text style={{ color: !user?.hasImage ? "grey" : Colors.error }}>Eliminar foto</Text>
             </TouchableOpacity>
           </View>
         </BottomSheet>
