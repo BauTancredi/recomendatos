@@ -14,14 +14,19 @@ interface Props {
     | "firstName"
     | "lastName"
     | "verificationCode"
-    | "phoneNumber";
+    | "phoneNumber"
+    | "confirmPassword"
+    | "currentPassword";
   placeholder: string;
   style?: any;
+  secureTextEntry?: boolean;
 }
 
-const ControlledInput = ({ control, errors, placeholder, name, style }: Props) => {
+const ControlledInput = ({ control, errors, placeholder, name, style, secureTextEntry }: Props) => {
   return (
-    <View style={{ height: 64 }}>
+    <View>
+      {/* La altura se usa dentro de register. Arreglar para que sea siempre la misma. */}
+      {/* <View style={{ height: 64 }}> */}
       <Controller
         control={control}
         name={name}
@@ -32,6 +37,7 @@ const ControlledInput = ({ control, errors, placeholder, name, style }: Props) =
             onChangeText={onChange}
             value={value}
             style={[defaultStyles.inputField, style]}
+            secureTextEntry={secureTextEntry}
           />
         )}
       />

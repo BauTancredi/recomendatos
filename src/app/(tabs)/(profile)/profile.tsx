@@ -23,19 +23,11 @@ const HomeScreen = () => {
         </Text>
       </View>
       <Button
-        title="Sign Out"
+        title="Cerrar Sesión"
         onPress={() => {
           signOut();
         }}
       />
-      <Link href="/edit-user-profile" asChild>
-        <Button
-          title="Editar perfil"
-          // onPress={() => {
-          //   signOut();
-          // }}
-        />
-      </Link>
     </View>
   );
 };
