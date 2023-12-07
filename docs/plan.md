@@ -14,12 +14,13 @@ Semana 20/11 - 26/11
 Semana 27/11 - 3/12
 [x] Home 27/11
 Semana 4/12 - 10/12
+Semana 11/12 - 17/12
 [x] Perfil usuario 4/12
-[] Perfil Proveedor ?? Certificados??
+[x] Perfil usuario con opciones
+[] Perfil Proveedor
 [] React query
 [] Mostrar pantalla desde home
 [] Cargar proveedores de prueba
-Semana 11/12 - 17/12
 [] Pendientes varios
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12

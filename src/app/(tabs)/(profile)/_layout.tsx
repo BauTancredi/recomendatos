@@ -21,14 +21,6 @@ const ProfileLayout = () => {
         name="user-profile"
         options={{
           headerTitle: "Mi Perfil",
-          headerRight: () => (
-            <Button
-              title="Editar"
-              onPress={() => {
-                router.push("/edit-user-profile");
-              }}
-            />
-          ),
         }}
       />
 
@@ -36,6 +28,13 @@ const ProfileLayout = () => {
         name="edit-user-profile"
         options={{
           headerTitle: "Editar Perfil",
+        }}
+      />
+
+      <Stack.Screen
+        name="user-settings"
+        options={{
+          headerTitle: "Configuración",
         }}
       />
 
