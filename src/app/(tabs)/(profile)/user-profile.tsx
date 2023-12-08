@@ -1,16 +1,28 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Ionicons, Entypo } from "@expo/vector-icons";
+import BottomSheet from "@gorhom/bottom-sheet";
 import * as Linking from "expo-linking";
-import { useRouter } from "expo-router";
-import React from "react";
-import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Stack, useRouter } from "expo-router";
+import React, { useRef } from "react";
+import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 
+import { TextInput } from "react-native-gesture-handler";
+import Chip from "@/components/aux/Chip";
+import EditProfileBottomSheet from "@/components/bottom/EditProfileBottomSheet";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
+import ImageCarousel from "@/components/carousel/ImageCarousel";
+import { UserCard, ProviderCard, UserSettings } from "@/components/profile";
+
+import StatsContainer from "@/components/profile/StatsContainer";
+import SectionSubtitle from "@/components/text/SectionSubtitle";
+import SectionTitle from "@/components/text/SectionTitle";
 import { defaultStyles } from "@/constants/Styles";
 
 const HomeScreen = () => {
   const { user } = useUser();
   const { signOut } = useAuth();
   const router = useRouter();
+  const bottomSheetRef = useRef<BottomSheet>(null);
 
   const menuItems = [
     {
@@ -51,86 +63,139 @@ const HomeScreen = () => {
   ];
 
   return (
-    <View style={[defaultStyles.container, { alignItems: "center", gap: 30 }]}>
-      <View style={styles.card}>
-        <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />
-        <Text>
-          {user?.firstName} {user?.lastName}
-        </Text>
-        <Text>
-          Activo desde&nbsp;
-          {new Date(user?.createdAt!).toLocaleDateString("en-AR")}
-        </Text>
-      </View>
-      <View
-        style={{
-          width: "100%",
-          gap: 30,
-        }}
-      >
-        {menuItems.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              width: "100%",
-              justifyContent: "space-between",
-            }}
-            onPress={() => {
-              item.onPress && item.onPress();
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              {item.icon}
-              <Text
-                style={{
-                  marginLeft: 10,
-                  fontFamily: "mon",
-                  fontSize: 16,
+    <>
+      <Stack.Screen
+        options={{
+          headerRight: () => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  bottomSheetRef.current?.expand();
                 }}
               >
-                {item.title}
-              </Text>
-            </View>
+                <Ionicons name="ellipsis-horizontal" size={24} color="black" />
+              </TouchableOpacity>
+            );
+          },
+        }}
+      />
+      <ScrollView
+        style={[
+          defaultStyles.container,
+          // {paddingHorizontal: 0}
+        ]}
+        contentContainerStyle={{
+          alignItems: "center",
+          gap: 20,
+          paddingBottom: 40,
+        }}
+      >
+        {/* <UserCard user={user} /> */}
+        <ProviderCard user={user} />
 
-            {item.title === "Cerrar sesión" ? null : (
-              <Ionicons name="chevron-forward-sharp" size={24} color="black" />
-            )}
-          </TouchableOpacity>
-        ))}
-      </View>
-    </View>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton
+            text="Editar Perfil"
+            onPress={() => {
+              // router.push("/edit-user-profile");
+            }}
+            styles={{
+              width: "49%",
+              marginTop: 0,
+            }}
+          />
+          <PrimaryButton
+            text="Compartir Perfil"
+            onPress={() => {
+              // router.push("/edit-user-profile");
+            }}
+            styles={{
+              width: "49%",
+              marginTop: 0,
+            }}
+          />
+        </View>
+
+        <StatsContainer />
+        <ImageCarousel carouselTitle="Trabajos Realizados" imageStyles={styles.workImage} />
+
+        <View style={styles.locationsContainer}>
+          <SectionTitle title="Localidades" />
+          <View style={{ gap: 10 }}>
+            <View>
+              <SectionSubtitle title="Zona Norte" />
+              <View style={styles.chipsContainer}>
+                {Array.from({ length: 9 }).map((_, index) => (
+                  <Chip key={index} title="Tigre" />
+                ))}
+              </View>
+            </View>
+            <View>
+              <SectionSubtitle title="Zona Oeste" />
+              <View style={styles.chipsContainer}>
+                {Array.from({ length: 2 }).map((_, index) => (
+                  <Chip key={index} title="Tigre" />
+                ))}
+              </View>
+            </View>
+          </View>
+        </View>
+
+        <View
+          style={{
+            width: "100%",
+          }}
+        >
+          <SectionTitle title="Biografia" />
+          <TextInput
+            multiline
+            style={styles.bioInput}
+            value="Lorem ipsum dolor sit amet consectetur adipi"
+            editable={false}
+          />
+        </View>
+        {/* <UserSettings menuItems={menuItems} /> */}
+      </ScrollView>
+      <EditProfileBottomSheet ref={bottomSheetRef} menuItems={menuItems} user={user} />
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    padding: 10,
-    margin: 10,
-    alignItems: "center",
-    width: "60%",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    gap: 10,
-  },
   profileImage: {
     width: 100,
     height: 100,
     borderRadius: 50,
+  },
+  buttonContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  workImage: {
+    width: 150,
+    height: 200,
+    borderRadius: 15,
+  },
+  locationsContainer: {
+    width: "100%",
+  },
+  chipsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    backgroundColor: "white",
+  },
+  bioInput: {
+    flexGrow: 1,
+    minHeight: 60,
+    maxHeight: 200,
+    borderRadius: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "black",
+    fontFamily: "mon",
+    fontSize: 14,
   },
 });
 

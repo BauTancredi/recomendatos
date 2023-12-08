@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/aux/ProgressSteps";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";

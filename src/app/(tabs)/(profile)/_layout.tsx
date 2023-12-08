@@ -1,10 +1,7 @@
-import { Stack, useRouter } from "expo-router";
+import { Stack } from "expo-router";
 import React from "react";
-import { Button } from "react-native";
 
 const ProfileLayout = () => {
-  const router = useRouter();
-
   return (
     <Stack
       screenOptions={{
