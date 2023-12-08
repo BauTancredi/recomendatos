@@ -5,24 +5,28 @@ import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
 import React, { useRef } from "react";
 import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
-
 import { TextInput } from "react-native-gesture-handler";
+
+import { useQuery } from "react-query";
 import Chip from "@/components/aux/Chip";
 import EditProfileBottomSheet from "@/components/bottom/EditProfileBottomSheet";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ImageCarousel from "@/components/carousel/ImageCarousel";
 import { UserCard, ProviderCard, UserSettings } from "@/components/profile";
-
 import StatsContainer from "@/components/profile/StatsContainer";
 import SectionSubtitle from "@/components/text/SectionSubtitle";
 import SectionTitle from "@/components/text/SectionTitle";
 import { defaultStyles } from "@/constants/Styles";
+import useProviderQuery from "@/hooks/useProviderQuery";
+import { getProviderById } from "@/queries/getProviderById";
+import { getSupabase } from "@/utils/supabase";
 
 const HomeScreen = () => {
   const { user } = useUser();
   const { signOut } = useAuth();
   const router = useRouter();
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const supabase = getSupabase();
 
   const menuItems = [
     {
@@ -61,6 +65,9 @@ const HomeScreen = () => {
       },
     },
   ];
+
+  const { data, error, isLoading } = useProviderQuery(user?.id!);
+  console.log(data?.data.bio);
 
   return (
     <>
@@ -147,12 +154,7 @@ const HomeScreen = () => {
           }}
         >
           <SectionTitle title="Biografia" />
-          <TextInput
-            multiline
-            style={styles.bioInput}
-            value="Lorem ipsum dolor sit amet consectetur adipi"
-            editable={false}
-          />
+          <TextInput multiline style={styles.bioInput} value={data?.data.bio} editable={false} />
         </View>
         {/* <UserSettings menuItems={menuItems} /> */}
       </ScrollView>

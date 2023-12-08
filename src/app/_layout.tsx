@@ -4,6 +4,7 @@ import { Slot, useRouter, SplashScreen } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import { useEffect } from "react";
 import { RootSiblingParent } from "react-native-root-siblings";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { initializeSupabase } from "@/utils/supabase";
 
@@ -44,11 +45,15 @@ export default function RootLayout() {
 
   if (!loaded) return null;
 
+  const queryClient = new QueryClient();
+
   return (
     <RootSiblingParent>
-      <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
-        <InitialLayout />
-      </ClerkProvider>
+      <QueryClientProvider client={queryClient}>
+        <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
+          <InitialLayout />
+        </ClerkProvider>
+      </QueryClientProvider>
     </RootSiblingParent>
   );
 }

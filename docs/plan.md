@@ -21,7 +21,7 @@ Semana 4/12 - 10/12
 [x] Bio
 [x] Limpiar todo el codigo
 [x] Settings
-[] React query
+[x] React query
 [x] Image picker
 [] Conditional rendering
 [] Comercio
@@ -100,7 +100,7 @@ FEATURES
 [] i18n
 
 TECH
-[] React Query
+[x] React Query
 [x] Supabase
 [x] Reglas de commits, branches
 [x] Zustand
