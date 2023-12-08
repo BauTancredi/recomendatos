@@ -12,9 +12,7 @@ const TabsLayout = () => {
         name="home"
         options={{
           tabBarLabel: "Inicio",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="home" color={Colors.primary} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="home" color={color} size={size} />,
           headerLeft: () => (
             <MaterialIcons name="menu" size={24} color="black" style={{ marginLeft: 16 }} />
           ),
@@ -37,9 +35,13 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="test"
+        name="(profile)"
         options={{
-          tabBarLabel: "Test",
+          tabBarLabel: "Perfil",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="person" color={color} size={size} />
+          ),
+          headerShown: false,
         }}
       />
     </Tabs>

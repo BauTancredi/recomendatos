@@ -14,19 +14,33 @@ Semana 20/11 - 26/11
 Semana 27/11 - 3/12
 [x] Home 27/11
 Semana 4/12 - 10/12
-[] Perfil ?? Certificados??
-[] Switch android baila
-[] Redirect bio
-[] Supabase error
+[x] Perfil usuario 4/12
+[x] Perfil usuario con opciones
+[] Perfil Proveedor
+[x] Chips
+[x] Bio
+[x] Limpiar todo el codigo
+[x] Settings
+[x] React query
+[x] Image picker
+[x] Conditional rendering
+[x] Comercio
 Semana 11/12 - 17/12
+[] Pendientes varios
 Semana 18/12 - 24/12
+[] Logica de ubicaciones nueva
+[] Perfil 100% funcional
 Semana 25/12 - 31/12
 Semana 1/1 - 7/1
 Semana 8/1 - 14/1
-Semana 15/1 - 21/1|
+[] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
+Semana 15/1 - 21/1
+[] Favoritos
 Semana 22/1 - 28/1
 Semana 29/1 - 4/2
+[] Promos
 Semana 5/2 - 11/2
+[] Tech
 Semana 12/2 - 18/2
 Semana 19/2 - 25/2
 Semana 26/2 - 4/3
@@ -52,6 +66,16 @@ PENDIENTES VARIOS
 [] Switch android baila
 [] Redirect bio
 [] Supabase error
+[] Estilos
+[] Types
+[] Altura controlledInput y label opcional
+[] Area code
+[] Alerts, Console Logs
+[] Constant texts
+[] Keyboard types
+[] Skeleton
+[] Boton pedir valoracion
+[] Mejores proveedores de tu zonac
 
 FEATURES
 [] Sidebar
@@ -72,10 +96,11 @@ FEATURES
 [] QR
 [] Notificaciones
 [] Metodo de pago
+[] Proveedores destacados pago
 [] i18n
 
 TECH
-[] React Query
+[x] React Query
 [x] Supabase
 [x] Reglas de commits, branches
 [x] Zustand

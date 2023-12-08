@@ -2,8 +2,10 @@ import { ClerkProvider, useAuth, useUser } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
 import { Slot, useRouter, SplashScreen } from "expo-router";
 import * as SecureStore from "expo-secure-store";
-
 import { useEffect } from "react";
+import { RootSiblingParent } from "react-native-root-siblings";
+import { QueryClient, QueryClientProvider } from "react-query";
+
 import { initializeSupabase } from "@/utils/supabase";
 
 const clerkKey = process.env.EXPO_PUBLIC_API_KEY!;
@@ -43,11 +45,16 @@ export default function RootLayout() {
 
   if (!loaded) return null;
 
+  const queryClient = new QueryClient();
+
   return (
-    // <ClerkProvider publishableKey={clerkKey}>
-    <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
-      <InitialLayout />
-    </ClerkProvider>
+    <RootSiblingParent>
+      <QueryClientProvider client={queryClient}>
+        <ClerkProvider publishableKey={clerkKey} tokenCache={tokenCache}>
+          <InitialLayout />
+        </ClerkProvider>
+      </QueryClientProvider>
+    </RootSiblingParent>
   );
 }
 
@@ -70,21 +77,21 @@ const InitialLayout = () => {
 
     SplashScreen.hideAsync();
 
-    router.replace("/(tabs)/home");
-    // if (isSignedIn) {
-    //   if (user?.hasVerifiedPhoneNumber) {
-    //     if (!user?.unsafeMetadata.finishedOnboarding) {
-    //       router.replace("/(onboarding)/welcome");
-    //     } else {
-    //       router.replace("/(tabs)/home");
-    //     }
-    //   } else {
-    //     // router.replace("/(onboarding)/welcome");
-    //     router.replace("/(register)/prepare");
-    //   }
-    // } else {
-    //   router.replace("/(register)/login");
-    // }
+    // router.replace("/(tabs)/home");
+    if (isSignedIn) {
+      if (user?.hasVerifiedPhoneNumber) {
+        if (!user?.unsafeMetadata.finishedOnboarding) {
+          router.replace("/(onboarding)/welcome");
+        } else {
+          router.replace("/(tabs)/home");
+        }
+      } else {
+        // router.replace("/(onboarding)/welcome");
+        router.replace("/(register)/prepare");
+      }
+    } else {
+      router.replace("/(register)/login");
+    }
   }, [isSignedIn]);
 
   return <Slot />;
