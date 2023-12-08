@@ -49,20 +49,13 @@ PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
 [x] App crash
 [] Mejorar manejo de Zod
-[] Splash screen
-[] Accesibilidad
 [] Mensajes en Clerk (error, sms, mail)
 [] Logica de reenviar sms
-[] Bugs
 [] Spinner al boton y desactivarlo
-[] Terminos y condiciones
 [] Not found page
 [] Crear tablas y handlear que se envia a supabase
-[] Barra de busqueda estilo rappi
-[] Hard update
 [] Reanimated
 [] Haptics
-[] Dev / Prod
 [] Switch android baila
 [] Redirect bio
 [] Supabase error
@@ -74,8 +67,16 @@ PENDIENTES VARIOS
 [] Constant texts
 [] Keyboard types
 [] Skeleton
+
+[] Dev / Prod
+[] Accesibilidad
+[] Splash screen
+[] Bugs
+[] Terminos y condiciones
 [] Boton pedir valoracion
-[] Mejores proveedores de tu zonac
+[] Hard update
+[] Barra de busqueda estilo rappi
+[] Mejores proveedores de tu zona
 
 FEATURES
 [] Sidebar
