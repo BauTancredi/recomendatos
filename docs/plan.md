@@ -23,8 +23,8 @@ Semana 4/12 - 10/12
 [x] Settings
 [x] React query
 [x] Image picker
-[] Conditional rendering
-[] Comercio
+[x] Conditional rendering
+[x] Comercio
 Semana 11/12 - 17/12
 [] Pendientes varios
 Semana 18/12 - 24/12

@@ -7,7 +7,6 @@ import React, { useRef } from "react";
 import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
-import { useQuery } from "react-query";
 import Chip from "@/components/aux/Chip";
 import EditProfileBottomSheet from "@/components/bottom/EditProfileBottomSheet";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -18,15 +17,13 @@ import SectionSubtitle from "@/components/text/SectionSubtitle";
 import SectionTitle from "@/components/text/SectionTitle";
 import { defaultStyles } from "@/constants/Styles";
 import useProviderQuery from "@/hooks/useProviderQuery";
-import { getProviderById } from "@/queries/getProviderById";
-import { getSupabase } from "@/utils/supabase";
 
-const HomeScreen = () => {
+const UserProfileScreen = () => {
   const { user } = useUser();
   const { signOut } = useAuth();
   const router = useRouter();
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const supabase = getSupabase();
+  const isProvider = user?.unsafeMetadata.isProvider;
 
   const menuItems = [
     {
@@ -66,9 +63,93 @@ const HomeScreen = () => {
     },
   ];
 
-  const { data, error, isLoading } = useProviderQuery(user?.id!);
-  console.log(data?.data.bio);
+  const {
+    data,
+    // , isLoading, isError
+  } = useProviderQuery(user?.id!);
 
+  return (
+    <>
+      {!isProvider ? (
+        <ProviderProfile
+          user={user}
+          menuItems={menuItems}
+          data={data}
+          bottomSheetRef={bottomSheetRef}
+        />
+      ) : (
+        <UserProfile user={user} menuItems={menuItems} />
+      )}
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  buttonContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  workImage: {
+    width: 150,
+    height: 200,
+    borderRadius: 15,
+  },
+  directionContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    // padding: 10,
+  },
+  locationsContainer: {
+    width: "100%",
+  },
+  chipsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    backgroundColor: "white",
+  },
+  bioInput: {
+    flexGrow: 1,
+    minHeight: 60,
+    maxHeight: 200,
+    borderRadius: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "black",
+    fontFamily: "mon",
+    fontSize: 14,
+  },
+});
+
+export default UserProfileScreen;
+
+const UserProfile = ({ user, menuItems }: { user: any; menuItems: any }) => {
+  return (
+    <View style={[defaultStyles.container, { alignItems: "center", gap: 10 }]}>
+      <UserCard user={user} />
+      <UserSettings menuItems={menuItems} />
+    </View>
+  );
+};
+
+const ProviderProfile = ({
+  user,
+  menuItems,
+  data,
+  bottomSheetRef,
+}: {
+  user: any;
+  menuItems: any;
+  data: any;
+  bottomSheetRef: any;
+}) => {
   return (
     <>
       <Stack.Screen
@@ -86,6 +167,7 @@ const HomeScreen = () => {
           },
         }}
       />
+
       <ScrollView
         style={[
           defaultStyles.container,
@@ -97,7 +179,6 @@ const HomeScreen = () => {
           paddingBottom: 40,
         }}
       >
-        {/* <UserCard user={user} /> */}
         <ProviderCard user={user} />
 
         <View style={styles.buttonContainer}>
@@ -124,29 +205,53 @@ const HomeScreen = () => {
         </View>
 
         <StatsContainer />
+
+        {data?.data.type !== "shop" && (
+          <View
+            style={{
+              width: "100%",
+            }}
+          >
+            <SectionTitle title="Dirección" />
+            <View style={styles.directionContainer}>
+              <Ionicons name="location-outline" size={16} color="black" />
+              <Text
+                style={{
+                  fontFamily: "mon",
+                  fontSize: 14,
+                }}
+              >
+                Bolivar 624, Tigre
+              </Text>
+            </View>
+          </View>
+        )}
+
         <ImageCarousel carouselTitle="Trabajos Realizados" imageStyles={styles.workImage} />
 
-        <View style={styles.locationsContainer}>
-          <SectionTitle title="Localidades" />
-          <View style={{ gap: 10 }}>
-            <View>
-              <SectionSubtitle title="Zona Norte" />
-              <View style={styles.chipsContainer}>
-                {Array.from({ length: 9 }).map((_, index) => (
-                  <Chip key={index} title="Tigre" />
-                ))}
+        {data?.data.type !== "shop" && (
+          <View style={styles.locationsContainer}>
+            <SectionTitle title="Localidades" />
+            <View style={{ gap: 10 }}>
+              <View>
+                <SectionSubtitle title="Zona Norte" />
+                <View style={styles.chipsContainer}>
+                  {Array.from({ length: 9 }).map((_, index) => (
+                    <Chip key={index} title="Tigre" />
+                  ))}
+                </View>
               </View>
-            </View>
-            <View>
-              <SectionSubtitle title="Zona Oeste" />
-              <View style={styles.chipsContainer}>
-                {Array.from({ length: 2 }).map((_, index) => (
-                  <Chip key={index} title="Tigre" />
-                ))}
+              <View>
+                <SectionSubtitle title="Zona Oeste" />
+                <View style={styles.chipsContainer}>
+                  {Array.from({ length: 2 }).map((_, index) => (
+                    <Chip key={index} title="Tigre" />
+                  ))}
+                </View>
               </View>
             </View>
           </View>
-        </View>
+        )}
 
         <View
           style={{
@@ -156,49 +261,8 @@ const HomeScreen = () => {
           <SectionTitle title="Biografia" />
           <TextInput multiline style={styles.bioInput} value={data?.data.bio} editable={false} />
         </View>
-        {/* <UserSettings menuItems={menuItems} /> */}
       </ScrollView>
       <EditProfileBottomSheet ref={bottomSheetRef} menuItems={menuItems} user={user} />
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-  buttonContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  workImage: {
-    width: 150,
-    height: 200,
-    borderRadius: 15,
-  },
-  locationsContainer: {
-    width: "100%",
-  },
-  chipsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 10,
-    backgroundColor: "white",
-  },
-  bioInput: {
-    flexGrow: 1,
-    minHeight: 60,
-    maxHeight: 200,
-    borderRadius: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "black",
-    fontFamily: "mon",
-    fontSize: 14,
-  },
-});
-
-export default HomeScreen;

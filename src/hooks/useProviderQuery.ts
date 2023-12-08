@@ -15,6 +15,7 @@ function useProviderQuery(providerId: string) {
     queryKey,
     queryFn,
     enabled: true,
+    retry: false,
   });
 }
 
