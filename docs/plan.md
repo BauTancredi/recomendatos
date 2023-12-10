@@ -49,24 +49,24 @@ PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
 [x] App crash
 [x] Mensajes en Clerk (error, sms, mail)
-[] Logica de reenviar sms
 [x] Spinner al boton y desactivarlo
 [x] Spinner en cambio de foto de perfil
 [x] Reanimated
-[] Haptics
+[x] Haptics
+[x] Cerrar bottom sheet cuando voy a editar perfil
+[] Estilos
+[] Types
+[] Constant texts
+[] Keyboard types
+[] Skeleton
+[] Altura controlledInput y label opcional
+[] Primary button
+[] Area code
+[] Terminos y condiciones
 [] Switch android baila
 [] Redirect bio
 [] Supabase error
-[] Estilos
-[] Types
-[] Altura controlledInput y label opcional
-[] Primary button
-[x] Cerrar bottom sheet cuando voy a editar perfil
-[] Area code
-[] Constant texts
-[] Terminos y condiciones
-[] Keyboard types
-[] Skeleton
+[] Logica de reenviar sms
 [] Mejorar manejo de Zod
 [] Alerts, Console Logs
 [] Mejorar mensajes de error
@@ -76,6 +76,7 @@ PENDIENTES VARIOS
 [] Rutas dinamicas
 [] Dev / Prod
 [] Reanimated
+[] Haptics
 [] Accesibilidad
 [] Splash screen
 [] Bugs

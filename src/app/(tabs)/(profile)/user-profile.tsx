@@ -1,6 +1,7 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Ionicons, Entypo } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
+import * as Haptics from "expo-haptics";
 import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
 import React, { useRef } from "react";
@@ -76,7 +77,7 @@ const UserProfileScreen = () => {
 
   return (
     <>
-      {isProvider ? (
+      {!isProvider ? (
         <ProviderProfile
           user={user}
           menuItems={menuItems}
@@ -195,6 +196,7 @@ const ProviderProfile = ({
           <PrimaryButton
             text="Editar Perfil"
             onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
               // router.push("/edit-user-profile");
             }}
             styles={{
@@ -205,6 +207,7 @@ const ProviderProfile = ({
           <PrimaryButton
             text="Compartir Perfil"
             onPress={() => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
               // router.push("/edit-user-profile");
             }}
             styles={{
