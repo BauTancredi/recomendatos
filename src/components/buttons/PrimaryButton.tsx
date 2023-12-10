@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity } from "react-native";
 import { defaultStyles } from "@/constants/Styles";
 
 interface Props {
@@ -7,22 +7,27 @@ interface Props {
   text: string;
   disabled?: boolean;
   styles?: any;
+  isLoading?: boolean;
 }
 
-const PrimaryButton = ({ onPress, text, disabled, styles }: Props) => {
+const PrimaryButton = ({ onPress, text, disabled, styles, isLoading }: Props) => {
   return (
     <TouchableOpacity
-      disabled={disabled}
+      disabled={disabled || isLoading}
       style={[
         defaultStyles.btn,
-        disabled && defaultStyles.btnDisabled,
+        (disabled || isLoading) && defaultStyles.btnDisabled,
         { marginTop: 10, alignSelf: "stretch" },
 
         styles,
       ]}
       onPress={onPress}
     >
-      <Text style={defaultStyles.btnText}>{text}</Text>
+      {isLoading ? (
+        <ActivityIndicator size="small" color="#fff" />
+      ) : (
+        <Text style={defaultStyles.btnText}>{text}</Text>
+      )}
     </TouchableOpacity>
   );
 };

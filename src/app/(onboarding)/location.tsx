@@ -120,6 +120,7 @@ const LocationScreen = () => {
         text={TEXT_CONSTANTS.CONTINUE}
         onPress={handleContinue}
         disabled={!selectedCombo.zona || !selectedCombo.localidad || isLoading}
+        isLoading={isLoading}
       />
       <BottomSheet
         ref={bottomSheetRef}

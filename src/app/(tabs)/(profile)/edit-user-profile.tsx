@@ -3,7 +3,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as ImagePicker from "expo-image-picker";
 import { Link, Stack, useRouter } from "expo-router";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   StyleSheet,
@@ -46,6 +46,7 @@ const schema = z.object({
 const EditUserProfileScreen = () => {
   const { user } = useUser();
   const router = useRouter();
+  const [isLoadingPhoto, setIsLoadingPhoto] = useState(false);
 
   const bottomSheetRef = useRef<BottomSheet>(null);
   const areaCode = user?.phoneNumbers![0].phoneNumber.slice(0, 3);
@@ -64,6 +65,7 @@ const EditUserProfileScreen = () => {
   });
 
   const launchGallery = async () => {
+    bottomSheetRef.current?.close();
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -73,18 +75,21 @@ const EditUserProfileScreen = () => {
       });
 
       if (!result.canceled) {
+        setIsLoadingPhoto(true);
         const finalBase64Image = await processImage(result.assets[0].uri);
-        user?.setProfileImage({ file: finalBase64Image! });
+        await user?.setProfileImage({ file: finalBase64Image! });
       }
     } catch (error) {
       console.error("Error launching gallery: ", error);
       alert("Failed to open gallery.");
     } finally {
-      bottomSheetRef.current?.close();
+      setIsLoadingPhoto(false);
+      // bottomSheetRef.current?.close();
     }
   };
 
   const launchCamera = async () => {
+    bottomSheetRef.current?.close();
     try {
       const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
       if (permissionResult.granted === false) {
@@ -100,6 +105,7 @@ const EditUserProfileScreen = () => {
       });
 
       if (!result.canceled) {
+        setIsLoadingPhoto(true);
         const finalBase64Image = await processImage(result.assets[0].uri);
         user?.setProfileImage({ file: finalBase64Image! });
       }
@@ -107,7 +113,8 @@ const EditUserProfileScreen = () => {
       console.error("Error launching camera: ", error);
       alert("Failed to open camera.");
     } finally {
-      bottomSheetRef.current?.close();
+      setIsLoadingPhoto(false);
+      // bottomSheetRef.current?.close();
     }
   };
 
@@ -125,10 +132,12 @@ const EditUserProfileScreen = () => {
           text: "OK",
           onPress: () => {
             try {
+              setIsLoadingPhoto(true);
               user?.setProfileImage({ file: null });
             } catch (error) {
               console.error("Error deleting photo: ", error);
             } finally {
+              setIsLoadingPhoto(false);
               bottomSheetRef.current?.close();
             }
           },
@@ -176,7 +185,7 @@ const EditUserProfileScreen = () => {
         }}
       />
       <View style={[defaultStyles.container, { alignItems: "center", gap: 20 }]}>
-        <ProfileImage user={user} bottomSheetRef={bottomSheetRef} />
+        <ProfileImage user={user} bottomSheetRef={bottomSheetRef} isLoadingPhoto={isLoadingPhoto} />
         <View
           style={{
             gap: 5,

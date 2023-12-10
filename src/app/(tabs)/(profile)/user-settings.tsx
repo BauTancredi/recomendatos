@@ -62,5 +62,3 @@ const UserSettingsScreen = () => {
 };
 
 export default UserSettingsScreen;
-
-const styles = StyleSheet.create({});

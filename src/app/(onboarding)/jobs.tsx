@@ -4,8 +4,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, Switch, FlatList, Image, StyleSheet } from "react-native";
 
 import availableJobs from "@/assets/data/jobs.json";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/aux/ProgressSteps";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";

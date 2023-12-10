@@ -36,7 +36,7 @@ const schema = z.object({
 
 const LoginScreen = () => {
   useWarmUpBrowser();
-  const [loading, setLoading] = React.useState(false);
+  const [isOAuthLoading, setIsOAuthLoading] = React.useState(false);
 
   const router = useRouter();
   const { isLoaded } = useSignUp();
@@ -66,7 +66,7 @@ const LoginScreen = () => {
     }[strategy];
 
     try {
-      setLoading(true);
+      setIsOAuthLoading(true);
       const { createdSessionId, setActive } = await selectedAuth();
 
       if (createdSessionId) {
@@ -75,7 +75,7 @@ const LoginScreen = () => {
     } catch (err) {
       console.error("OAuth error", err);
     } finally {
-      setLoading(false);
+      setIsOAuthLoading(false);
     }
   };
 
@@ -113,7 +113,7 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView style={defaultStyles.safeArea}>
-      <Spinner visible={isSubmitting || loading} />
+      <Spinner visible={isOAuthLoading} />
 
       <View style={[defaultStyles.container, styles.loginContainer]}>
         <View style={{ alignItems: "center" }}>
@@ -136,6 +136,7 @@ const LoginScreen = () => {
               text={TEXT_CONSTANTS.CONTINUE}
               onPress={handleSubmit(onSignUpPress)}
               disabled={!isValid}
+              isLoading={isSubmitting}
             />
           </View>
 

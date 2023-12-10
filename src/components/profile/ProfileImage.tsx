@@ -1,8 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, ActivityIndicator } from "react-native";
 
-const ProfileImage = ({ user, bottomSheetRef }: { user: any; bottomSheetRef: any }) => {
+const ProfileImage = ({
+  user,
+  bottomSheetRef,
+  isLoadingPhoto,
+}: {
+  user: any;
+  bottomSheetRef: any;
+  isLoadingPhoto: boolean;
+}) => {
   return (
     <View style={{ position: "relative" }}>
       <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />
@@ -16,6 +24,7 @@ const ProfileImage = ({ user, bottomSheetRef }: { user: any; bottomSheetRef: any
           }}
         />
       </View>
+      {isLoadingPhoto && <ActivityIndicator color="white" style={styles.activityIndicator} />}
     </View>
   );
 };
@@ -44,6 +53,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+
+  activityIndicator: {
+    position: "absolute",
+    borderRadius: 50,
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    zIndex: 1,
+    width: 100,
+    height: 100,
   },
 });
 

@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocalSearchParams } from "expo-router";
 import { useForm } from "react-hook-form";
 import { View, Alert } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -104,21 +103,21 @@ const RegisterScreen = () => {
 
   return (
     <View style={[defaultStyles.container, { gap: 2, paddingVertical: 20 }]}>
-      <Spinner visible={isSubmitting} />
       <ControlledInput control={control} name="firstName" placeholder="Nombre" errors={errors} />
-
       <ControlledInput control={control} name="lastName" placeholder="Apellido" errors={errors} />
-
       <ControlledInput
         control={control}
         name="emailAddress"
         placeholder="Correo electronico"
         errors={errors}
       />
-
       <ControlledInput control={control} name="password" placeholder="Contraseña" errors={errors} />
-
-      <PrimaryButton text="Verificar" onPress={handleSubmit(onSignUpPress)} disabled={!isValid} />
+      <PrimaryButton
+        text="Verificar"
+        onPress={handleSubmit(onSignUpPress)}
+        disabled={!isValid || isSubmitting}
+        isLoading={isSubmitting}
+      />
     </View>
   );
 };

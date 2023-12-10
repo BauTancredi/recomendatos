@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -48,8 +47,6 @@ const AttemptScreen = () => {
 
   return (
     <View style={[defaultStyles.container, { paddingVertical: 20 }]}>
-      <Spinner visible={isSubmitting} />
-
       <ControlledInput
         control={control}
         name="verificationCode"
@@ -61,7 +58,8 @@ const AttemptScreen = () => {
       <PrimaryButton
         text="Enviar codigo"
         onPress={handleSubmit(onAttemptVerification)}
-        disabled={!isValid}
+        disabled={!isValid || isSubmitting}
+        isLoading={isSubmitting}
       />
     </View>
   );

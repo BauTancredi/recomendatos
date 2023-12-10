@@ -48,9 +48,10 @@ Semana 26/2 - 4/3
 PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
 [x] App crash
-[] Mensajes en Clerk (error, sms, mail)
+[x] Mensajes en Clerk (error, sms, mail)
 [] Logica de reenviar sms
-[] Spinner al boton y desactivarlo
+[x] Spinner al boton y desactivarlo
+[x] Spinner en cambio de foto de perfil
 [] Not found page
 [] Reanimated
 [] Haptics
@@ -60,19 +61,22 @@ PENDIENTES VARIOS
 [] Estilos
 [] Types
 [] Altura controlledInput y label opcional
+[] Primary button
+[x] Cerrar bottom sheet cuando voy a editar perfil
 [] Area code
 [] Alerts, Console Logs
 [] Constant texts
+[] Terminos y condiciones
 [] Keyboard types
 [] Skeleton
 [] Mejorar manejo de Zod
+[] Mejorar mensajes de error
 [] Crear tablas y handlear que se envia a supabase
 
 [] Dev / Prod
 [] Accesibilidad
 [] Splash screen
 [] Bugs
-[] Terminos y condiciones
 [] Boton pedir valoracion
 [] Hard update
 [] Barra de busqueda estilo rappi

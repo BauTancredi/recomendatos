@@ -3,8 +3,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { FlatList, StyleSheet, Switch, Text, View, Image } from "react-native";
 
 import shops from "@/assets/data/shops.json";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/aux/ProgressSteps";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 
