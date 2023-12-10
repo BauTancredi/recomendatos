@@ -4,7 +4,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
 import React, { useRef } from "react";
-import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
 import Chip from "@/components/aux/Chip";
@@ -30,6 +30,7 @@ const UserProfileScreen = () => {
       title: "Editar Perfil",
       icon: <Ionicons name="person-circle-outline" size={24} color="black" />,
       onPress: () => {
+        bottomSheetRef.current?.close();
         router.push("/edit-user-profile");
       },
     },
@@ -37,6 +38,7 @@ const UserProfileScreen = () => {
       title: "Configuración",
       icon: <Ionicons name="settings-outline" size={24} color="black" />,
       onPress: () => {
+        bottomSheetRef.current?.close();
         router.push("/user-settings");
       },
     },
@@ -44,6 +46,7 @@ const UserProfileScreen = () => {
       title: "Quiero ser proveedor",
       icon: <Entypo name="tools" size={24} color="black" />,
       onPress: () => {
+        bottomSheetRef.current?.close();
         console.log("Quiero ser proveedor");
       },
     },
@@ -51,6 +54,7 @@ const UserProfileScreen = () => {
       title: "Dudas y sugerencias",
       icon: <Ionicons name="mail-outline" size={24} color="black" />,
       onPress: () => {
+        bottomSheetRef.current?.close();
         Linking.openURL("whatsapp://send?text=putoelquelee&phone=5491128320754");
       },
     },
@@ -58,6 +62,7 @@ const UserProfileScreen = () => {
       title: "Cerrar sesión",
       icon: <Ionicons name="log-out-outline" size={24} color="black" />,
       onPress: () => {
+        bottomSheetRef.current?.close();
         signOut();
       },
     },
@@ -262,7 +267,7 @@ const ProviderProfile = ({
           <TextInput multiline style={styles.bioInput} value={data?.data.bio} editable={false} />
         </View>
       </ScrollView>
-      <EditProfileBottomSheet ref={bottomSheetRef} menuItems={menuItems} user={user} />
+      <EditProfileBottomSheet ref={bottomSheetRef} menuItems={menuItems} />
     </>
   );
 };
