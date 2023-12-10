@@ -16,7 +16,7 @@ Semana 27/11 - 3/12
 Semana 4/12 - 10/12
 [x] Perfil usuario 4/12
 [x] Perfil usuario con opciones
-[] Perfil Proveedor
+[x] Perfil Proveedor
 [x] Chips
 [x] Bio
 [x] Limpiar todo el codigo
@@ -48,12 +48,10 @@ Semana 26/2 - 4/3
 PENDIENTES VARIOS
 [x] Volver a testear si hace falta usar el router en el login
 [x] App crash
-[] Mejorar manejo de Zod
 [] Mensajes en Clerk (error, sms, mail)
 [] Logica de reenviar sms
 [] Spinner al boton y desactivarlo
 [] Not found page
-[] Crear tablas y handlear que se envia a supabase
 [] Reanimated
 [] Haptics
 [] Switch android baila
@@ -67,6 +65,8 @@ PENDIENTES VARIOS
 [] Constant texts
 [] Keyboard types
 [] Skeleton
+[] Mejorar manejo de Zod
+[] Crear tablas y handlear que se envia a supabase
 
 [] Dev / Prod
 [] Accesibilidad

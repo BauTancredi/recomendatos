@@ -5,17 +5,33 @@ const ProviderCard = ({ user }: { user: any }) => {
   return (
     <View style={styles.card}>
       <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />
-      <Text>
-        {user?.firstName} {user?.lastName}
-      </Text>
-      <Text>Plomero</Text>
-      <Text>
-        Activo desde&nbsp;
-        {new Date(user?.createdAt!).toLocaleDateString("en-AR")}
-      </Text>
-      <TouchableOpacity>
-        <Text>Ver mas</Text>
-      </TouchableOpacity>
+      <View
+        style={{
+          width: "70%",
+          gap: 10,
+        }}
+      >
+        <Text>
+          {user?.firstName} {user?.lastName}
+        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: 10,
+          }}
+        >
+          <Text>Plomero</Text>
+        </View>
+        <Text
+          style={{
+            verticalAlign: "bottom",
+          }}
+        >
+          Activo desde&nbsp;
+          {new Date(user?.createdAt!).toLocaleDateString("en-AR")}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -27,9 +43,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     padding: 10,
-    // margin: 10,
     alignItems: "center",
-    width: "60%",
+    width: "100%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -39,6 +54,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     gap: 10,
+    flexDirection: "row",
   },
   profileImage: {
     width: 100,
