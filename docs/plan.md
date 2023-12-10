@@ -71,19 +71,20 @@ PENDIENTES VARIOS
 [] Alerts, Console Logs
 [] Mejorar mensajes de error
 [] Crear tablas y handlear que se envia a supabase
+[] Image viewer
 
-[] Not found page
 [] Rutas dinamicas
-[] Dev / Prod
+[] Mejores proveedores de tu zona
+[] Not found page
+[] Boton pedir valoracion
 [] Reanimated
 [] Haptics
-[] Accesibilidad
-[] Splash screen
 [] Bugs
-[] Boton pedir valoracion
+[] Accesibilidad
+[] Dev / Prod
+[] Splash screen
 [] Hard update
 [] Barra de busqueda estilo rappi
-[] Mejores proveedores de tu zona
 
 FEATURES
 [] Sidebar
