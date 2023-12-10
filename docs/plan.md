@@ -52,8 +52,7 @@ PENDIENTES VARIOS
 [] Logica de reenviar sms
 [x] Spinner al boton y desactivarlo
 [x] Spinner en cambio de foto de perfil
-[] Not found page
-[] Reanimated
+[x] Reanimated
 [] Haptics
 [] Switch android baila
 [] Redirect bio
@@ -64,16 +63,19 @@ PENDIENTES VARIOS
 [] Primary button
 [x] Cerrar bottom sheet cuando voy a editar perfil
 [] Area code
-[] Alerts, Console Logs
 [] Constant texts
 [] Terminos y condiciones
 [] Keyboard types
 [] Skeleton
 [] Mejorar manejo de Zod
+[] Alerts, Console Logs
 [] Mejorar mensajes de error
 [] Crear tablas y handlear que se envia a supabase
 
+[] Not found page
+[] Rutas dinamicas
 [] Dev / Prod
+[] Reanimated
 [] Accesibilidad
 [] Splash screen
 [] Bugs

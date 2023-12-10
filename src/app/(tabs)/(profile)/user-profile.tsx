@@ -4,8 +4,9 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
 import React, { useRef } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import Animated, { FadeInLeft } from "react-native-reanimated";
 
 import Chip from "@/components/aux/Chip";
 import EditProfileBottomSheet from "@/components/bottom/EditProfileBottomSheet";
@@ -75,7 +76,7 @@ const UserProfileScreen = () => {
 
   return (
     <>
-      {!isProvider ? (
+      {isProvider ? (
         <ProviderProfile
           user={user}
           menuItems={menuItems}
@@ -137,10 +138,13 @@ export default UserProfileScreen;
 
 const UserProfile = ({ user, menuItems }: { user: any; menuItems: any }) => {
   return (
-    <View style={[defaultStyles.container, { alignItems: "center", gap: 10 }]}>
+    <Animated.View
+      style={[defaultStyles.container, { alignItems: "center", gap: 10 }]}
+      entering={FadeInLeft}
+    >
       <UserCard user={user} />
       <UserSettings menuItems={menuItems} />
-    </View>
+    </Animated.View>
   );
 };
 
@@ -173,7 +177,7 @@ const ProviderProfile = ({
         }}
       />
 
-      <ScrollView
+      <Animated.ScrollView
         style={[
           defaultStyles.container,
           // {paddingHorizontal: 0}
@@ -183,6 +187,7 @@ const ProviderProfile = ({
           gap: 20,
           paddingBottom: 40,
         }}
+        entering={FadeInLeft}
       >
         <ProviderCard user={user} />
 
@@ -266,7 +271,7 @@ const ProviderProfile = ({
           <SectionTitle title="Biografia" />
           <TextInput multiline style={styles.bioInput} value={data?.data.bio} editable={false} />
         </View>
-      </ScrollView>
+      </Animated.ScrollView>
       <EditProfileBottomSheet ref={bottomSheetRef} menuItems={menuItems} />
     </>
   );
