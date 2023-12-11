@@ -30,6 +30,19 @@ const ControlledInput: React.FC<ControlledInputProps> = ({
   style,
   secureTextEntry,
 }) => {
+  const handleKeyboardType = () => {
+    switch (name) {
+      case "emailAddress":
+        return "email-address";
+      case "phoneNumber":
+        return "phone-pad";
+      case "verificationCode":
+        return "numeric";
+      default:
+        return "default";
+    }
+  };
+
   return (
     <View>
       {/* La altura se usa dentro de register. Arreglar para que sea siempre la misma. */}
@@ -45,6 +58,7 @@ const ControlledInput: React.FC<ControlledInputProps> = ({
             value={value}
             style={[defaultStyles.inputField, style]}
             secureTextEntry={secureTextEntry}
+            keyboardType={handleKeyboardType()}
           />
         )}
       />

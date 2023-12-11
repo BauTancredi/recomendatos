@@ -56,7 +56,7 @@ PENDIENTES VARIOS
 [x] Cerrar bottom sheet cuando voy a editar perfil
 [x] Estilos
 [x] Types
-[] Keyboard types
+[x] Keyboard types
 [] Skeleton
 [] Altura controlledInput y label opcional
 [] Primary button
