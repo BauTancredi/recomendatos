@@ -17,7 +17,7 @@ const ProviderTypeScreen = () => {
         </Text>
 
         <TouchableOpacity
-          style={styles.card}
+          style={defaultStyles.card}
           onPress={() => {
             setType("provider");
             router.push("/(onboarding)/welcome-provider");
@@ -30,7 +30,7 @@ const ProviderTypeScreen = () => {
           <Text style={defaultStyles.textCenter}>Como proveedor</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.card}
+          style={defaultStyles.card}
           onPress={() => {
             setType("shop");
             router.push("/(onboarding)/welcome-provider");
@@ -55,14 +55,5 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // justifyContent: "center",
     // width: "100%",
-  },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    padding: 10,
-    margin: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
   },
 });

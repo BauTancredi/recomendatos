@@ -13,6 +13,15 @@ export const defaultStyles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 5,
+    padding: 10,
+    margin: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+  },
   inputField: {
     height: 44,
     borderWidth: 1,

@@ -39,7 +39,7 @@ const WelcomeScreen = () => {
         <Text style={defaultStyles.textCenter}>RecomenDatos</Text>
         <Text style={defaultStyles.textCenter}>Que te trae por aca?</Text>
         <TouchableOpacity
-          style={styles.card}
+          style={defaultStyles.card}
           onPress={() => handleClick("user")}
           disabled={isLoading}
         >
@@ -51,7 +51,7 @@ const WelcomeScreen = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.card}
+          style={defaultStyles.card}
           onPress={() => handleClick("provider")}
           disabled={isLoading}
         >
@@ -77,14 +77,5 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // justifyContent: "center",
     // width: "100%",
-  },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    padding: 10,
-    margin: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
   },
 });

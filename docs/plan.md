@@ -54,7 +54,7 @@ PENDIENTES VARIOS
 [x] Reanimated
 [x] Haptics
 [x] Cerrar bottom sheet cuando voy a editar perfil
-[] Estilos
+[x] Estilos
 [] Types
 [] Constant texts
 [] Keyboard types
