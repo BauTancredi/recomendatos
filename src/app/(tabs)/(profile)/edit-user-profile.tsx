@@ -58,8 +58,8 @@ const EditUserProfileScreen = () => {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
-      firstName: user?.firstName!,
-      lastName: user?.lastName!,
+      firstName: user?.firstName || "",
+      lastName: user?.lastName || "",
     },
     mode: "onChange",
   });
