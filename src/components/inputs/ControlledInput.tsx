@@ -4,7 +4,7 @@ import { Text, TextInput, View } from "react-native";
 
 import { defaultStyles } from "@/constants/Styles";
 
-interface Props {
+interface ControlledInputProps {
   control: any;
   errors: any;
   name:
@@ -22,7 +22,14 @@ interface Props {
   secureTextEntry?: boolean;
 }
 
-const ControlledInput = ({ control, errors, placeholder, name, style, secureTextEntry }: Props) => {
+const ControlledInput: React.FC<ControlledInputProps> = ({
+  control,
+  errors,
+  placeholder,
+  name,
+  style,
+  secureTextEntry,
+}) => {
   return (
     <View>
       {/* La altura se usa dentro de register. Arreglar para que sea siempre la misma. */}

@@ -10,7 +10,7 @@ interface ContinueWithButtonProps {
   onPress: () => void;
 }
 
-const ContinueWithButton = ({ title, icon, onPress }: ContinueWithButtonProps) => {
+const ContinueWithButton: React.FC<ContinueWithButtonProps> = ({ title, icon, onPress }) => {
   return (
     <TouchableOpacity style={defaultStyles.btnOutline} onPress={onPress}>
       <Ionicons name={icon} size={24} style={defaultStyles.btnIcon} />

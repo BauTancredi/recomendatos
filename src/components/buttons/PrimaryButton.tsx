@@ -2,7 +2,7 @@ import React from "react";
 import { ActivityIndicator, Text, TouchableOpacity } from "react-native";
 import { defaultStyles } from "@/constants/Styles";
 
-interface Props {
+interface PrimaryButtonProps {
   onPress: () => void;
   text: string;
   disabled?: boolean;
@@ -10,7 +10,13 @@ interface Props {
   isLoading?: boolean;
 }
 
-const PrimaryButton = ({ onPress, text, disabled, styles, isLoading }: Props) => {
+const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  onPress,
+  text,
+  disabled,
+  styles,
+  isLoading,
+}) => {
   return (
     <TouchableOpacity
       disabled={disabled || isLoading}

@@ -2,7 +2,11 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 
-const UserSettings = ({ menuItems }: { menuItems: any }) => {
+interface UserSettingsProps {
+  menuItems: any;
+}
+
+const UserSettings: React.FC<UserSettingsProps> = ({ menuItems }) => {
   return (
     <View
       style={{

@@ -1,7 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
-const UserCard = ({ user }: { user: any }) => {
+interface UserCardProps {
+  user: any;
+}
+
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
   return (
     <View style={styles.card}>
       <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />

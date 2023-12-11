@@ -1,6 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 
-const StatsItem = ({ title, value }: { title: string; value: string }) => {
+interface StatsItemProps {
+  title: string;
+  value: string;
+}
+
+const StatsItem: React.FC<StatsItemProps> = ({ title, value }) => {
   return (
     <View style={styles.statsItem}>
       <Text style={{ fontFamily: "mon-sb", fontSize: 20 }}>{value}</Text>

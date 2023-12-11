@@ -1,7 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
-const ProviderCard = ({ user }: { user: any }) => {
+interface ProviderCardProps {
+  user: any;
+}
+
+const ProviderCard: React.FC<ProviderCardProps> = ({ user }) => {
   return (
     <View style={styles.card}>
       <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />

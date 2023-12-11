@@ -2,15 +2,13 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { View, Image, StyleSheet, ActivityIndicator } from "react-native";
 
-const ProfileImage = ({
-  user,
-  bottomSheetRef,
-  isLoadingPhoto,
-}: {
+interface ProfileImageProps {
   user: any;
   bottomSheetRef: any;
   isLoadingPhoto: boolean;
-}) => {
+}
+
+const ProfileImage: React.FC<ProfileImageProps> = ({ user, bottomSheetRef, isLoadingPhoto }) => {
   return (
     <View style={{ position: "relative" }}>
       <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />

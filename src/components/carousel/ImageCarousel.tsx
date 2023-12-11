@@ -6,13 +6,12 @@ import { ScrollView, Image, View, TouchableOpacity } from "react-native";
 import SectionTitle from "../text/SectionTitle";
 import { processImage } from "@/utils/image";
 
-const ImageCarousel = ({
-  carouselTitle,
-  imageStyles,
-}: {
+interface ImageCarouselProps {
   carouselTitle: string;
   imageStyles: any;
-}) => {
+}
+
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ carouselTitle, imageStyles }) => {
   const launchGallery = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
