@@ -1,14 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import React from "react";
-import { ScrollView, Image, View, TouchableOpacity } from "react-native";
+import { ScrollView, Image, View, TouchableOpacity, StyleProp, ImageStyle } from "react-native";
 
 import SectionTitle from "../text/SectionTitle";
 import { processImage } from "@/utils/image";
 
 interface ImageCarouselProps {
   carouselTitle: string;
-  imageStyles: any;
+  imageStyles: StyleProp<ImageStyle>;
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ carouselTitle, imageStyles }) => {

@@ -1,4 +1,5 @@
 import { useUser } from "@clerk/clerk-expo";
+import { ComplexityErrors } from "@clerk/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
 import { useForm } from "react-hook-form";

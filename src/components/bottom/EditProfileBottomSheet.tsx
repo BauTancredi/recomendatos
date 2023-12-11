@@ -1,9 +1,10 @@
 import BottomSheet, { BottomSheetBackdropProps, BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import React, { useMemo, useCallback } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
+import { MenuItem } from "@/interfaces";
 
 interface EditProfileBottomSheetProps {
-  menuItems: any;
+  menuItems: MenuItem[];
 }
 
 const EditProfileBottomSheet = React.forwardRef<BottomSheet, EditProfileBottomSheetProps>(

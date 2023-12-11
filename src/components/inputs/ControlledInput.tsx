@@ -1,11 +1,11 @@
 import React from "react";
-import { Controller } from "react-hook-form";
-import { Text, TextInput, View } from "react-native";
+import { Controller, Control } from "react-hook-form";
+import { StyleProp, Text, TextInput, TextStyle, View } from "react-native";
 
 import { defaultStyles } from "@/constants/Styles";
 
 interface ControlledInputProps {
-  control: any;
+  control: Control<any>;
   errors: any;
   name:
     | "emailAddress"
@@ -18,7 +18,7 @@ interface ControlledInputProps {
     | "confirmPassword"
     | "currentPassword";
   placeholder: string;
-  style?: any;
+  style?: StyleProp<TextStyle>;
   secureTextEntry?: boolean;
 }
 

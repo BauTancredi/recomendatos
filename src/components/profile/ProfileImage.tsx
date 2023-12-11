@@ -1,10 +1,12 @@
+import { UserResource } from "@clerk/types";
 import { Ionicons } from "@expo/vector-icons";
+import BottomSheet from "@gorhom/bottom-sheet";
 import React from "react";
 import { View, Image, StyleSheet, ActivityIndicator } from "react-native";
 
 interface ProfileImageProps {
-  user: any;
-  bottomSheetRef: any;
+  user: UserResource;
+  bottomSheetRef: React.RefObject<BottomSheet>;
   isLoadingPhoto: boolean;
 }
 

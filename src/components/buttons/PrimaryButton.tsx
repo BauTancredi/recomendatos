@@ -1,12 +1,13 @@
 import React from "react";
-import { ActivityIndicator, Text, TouchableOpacity } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, StyleProp, ViewStyle } from "react-native";
+
 import { defaultStyles } from "@/constants/Styles";
 
 interface PrimaryButtonProps {
   onPress: () => void;
   text: string;
   disabled?: boolean;
-  styles?: any;
+  styles?: StyleProp<ViewStyle>;
   isLoading?: boolean;
 }
 

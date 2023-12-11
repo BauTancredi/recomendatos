@@ -1,8 +1,9 @@
+import { UserResource } from "@clerk/types";
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
 interface ProviderCardProps {
-  user: any;
+  user: UserResource;
 }
 
 const ProviderCard: React.FC<ProviderCardProps> = ({ user }) => {

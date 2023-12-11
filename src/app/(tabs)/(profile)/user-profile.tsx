@@ -1,4 +1,5 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
+import { UserResource } from "@clerk/types";
 import { Ionicons, Entypo } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
 import * as Haptics from "expo-haptics";
@@ -19,6 +20,7 @@ import SectionSubtitle from "@/components/text/SectionSubtitle";
 import SectionTitle from "@/components/text/SectionTitle";
 import { defaultStyles } from "@/constants/Styles";
 import useProviderQuery from "@/hooks/useProviderQuery";
+import { MenuItem } from "@/interfaces";
 
 const UserProfileScreen = () => {
   const { user } = useUser();
@@ -27,7 +29,7 @@ const UserProfileScreen = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const isProvider = user?.unsafeMetadata.isProvider;
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     {
       title: "Editar Perfil",
       icon: <Ionicons name="person-circle-outline" size={24} color="black" />,
@@ -79,7 +81,7 @@ const UserProfileScreen = () => {
     <>
       {!isProvider ? (
         <ProviderProfile
-          user={user}
+          user={user!}
           menuItems={menuItems}
           data={data}
           bottomSheetRef={bottomSheetRef}
@@ -137,7 +139,12 @@ const styles = StyleSheet.create({
 
 export default UserProfileScreen;
 
-const UserProfile = ({ user, menuItems }: { user: any; menuItems: any }) => {
+interface UserProfileProps {
+  user: UserResource;
+  menuItems: MenuItem[];
+}
+
+const UserProfile: React.FC<UserProfileProps> = ({ user, menuItems }) => {
   return (
     <Animated.View
       style={[defaultStyles.container, { alignItems: "center", gap: 10 }]}
@@ -149,16 +156,17 @@ const UserProfile = ({ user, menuItems }: { user: any; menuItems: any }) => {
   );
 };
 
-const ProviderProfile = ({
+interface ProviderProfileProps {
+  user: UserResource;
+  menuItems: MenuItem[];
+  data: any;
+  bottomSheetRef: React.RefObject<BottomSheet>;
+}
+const ProviderProfile: React.FC<ProviderProfileProps> = ({
   user,
   menuItems,
   data,
   bottomSheetRef,
-}: {
-  user: any;
-  menuItems: any;
-  data: any;
-  bottomSheetRef: any;
 }) => {
   return (
     <>
