@@ -7,7 +7,7 @@ import availableJobs from "@/assets/data/jobs.json";
 import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 import { useProviderStore } from "@/stores/useProviderStore";
 interface Element {
   id: string;

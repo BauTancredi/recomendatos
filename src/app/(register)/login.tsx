@@ -12,7 +12,7 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 import { useWarmUpBrowser } from "@/hooks/useWarmUpBrowser";
 
 enum Strategy {

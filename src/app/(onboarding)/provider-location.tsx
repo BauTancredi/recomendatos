@@ -7,7 +7,7 @@ import locations from "@/assets/data/locations.json";
 import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 
 interface Element {
   id: string;

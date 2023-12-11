@@ -9,7 +9,7 @@ import * as z from "zod";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 
 const passwordSchema = z.object({
   password: z.string({

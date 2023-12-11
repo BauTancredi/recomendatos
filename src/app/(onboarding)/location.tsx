@@ -13,7 +13,7 @@ import locations from "@/assets/data/locations.json";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SelectButton from "@/components/buttons/SelectButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 import { Option, SelectedCombo } from "@/interfaces/location";
 
 const LocationScreen = () => {
