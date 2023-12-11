@@ -185,7 +185,11 @@ const EditUserProfileScreen = () => {
         }}
       />
       <View style={[defaultStyles.container, { alignItems: "center", gap: 20 }]}>
-        <ProfileImage user={user} bottomSheetRef={bottomSheetRef} isLoadingPhoto={isLoadingPhoto} />
+        <ProfileImage
+          user={user!}
+          bottomSheetRef={bottomSheetRef}
+          isLoadingPhoto={isLoadingPhoto}
+        />
         <View
           style={{
             gap: 5,
@@ -282,7 +286,7 @@ const EditUserProfileScreen = () => {
         </View>
         <ImagePickerBottomSheet
           ref={bottomSheetRef}
-          user={user}
+          user={user!}
           launchCamera={launchCamera}
           launchGallery={launchGallery}
           deletePhoto={deletePhoto}

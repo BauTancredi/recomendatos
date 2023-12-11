@@ -9,6 +9,7 @@ import { z } from "zod";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 
 const schema = z
   .object({
@@ -63,7 +64,7 @@ const ChangePassword = () => {
 
       router.back();
     } catch (error: any) {
-      Alert.alert("La contraseña actual es incorrecta.");
+      Alert.alert(TEXT_CONSTANTS.password.INCORRECT_PASSWORD);
       console.error("Error saving changes: ", error.errors[0].message);
     }
   };

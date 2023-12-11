@@ -56,7 +56,6 @@ PENDIENTES VARIOS
 [x] Cerrar bottom sheet cuando voy a editar perfil
 [x] Estilos
 [x] Types
-[] Constant texts
 [] Keyboard types
 [] Skeleton
 [] Altura controlledInput y label opcional
@@ -79,6 +78,7 @@ PENDIENTES VARIOS
 [] Boton pedir valoracion
 [] Reanimated
 [] Haptics
+[] Constant texts
 [] Bugs
 [] Accesibilidad
 [] Dev / Prod
