@@ -46,10 +46,6 @@ Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
-[x] Area code
-[x] Logica de reenviar sms
-[] Logica de cambiar el numero (Antes de verificarlo)
-[] Switch android baila
 [] Redirect bio
 [] Supabase error
 [] Mejorar manejo de Zod
@@ -151,3 +147,7 @@ TECH
 [x] Skeleton
 [x] Altura controlledInput y label opcional
 [x] Primary button
+[x] Area code
+[x] Logica de reenviar sms
+[x] Logica de cambiar el numero (Antes de verificarlo)
+[x] Switch android baila

@@ -91,7 +91,6 @@ const PrepareScreen = () => {
       />
 
       <CountryCodePicker show={show} setShow={setShow} setCountry={setCountry} />
-      {/* <PrimaryButton text="Enviar nuevamente" onPress={handleSubmit(onResend)} isValid={isValid} /> */}
     </View>
   );
 };
