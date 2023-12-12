@@ -1,8 +1,9 @@
 import { useUser } from "@clerk/clerk-expo";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { View } from "react-native";
+import { View, Text, Alert } from "react-native";
 import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -23,6 +24,24 @@ type FormData = {
 const AttemptScreen = () => {
   const router = useRouter();
   const { user } = useUser();
+
+  const [timer, setTimer] = useState(30);
+  const [canResend, setCanResend] = useState(false);
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer <= 1) {
+          clearInterval(countdown);
+          setCanResend(true);
+          return 0;
+        } else {
+          return prevTimer - 1;
+        }
+      });
+    }, 1000);
+    return () => clearInterval(countdown);
+  }, []);
 
   const {
     formState: { errors, isValid, isSubmitting },
@@ -45,6 +64,21 @@ const AttemptScreen = () => {
     }
   };
 
+  const onResend = async () => {
+    if (canResend) {
+      try {
+        await user?.phoneNumbers[0].prepareVerification();
+      } catch (err: any) {
+        Alert.alert(err.errors[0].message);
+
+        console.error("OAuth error - Resend Phone Verification:", err.errors[0].message);
+      } finally {
+        setTimer(30);
+        setCanResend(false);
+      }
+    }
+  };
+
   return (
     <View style={[defaultStyles.container, { paddingVertical: 20 }]}>
       <ControlledInput
@@ -52,7 +86,6 @@ const AttemptScreen = () => {
         name="verificationCode"
         placeholder="Codigo de verificacion"
         errors={errors}
-        // keyboardType="numeric"
       />
 
       <PrimaryButton
@@ -61,6 +94,25 @@ const AttemptScreen = () => {
         disabled={!isValid || isSubmitting}
         isLoading={isSubmitting}
       />
+
+      <Text
+        style={{
+          textAlign: "center",
+          marginTop: 20,
+        }}
+      >
+        No recibiste el codigo?
+      </Text>
+      <Text
+        style={{
+          textAlign: "center",
+          marginTop: 10,
+          color: "blue",
+        }}
+        onPress={onResend}
+      >
+        {canResend ? "Reenviar" : `Reenviar en ${timer} segundos`}
+      </Text>
     </View>
   );
 };

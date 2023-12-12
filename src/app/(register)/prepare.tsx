@@ -68,16 +68,6 @@ const PrepareScreen = () => {
     }
   };
 
-  // const onResend = async () => {
-  //   try {
-  //     await user?.phoneNumbers[0].prepareVerification();
-  //   } catch (err: any) {
-  //     Alert.alert(err.errors[0].message);
-
-  //     console.error("OAuth error - Prepare Phone Verification:", err.errors[0].message);
-  //   }
-  // };
-
   return (
     <View style={[defaultStyles.container, { paddingVertical: 20 }]}>
       <View style={styles.phoneContainer}>

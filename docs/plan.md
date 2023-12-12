@@ -47,7 +47,8 @@ Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
 [x] Area code
-[] Logica de reenviar sms
+[x] Logica de reenviar sms
+[] Logica de cambiar el numero (Antes de verificarlo)
 [] Switch android baila
 [] Redirect bio
 [] Supabase error
