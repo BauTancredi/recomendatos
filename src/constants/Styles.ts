@@ -23,7 +23,7 @@ export const defaultStyles = StyleSheet.create({
     shadowOpacity: 0.25,
   },
   inputField: {
-    height: 44,
+    // height: 44,
     borderWidth: 1,
     borderColor: "#ABABAB",
     borderRadius: 8,

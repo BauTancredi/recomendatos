@@ -9,7 +9,7 @@ import { z } from "zod";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/Texts";
+import { TEXT_CONSTANTS } from "@/constants/texts";
 
 const schema = z
   .object({
@@ -74,8 +74,6 @@ const ChangePassword = () => {
   return (
     <View style={[defaultStyles.container, { gap: 10 }]}>
       <View style={{ gap: 5 }}>
-        <Text>Contraseña actual</Text>
-
         <ControlledInput
           control={control}
           name="currentPassword"
@@ -83,10 +81,10 @@ const ChangePassword = () => {
           errors={errors}
           secureTextEntry
           style={styles.input}
+          label="Contraseña actual"
         />
       </View>
       <View style={{ gap: 5 }}>
-        <Text>Nueva contraseña</Text>
         <ControlledInput
           control={control}
           name="newPassword"
@@ -94,10 +92,10 @@ const ChangePassword = () => {
           errors={errors}
           secureTextEntry
           style={styles.input}
+          label="Nueva contraseña"
         />
       </View>
       <View style={{ gap: 5 }}>
-        <Text>Confirmar nueva contraseña</Text>
         <ControlledInput
           control={control}
           name="confirmPassword"
@@ -105,6 +103,7 @@ const ChangePassword = () => {
           errors={errors}
           secureTextEntry
           style={styles.input}
+          label="Confirmar nueva contraseña"
         />
       </View>
       <PrimaryButton

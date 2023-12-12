@@ -58,7 +58,7 @@ PENDIENTES VARIOS
 [x] Types
 [x] Keyboard types
 [x] Skeleton
-[] Altura controlledInput y label opcional
+[x] Altura controlledInput y label opcional
 [] Primary button
 [] Area code
 [] Switch android baila
@@ -78,6 +78,7 @@ PENDIENTES VARIOS
 [] Boton pedir valoracion
 [] Reanimated
 [] Haptics
+[] Altura controlledInput y label opcional
 [] Clerk error type
 [] Constant texts
 [] Bugs

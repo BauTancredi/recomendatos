@@ -20,6 +20,7 @@ interface ControlledInputProps {
   placeholder: string;
   style?: StyleProp<TextStyle>;
   secureTextEntry?: boolean;
+  label?: string;
 }
 
 const ControlledInput: React.FC<ControlledInputProps> = ({
@@ -29,6 +30,7 @@ const ControlledInput: React.FC<ControlledInputProps> = ({
   name,
   style,
   secureTextEntry,
+  label,
 }) => {
   const handleKeyboardType = () => {
     switch (name) {
@@ -43,10 +45,12 @@ const ControlledInput: React.FC<ControlledInputProps> = ({
     }
   };
 
+  // La altura se usa dentro de register. Arreglar para que sea siempre la misma.
+  // Pensar si se puede usar el mismo componente para todos los inputs.
+  // La altura deberia cambiar si hay mensaje de error?
   return (
-    <View>
-      {/* La altura se usa dentro de register. Arreglar para que sea siempre la misma. */}
-      {/* <View style={{ height: 64 }}> */}
+    <View style={{ gap: 5, height: label ? 74 : "auto" }}>
+      {label && <Text>{label}</Text>}
       <Controller
         control={control}
         name={name}

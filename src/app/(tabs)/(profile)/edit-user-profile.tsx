@@ -196,13 +196,13 @@ const EditUserProfileScreen = () => {
             width: "100%",
           }}
         >
-          <Text>Nombre</Text>
           <ControlledInput
             control={control}
             name="firstName"
             placeholder="Nombre"
             errors={errors}
             style={styles.input}
+            label="Nombre"
           />
         </View>
         <View
@@ -211,13 +211,13 @@ const EditUserProfileScreen = () => {
             width: "100%",
           }}
         >
-          <Text>Apellido</Text>
           <ControlledInput
             control={control}
             name="lastName"
             placeholder="Apellido"
             errors={errors}
             style={styles.input}
+            label="Apellido"
           />
         </View>
         <View

@@ -102,16 +102,36 @@ const RegisterScreen = () => {
   };
 
   return (
-    <View style={[defaultStyles.container, { gap: 2, paddingVertical: 20 }]}>
-      <ControlledInput control={control} name="firstName" placeholder="Nombre" errors={errors} />
-      <ControlledInput control={control} name="lastName" placeholder="Apellido" errors={errors} />
+    <View style={[defaultStyles.container, { gap: 10, paddingVertical: 20 }]}>
+      <ControlledInput
+        control={control}
+        name="firstName"
+        placeholder="Nombre"
+        errors={errors}
+        label="Nombre"
+      />
+      <ControlledInput
+        control={control}
+        name="lastName"
+        placeholder="Apellido"
+        errors={errors}
+        label="Apellido"
+      />
       <ControlledInput
         control={control}
         name="emailAddress"
         placeholder="Correo electronico"
         errors={errors}
+        label="Correo electronico"
       />
-      <ControlledInput control={control} name="password" placeholder="Contraseña" errors={errors} />
+      <ControlledInput
+        control={control}
+        name="password"
+        placeholder="Contraseña"
+        errors={errors}
+        label="Contraseña"
+        secureTextEntry
+      />
       <PrimaryButton
         text="Verificar"
         onPress={handleSubmit(onSignUpPress)}
