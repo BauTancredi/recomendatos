@@ -57,11 +57,10 @@ PENDIENTES VARIOS
 [x] Estilos
 [x] Types
 [x] Keyboard types
-[] Skeleton
+[x] Skeleton
 [] Altura controlledInput y label opcional
 [] Primary button
 [] Area code
-[] Terminos y condiciones
 [] Switch android baila
 [] Redirect bio
 [] Supabase error
@@ -71,6 +70,7 @@ PENDIENTES VARIOS
 [] Mejorar mensajes de error
 [] Crear tablas y handlear que se envia a supabase
 [] Image viewer
+[] Terminos y condiciones
 
 [] Rutas dinamicas
 [] Mejores proveedores de tu zona
@@ -78,6 +78,7 @@ PENDIENTES VARIOS
 [] Boton pedir valoracion
 [] Reanimated
 [] Haptics
+[] Clerk error type
 [] Constant texts
 [] Bugs
 [] Accesibilidad

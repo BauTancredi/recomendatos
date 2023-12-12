@@ -2,6 +2,8 @@ import { UserResource } from "@clerk/types";
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
+import { TextSkeleton } from "@/components/skeleton";
+
 interface ProviderCardProps {
   user: UserResource;
 }
@@ -26,6 +28,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ user }) => {
             gap: 10,
           }}
         >
+          {/* <TextSkeleton width={100} height={10} radius={0} /> */}
           <Text>Plomero</Text>
         </View>
         <Text

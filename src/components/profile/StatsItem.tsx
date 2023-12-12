@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
+import { CircleSkeleton } from "../skeleton";
 
 interface StatsItemProps {
   title: string;
@@ -8,6 +9,7 @@ interface StatsItemProps {
 const StatsItem: React.FC<StatsItemProps> = ({ title, value }) => {
   return (
     <View style={styles.statsItem}>
+      {/* <CircleSkeleton /> */}
       <Text style={{ fontFamily: "mon-sb", fontSize: 20 }}>{value}</Text>
       <Text style={{ fontFamily: "mon", fontSize: 12 }}>{title}</Text>
     </View>

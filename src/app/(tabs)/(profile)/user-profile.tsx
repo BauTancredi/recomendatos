@@ -6,6 +6,7 @@ import * as Haptics from "expo-haptics";
 import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
 import React, { useRef } from "react";
+// import ContentLoader, { Facebook } from "react-content-loader";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import Animated, { FadeInLeft } from "react-native-reanimated";
@@ -16,6 +17,7 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ImageCarousel from "@/components/carousel/ImageCarousel";
 import { UserCard, ProviderCard, UserSettings } from "@/components/profile";
 import StatsContainer from "@/components/profile/StatsContainer";
+import { TextSkeleton } from "@/components/skeleton";
 import SectionSubtitle from "@/components/text/SectionSubtitle";
 import SectionTitle from "@/components/text/SectionTitle";
 import { defaultStyles } from "@/constants/Styles";
@@ -235,6 +237,7 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           >
             <SectionTitle title="Dirección" />
             <View style={styles.directionContainer}>
+              {/* <TextSkeleton width={300} height={30} radius={15} /> */}
               <Ionicons name="location-outline" size={16} color="black" />
               <Text
                 style={{
@@ -258,6 +261,7 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
                 <SectionSubtitle title="Zona Norte" />
                 <View style={styles.chipsContainer}>
                   {Array.from({ length: 9 }).map((_, index) => (
+                    // <TextSkeleton width={100} height={30} radius={15} />
                     <Chip key={index} title="Tigre" />
                   ))}
                 </View>

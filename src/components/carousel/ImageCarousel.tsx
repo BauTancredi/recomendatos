@@ -3,6 +3,7 @@ import * as ImagePicker from "expo-image-picker";
 import React from "react";
 import { ScrollView, Image, View, TouchableOpacity, StyleProp, ImageStyle } from "react-native";
 
+// import ImageSkeleton from "../skeleton/ImageSkeleton";
 import SectionTitle from "../text/SectionTitle";
 import { processImage } from "@/utils/image";
 
@@ -67,6 +68,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ carouselTitle, imageStyle
           <Ionicons name="add" size={24} color="black" />
         </TouchableOpacity>
         {Array.from({ length: 5 }).map((_, index) => (
+          // <ImageSkeleton key={index} />
           <Image
             source={{ uri: "https://placehold.co/150x250/png" }}
             style={imageStyles}
