@@ -21,13 +21,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   return (
     <TouchableOpacity
       disabled={disabled || isLoading}
-      style={[
-        defaultStyles.btn,
-        (disabled || isLoading) && defaultStyles.btnDisabled,
-        { marginTop: 10, alignSelf: "stretch" },
-
-        styles,
-      ]}
+      style={[defaultStyles.btn, (disabled || isLoading) && defaultStyles.btnDisabled, styles]}
       onPress={onPress}
     >
       {isLoading ? (

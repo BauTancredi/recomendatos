@@ -46,25 +46,11 @@ Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
-[x] Volver a testear si hace falta usar el router en el login
-[x] App crash
-[x] Mensajes en Clerk (error, sms, mail)
-[x] Spinner al boton y desactivarlo
-[x] Spinner en cambio de foto de perfil
-[x] Reanimated
-[x] Haptics
-[x] Cerrar bottom sheet cuando voy a editar perfil
-[x] Estilos
-[x] Types
-[x] Keyboard types
-[x] Skeleton
-[x] Altura controlledInput y label opcional
-[] Primary button
-[] Area code
+[x] Area code
+[] Logica de reenviar sms
 [] Switch android baila
 [] Redirect bio
 [] Supabase error
-[] Logica de reenviar sms
 [] Mejorar manejo de Zod
 [] Alerts, Console Logs
 [] Mejorar mensajes de error
@@ -150,3 +136,17 @@ TECH
 [x] Unused imports
 [x] Loading state
 [x] Mensaje de error on blur
+[x] Volver a testear si hace falta usar el router en el login
+[x] App crash
+[x] Mensajes en Clerk (error, sms, mail)
+[x] Spinner al boton y desactivarlo
+[x] Spinner en cambio de foto de perfil
+[x] Reanimated
+[x] Haptics
+[x] Cerrar bottom sheet cuando voy a editar perfil
+[x] Estilos
+[x] Types
+[x] Keyboard types
+[x] Skeleton
+[x] Altura controlledInput y label opcional
+[x] Primary button

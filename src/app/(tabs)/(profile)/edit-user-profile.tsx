@@ -273,7 +273,7 @@ const EditUserProfileScreen = () => {
             }}
           >
             <TextInput
-              style={[styles.input, { width: "25%", color: "grey" }]}
+              style={styles.countryCodeInput}
               defaultValue={`🇦🇷 ${areaCode}`}
               editable={false}
             />
@@ -306,5 +306,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 5,
+  },
+  countryCodeInput: {
+    width: 80,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#ABABAB",
+    borderRadius: 8,
+    padding: 10,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    gap: 5,
   },
 });
