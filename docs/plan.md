@@ -52,7 +52,6 @@ PENDIENTES VARIOS
 [] Alerts, Console Logs
 [] Mejorar mensajes de error
 [] Crear tablas y handlear que se envia a supabase
-[] Image viewer
 [] Terminos y condiciones
 
 [] Rutas dinamicas
@@ -151,3 +150,4 @@ TECH
 [x] Logica de reenviar sms
 [x] Logica de cambiar el numero (Antes de verificarlo)
 [x] Switch android baila
+[x] Image viewer

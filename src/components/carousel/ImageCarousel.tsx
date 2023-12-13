@@ -10,9 +10,18 @@ import { processImage } from "@/utils/image";
 interface ImageCarouselProps {
   carouselTitle: string;
   imageStyles: StyleProp<ImageStyle>;
+  setIsImageViewerVisible?: (visible: boolean) => void;
+  images?: any[];
+  setImageIndex?: (index: number) => void;
 }
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ carouselTitle, imageStyles }) => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({
+  carouselTitle,
+  imageStyles,
+  setIsImageViewerVisible,
+  images,
+  setImageIndex,
+}) => {
   const launchGallery = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -21,8 +30,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ carouselTitle, imageStyle
         quality: 1,
         allowsMultipleSelection: true,
       });
-
-      console.log(result);
 
       if (!result.canceled) {
         const finalBase64Image = await processImage(result.assets[0].uri);
@@ -67,13 +74,17 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ carouselTitle, imageStyle
         >
           <Ionicons name="add" size={24} color="black" />
         </TouchableOpacity>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {images?.map((image, index) => (
           // <ImageSkeleton key={index} />
-          <Image
-            source={{ uri: "https://placehold.co/150x250/png" }}
-            style={imageStyles}
-            key={index}
-          />
+
+          <TouchableOpacity
+            onPress={() => {
+              setImageIndex?.(index);
+              setIsImageViewerVisible?.(true);
+            }}
+          >
+            <Image source={{ uri: image.uri }} style={imageStyles} key={index} />
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>

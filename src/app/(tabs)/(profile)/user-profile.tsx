@@ -5,13 +5,15 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import * as Haptics from "expo-haptics";
 import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 // import ContentLoader, { Facebook } from "react-content-loader";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import ImageView from "react-native-image-viewing";
 import Animated, { FadeInLeft } from "react-native-reanimated";
 
 import Chip from "@/components/aux/Chip";
+import ImageFooter from "@/components/aux/ImageFooter";
 import EditProfileBottomSheet from "@/components/bottom/EditProfileBottomSheet";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ImageCarousel from "@/components/carousel/ImageCarousel";
@@ -23,6 +25,18 @@ import SectionTitle from "@/components/text/SectionTitle";
 import { defaultStyles } from "@/constants/Styles";
 import useProviderQuery from "@/hooks/useProviderQuery";
 import { MenuItem } from "@/interfaces";
+
+const images = [
+  {
+    uri: "https://images.unsplash.com/photo-1571501679680-de32f1e7aad4",
+  },
+  {
+    uri: "https://images.unsplash.com/photo-1573273787173-0eb81a833b34",
+  },
+  {
+    uri: "https://images.unsplash.com/photo-1569569970363-df7b6160d111",
+  },
+];
 
 const UserProfileScreen = () => {
   const { user } = useUser();
@@ -170,6 +184,8 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
   data,
   bottomSheetRef,
 }) => {
+  const [isImageViewerVisible, setIsImageViewerVisible] = useState(false);
+  const [currentImageIndex, setImageIndex] = useState(0);
   return (
     <>
       <Stack.Screen
@@ -251,7 +267,25 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           </View>
         )}
 
-        <ImageCarousel carouselTitle="Trabajos Realizados" imageStyles={styles.workImage} />
+        <ImageCarousel
+          carouselTitle="Trabajos Realizados"
+          imageStyles={styles.workImage}
+          setIsImageViewerVisible={setIsImageViewerVisible}
+          images={images}
+          setImageIndex={setImageIndex}
+        />
+
+        <ImageView
+          images={images}
+          imageIndex={currentImageIndex}
+          visible={isImageViewerVisible}
+          onRequestClose={() => {
+            setIsImageViewerVisible(false);
+          }}
+          FooterComponent={({ imageIndex }) => (
+            <ImageFooter imageIndex={imageIndex} imagesCount={images.length} />
+          )}
+        />
 
         {data?.data.type !== "shop" && (
           <View style={styles.locationsContainer}>
