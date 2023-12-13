@@ -82,6 +82,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
               setImageIndex?.(index);
               setIsImageViewerVisible?.(true);
             }}
+            key={index}
           >
             <Image source={{ uri: image.uri }} style={imageStyles} key={index} />
           </TouchableOpacity>

@@ -88,10 +88,7 @@ const UserProfileScreen = () => {
     },
   ];
 
-  const {
-    data,
-    // , isLoading, isError
-  } = useProviderQuery(user?.id!);
+  const { data, isLoading, isError } = useProviderQuery(user?.id!);
 
   return (
     <>

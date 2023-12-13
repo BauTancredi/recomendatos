@@ -28,29 +28,28 @@ Semana 4/12 - 10/12
 Semana 11/12 - 17/12
 [] Pendientes varios
 Semana 18/12 - 24/12
+Semana 25/12 - 31/12
 [] Logica de ubicaciones nueva
 [] Perfil 100% funcional
-Semana 25/12 - 31/12
 Semana 1/1 - 7/1
 Semana 8/1 - 14/1
-[] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
 Semana 15/1 - 21/1
+[] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
 [] Favoritos
 Semana 22/1 - 28/1
 Semana 29/1 - 4/2
 [] Promos
 Semana 5/2 - 11/2
-[] Tech
 Semana 12/2 - 18/2
+[] Tech
 Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
-[] Redirect bio
-[] Supabase error
 [] Mejorar manejo de Zod
 [] Alerts, Console Logs
 [] Mejorar mensajes de error
+[] Redirect bio
 [] Crear tablas y handlear que se envia a supabase
 [] Terminos y condiciones
 
@@ -151,3 +150,4 @@ TECH
 [x] Logica de cambiar el numero (Antes de verificarlo)
 [x] Switch android baila
 [x] Image viewer
+[x] Supabase error (No pude replicar el error)
