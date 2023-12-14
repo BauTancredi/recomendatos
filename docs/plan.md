@@ -52,6 +52,7 @@ PENDIENTES VARIOS
 [] Redirect bio
 [] Crear tablas y handlear que se envia a supabase
 [] Terminos y condiciones
+[] Conversion a proveedor
 
 [] Rutas dinamicas
 [] Mejores proveedores de tu zona

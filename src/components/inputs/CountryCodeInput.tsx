@@ -14,7 +14,6 @@ const CountryCodeInput: React.FC<CountryCodeInputProps> = ({ country, setShow })
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log("show");
         setShow(true);
       }}
       style={styles.countryCodeInput}

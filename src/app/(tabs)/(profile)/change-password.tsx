@@ -69,8 +69,6 @@ const ChangePassword = () => {
     }
   };
 
-  console.log("errors: ", errors);
-
   return (
     <View style={[defaultStyles.container, { gap: 10 }]}>
       <View style={{ gap: 5 }}>

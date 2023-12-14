@@ -1,6 +1,4 @@
 export function getProviderById(providerId: string, client: any) {
-  console.log(providerId);
-
   return client
     .from("providers")
     .select(
