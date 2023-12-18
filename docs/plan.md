@@ -26,7 +26,7 @@ Semana 4/12 - 10/12
 [x] Conditional rendering
 [x] Comercio
 Semana 11/12 - 17/12
-[] Pendientes varios
+[x] Pendientes varios
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
 [] Logica de ubicaciones nueva
@@ -46,14 +46,6 @@ Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
-[] Mejorar manejo de Zod
-[] Alerts, Console Logs
-[] Mejorar mensajes de error
-[] Redirect bio
-[] Crear tablas y handlear que se envia a supabase
-[] Terminos y condiciones
-[] Conversion a proveedor
-
 [] Rutas dinamicas
 [] Mejores proveedores de tu zona
 [] Not found page
@@ -69,6 +61,8 @@ PENDIENTES VARIOS
 [] Splash screen
 [] Hard update
 [] Barra de busqueda estilo rappi
+[] Mejorar mensajes de error
+[] Mejorar manejo de Zod
 
 FEATURES
 [] Sidebar
@@ -80,6 +74,7 @@ FEATURES
 [] Datos reales
 [] Pendientes varios
 [] Banners
+[] Conversion a proveedor
 
 [] Todo en ALTA
 
@@ -152,3 +147,6 @@ TECH
 [x] Switch android baila
 [x] Image viewer
 [x] Supabase error (No pude replicar el error)
+[x] Alerts, Console Logs
+[x] Crear tablas y handlear que se envia a supabase
+[x] Terminos y condiciones (Vamos a duplicar pantallas por el momento)
