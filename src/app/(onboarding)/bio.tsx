@@ -5,7 +5,7 @@ import { View, Text, TextInput, StyleSheet, Keyboard } from "react-native";
 import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 import { useProviderStore } from "@/stores/useProviderStore";
 import { getSupabase } from "@/utils/supabase";
 

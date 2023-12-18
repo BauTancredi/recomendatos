@@ -1,21 +1,45 @@
+import { UserResource } from "@clerk/types";
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
-const ProviderCard = ({ user }: { user: any }) => {
+import { TextSkeleton } from "@/components/skeleton";
+
+interface ProviderCardProps {
+  user: UserResource;
+}
+
+const ProviderCard: React.FC<ProviderCardProps> = ({ user }) => {
   return (
     <View style={styles.card}>
       <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />
-      <Text>
-        {user?.firstName} {user?.lastName}
-      </Text>
-      <Text>Plomero</Text>
-      <Text>
-        Activo desde&nbsp;
-        {new Date(user?.createdAt!).toLocaleDateString("en-AR")}
-      </Text>
-      <TouchableOpacity>
-        <Text>Ver mas</Text>
-      </TouchableOpacity>
+      <View
+        style={{
+          width: "70%",
+          gap: 10,
+        }}
+      >
+        <Text>
+          {user?.firstName} {user?.lastName}
+        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: 10,
+          }}
+        >
+          {/* <TextSkeleton width={100} height={10} radius={0} /> */}
+          <Text>Plomero</Text>
+        </View>
+        <Text
+          style={{
+            verticalAlign: "bottom",
+          }}
+        >
+          Activo desde&nbsp;
+          {new Date(user?.createdAt!).toLocaleDateString("en-AR")}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -27,9 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     padding: 10,
-    // margin: 10,
     alignItems: "center",
-    width: "60%",
+    width: "100%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -39,6 +62,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     gap: 10,
+    flexDirection: "row",
   },
   profileImage: {
     width: 100,

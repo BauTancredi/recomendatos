@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 import { useProviderStore } from "@/stores/useProviderStore";
 
 const WelcomeProviderScreen = () => {

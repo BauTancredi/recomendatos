@@ -1,6 +1,10 @@
 import { Text, StyleSheet } from "react-native";
 
-const SectionTitle = ({ title }: { title: string }) => {
+interface SectionTitleProps {
+  title: string;
+}
+
+const SectionTitle: React.FC<SectionTitleProps> = ({ title }) => {
   return <Text style={styles.sectionTitle}>{title}</Text>;
 };
 

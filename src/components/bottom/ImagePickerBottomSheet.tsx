@@ -1,3 +1,4 @@
+import { UserResource } from "@clerk/types";
 import { Ionicons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetBackdropProps, BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import React, { useMemo, useCallback } from "react";
@@ -7,7 +8,7 @@ import Colors from "@/constants/Colors";
 
 interface ImagePickerBottomSheetProps {
   // Define the props for your custom bottom sheet here
-  user: any;
+  user: UserResource;
   launchCamera: () => void;
   launchGallery: () => void;
   deletePhoto: () => void;

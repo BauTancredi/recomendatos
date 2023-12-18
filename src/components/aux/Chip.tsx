@@ -1,7 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const Chip = ({ title }: { title: string }) => {
+interface ChipProps {
+  title: string;
+}
+
+const Chip: React.FC<ChipProps> = ({ title }) => {
   return (
     <View style={styles.chip}>
       <Text>{title}</Text>

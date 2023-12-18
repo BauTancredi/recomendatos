@@ -1,11 +1,11 @@
 import React from "react";
-import { Controller } from "react-hook-form";
-import { Text, TextInput, View } from "react-native";
+import { Controller, Control } from "react-hook-form";
+import { StyleProp, Text, TextInput, TextStyle, View } from "react-native";
 
 import { defaultStyles } from "@/constants/Styles";
 
-interface Props {
-  control: any;
+interface ControlledInputProps {
+  control: Control<any>;
   errors: any;
   name:
     | "emailAddress"
@@ -18,15 +18,39 @@ interface Props {
     | "confirmPassword"
     | "currentPassword";
   placeholder: string;
-  style?: any;
+  style?: StyleProp<TextStyle>;
   secureTextEntry?: boolean;
+  label?: string;
 }
 
-const ControlledInput = ({ control, errors, placeholder, name, style, secureTextEntry }: Props) => {
+const ControlledInput: React.FC<ControlledInputProps> = ({
+  control,
+  errors,
+  placeholder,
+  name,
+  style,
+  secureTextEntry,
+  label,
+}) => {
+  const handleKeyboardType = () => {
+    switch (name) {
+      case "emailAddress":
+        return "email-address";
+      case "phoneNumber":
+        return "phone-pad";
+      case "verificationCode":
+        return "numeric";
+      default:
+        return "default";
+    }
+  };
+
+  // La altura se usa dentro de register. Arreglar para que sea siempre la misma.
+  // Pensar si se puede usar el mismo componente para todos los inputs.
+  // La altura deberia cambiar si hay mensaje de error?
   return (
-    <View>
-      {/* La altura se usa dentro de register. Arreglar para que sea siempre la misma. */}
-      {/* <View style={{ height: 64 }}> */}
+    <View style={{ gap: 5, height: label ? 74 : "auto" }}>
+      {label && <Text>{label}</Text>}
       <Controller
         control={control}
         name={name}
@@ -38,6 +62,7 @@ const ControlledInput = ({ control, errors, placeholder, name, style, secureText
             value={value}
             style={[defaultStyles.inputField, style]}
             secureTextEntry={secureTextEntry}
+            keyboardType={handleKeyboardType()}
           />
         )}
       />

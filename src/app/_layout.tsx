@@ -18,7 +18,7 @@ const tokenCache = {
     try {
       return SecureStore.getItemAsync(key);
     } catch (err) {
-      console.log(err);
+      console.log("Error getting token from cache: ", err);
       return null;
     }
   },
@@ -26,7 +26,7 @@ const tokenCache = {
     try {
       return SecureStore.setItemAsync(key, value);
     } catch (err) {
-      console.log(err);
+      console.log("Error saving the token in cache: ", err);
     }
   },
 };
@@ -77,7 +77,7 @@ const InitialLayout = () => {
 
     SplashScreen.hideAsync();
 
-    // router.replace("/(tabs)/home");
+    // router.replace("/(register)/attempt");
     if (isSignedIn) {
       if (user?.hasVerifiedPhoneNumber) {
         if (!user?.unsafeMetadata.finishedOnboarding) {

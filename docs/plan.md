@@ -16,7 +16,7 @@ Semana 27/11 - 3/12
 Semana 4/12 - 10/12
 [x] Perfil usuario 4/12
 [x] Perfil usuario con opciones
-[] Perfil Proveedor
+[x] Perfil Proveedor
 [x] Chips
 [x] Bio
 [x] Limpiar todo el codigo
@@ -26,56 +26,43 @@ Semana 4/12 - 10/12
 [x] Conditional rendering
 [x] Comercio
 Semana 11/12 - 17/12
-[] Pendientes varios
+[x] Pendientes varios
 Semana 18/12 - 24/12
+Semana 25/12 - 31/12
 [] Logica de ubicaciones nueva
 [] Perfil 100% funcional
-Semana 25/12 - 31/12
 Semana 1/1 - 7/1
 Semana 8/1 - 14/1
-[] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
 Semana 15/1 - 21/1
+[] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
 [] Favoritos
 Semana 22/1 - 28/1
 Semana 29/1 - 4/2
 [] Promos
 Semana 5/2 - 11/2
-[] Tech
 Semana 12/2 - 18/2
+[] Tech
 Semana 19/2 - 25/2
 Semana 26/2 - 4/3
 
 PENDIENTES VARIOS
-[x] Volver a testear si hace falta usar el router en el login
-[x] App crash
-[] Mejorar manejo de Zod
-[] Splash screen
-[] Accesibilidad
-[] Mensajes en Clerk (error, sms, mail)
-[] Logica de reenviar sms
-[] Bugs
-[] Spinner al boton y desactivarlo
-[] Terminos y condiciones
+[] Rutas dinamicas
+[] Mejores proveedores de tu zona
 [] Not found page
-[] Crear tablas y handlear que se envia a supabase
-[] Barra de busqueda estilo rappi
-[] Hard update
+[] Boton pedir valoracion
 [] Reanimated
 [] Haptics
-[] Dev / Prod
-[] Switch android baila
-[] Redirect bio
-[] Supabase error
-[] Estilos
-[] Types
 [] Altura controlledInput y label opcional
-[] Area code
-[] Alerts, Console Logs
+[] Clerk error type
 [] Constant texts
-[] Keyboard types
-[] Skeleton
-[] Boton pedir valoracion
-[] Mejores proveedores de tu zonac
+[] Bugs
+[] Accesibilidad
+[] Dev / Prod
+[] Splash screen
+[] Hard update
+[] Barra de busqueda estilo rappi
+[] Mejorar mensajes de error
+[] Mejorar manejo de Zod
 
 FEATURES
 [] Sidebar
@@ -87,6 +74,7 @@ FEATURES
 [] Datos reales
 [] Pendientes varios
 [] Banners
+[] Conversion a proveedor
 
 [] Todo en ALTA
 
@@ -139,3 +127,26 @@ TECH
 [x] Unused imports
 [x] Loading state
 [x] Mensaje de error on blur
+[x] Volver a testear si hace falta usar el router en el login
+[x] App crash
+[x] Mensajes en Clerk (error, sms, mail)
+[x] Spinner al boton y desactivarlo
+[x] Spinner en cambio de foto de perfil
+[x] Reanimated
+[x] Haptics
+[x] Cerrar bottom sheet cuando voy a editar perfil
+[x] Estilos
+[x] Types
+[x] Keyboard types
+[x] Skeleton
+[x] Altura controlledInput y label opcional
+[x] Primary button
+[x] Area code
+[x] Logica de reenviar sms
+[x] Logica de cambiar el numero (Antes de verificarlo)
+[x] Switch android baila
+[x] Image viewer
+[x] Supabase error (No pude replicar el error)
+[x] Alerts, Console Logs
+[x] Crear tablas y handlear que se envia a supabase
+[x] Terminos y condiciones (Vamos a duplicar pantallas por el momento)

@@ -1,17 +1,14 @@
-import { Ionicons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetBackdropProps, BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import React, { useMemo, useCallback } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-
-import Colors from "@/constants/Colors";
+import { MenuItem } from "@/interfaces";
 
 interface EditProfileBottomSheetProps {
-  user: any;
-  menuItems: any;
+  menuItems: MenuItem[];
 }
 
 const EditProfileBottomSheet = React.forwardRef<BottomSheet, EditProfileBottomSheetProps>(
-  ({ user, menuItems }, bottomSheetRef) => {
+  ({ menuItems }, bottomSheetRef) => {
     const snapPoints = useMemo(() => ["40%"], []);
 
     const renderBackdrop = useCallback(

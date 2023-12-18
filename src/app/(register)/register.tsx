@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocalSearchParams } from "expo-router";
 import { useForm } from "react-hook-form";
 import { View, Alert } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -103,22 +102,42 @@ const RegisterScreen = () => {
   };
 
   return (
-    <View style={[defaultStyles.container, { gap: 2, paddingVertical: 20 }]}>
-      <Spinner visible={isSubmitting} />
-      <ControlledInput control={control} name="firstName" placeholder="Nombre" errors={errors} />
-
-      <ControlledInput control={control} name="lastName" placeholder="Apellido" errors={errors} />
-
+    <View style={[defaultStyles.container, { gap: 10, paddingVertical: 20 }]}>
+      <ControlledInput
+        control={control}
+        name="firstName"
+        placeholder="Nombre"
+        errors={errors}
+        label="Nombre"
+      />
+      <ControlledInput
+        control={control}
+        name="lastName"
+        placeholder="Apellido"
+        errors={errors}
+        label="Apellido"
+      />
       <ControlledInput
         control={control}
         name="emailAddress"
         placeholder="Correo electronico"
         errors={errors}
+        label="Correo electronico"
       />
-
-      <ControlledInput control={control} name="password" placeholder="Contraseña" errors={errors} />
-
-      <PrimaryButton text="Verificar" onPress={handleSubmit(onSignUpPress)} disabled={!isValid} />
+      <ControlledInput
+        control={control}
+        name="password"
+        placeholder="Contraseña"
+        errors={errors}
+        label="Contraseña"
+        secureTextEntry
+      />
+      <PrimaryButton
+        text="Verificar"
+        onPress={handleSubmit(onSignUpPress)}
+        disabled={!isValid || isSubmitting}
+        isLoading={isSubmitting}
+      />
     </View>
   );
 };

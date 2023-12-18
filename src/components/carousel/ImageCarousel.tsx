@@ -1,17 +1,26 @@
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import React from "react";
-import { ScrollView, Image, View, TouchableOpacity } from "react-native";
+import { ScrollView, Image, View, TouchableOpacity, StyleProp, ImageStyle } from "react-native";
 
+// import ImageSkeleton from "../skeleton/ImageSkeleton";
 import SectionTitle from "../text/SectionTitle";
 import { processImage } from "@/utils/image";
 
-const ImageCarousel = ({
+interface ImageCarouselProps {
+  carouselTitle: string;
+  imageStyles: StyleProp<ImageStyle>;
+  setIsImageViewerVisible?: (visible: boolean) => void;
+  images?: any[];
+  setImageIndex?: (index: number) => void;
+}
+
+const ImageCarousel: React.FC<ImageCarouselProps> = ({
   carouselTitle,
   imageStyles,
-}: {
-  carouselTitle: string;
-  imageStyles: any;
+  setIsImageViewerVisible,
+  images,
+  setImageIndex,
 }) => {
   const launchGallery = async () => {
     try {
@@ -21,8 +30,6 @@ const ImageCarousel = ({
         quality: 1,
         allowsMultipleSelection: true,
       });
-
-      console.log(result);
 
       if (!result.canceled) {
         const finalBase64Image = await processImage(result.assets[0].uri);
@@ -67,12 +74,18 @@ const ImageCarousel = ({
         >
           <Ionicons name="add" size={24} color="black" />
         </TouchableOpacity>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <Image
-            source={{ uri: "https://placehold.co/150x250/png" }}
-            style={imageStyles}
+        {images?.map((image, index) => (
+          // <ImageSkeleton key={index} />
+
+          <TouchableOpacity
+            onPress={() => {
+              setImageIndex?.(index);
+              setIsImageViewerVisible?.(true);
+            }}
             key={index}
-          />
+          >
+            <Image source={{ uri: image.uri }} style={imageStyles} key={index} />
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>

@@ -4,13 +4,12 @@ import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { View, Text } from "react-native";
-import Spinner from "react-native-loading-spinner-overlay";
 import * as z from "zod";
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ControlledInput from "@/components/inputs/ControlledInput";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/texts";
+import { TEXT_CONSTANTS } from "@/constants/Texts";
 
 const passwordSchema = z.object({
   password: z.string({
@@ -111,7 +110,6 @@ const PasswordScreen = () => {
 
   return (
     <View style={[defaultStyles.container, { paddingTop: 20 }]}>
-      <Spinner visible={isSubmitting} />
       {forgotPassword ? (
         <View>
           <ControlledInput
@@ -157,7 +155,8 @@ const PasswordScreen = () => {
             text="Iniciar sesion"
             onPress={handleSubmit(onSignIn)}
             // isValid={isValid}
-            disabled={!isValid}
+            disabled={!isValid || isSubmitting}
+            isLoading={isSubmitting}
           />
         </>
       )}

@@ -4,8 +4,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, Switch, FlatList, Image, StyleSheet } from "react-native";
 
 import availableJobs from "@/assets/data/jobs.json";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ProgressSteps from "@/components/aux/ProgressSteps";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
 import { useProviderStore } from "@/stores/useProviderStore";
@@ -30,22 +30,20 @@ const JobsScreen = () => {
     setElements(elements.map((el) => (el.id === id ? { ...el, expanded: !el.expanded } : el)));
   };
 
-  const toggleSelect = (id: string) => {
-    if (selected.includes(id)) {
-      setSelected(selected.filter((el) => el !== id));
-
-      removeJob(id);
-    } else {
-      setSelected([...selected, id]);
-
-      addJob(id);
-    }
-  };
-
   // TODO: Add a useEffect to open the options if the job is already selected
-  useEffect(() => {
-    setElements([...elements]);
-  }, [selected]);
+  const toggleSelect = (id: string) => {
+    setSelected((prevSelected) => {
+      if (prevSelected.includes(id)) {
+        removeJob(id);
+        return prevSelected.filter((el) => el !== id);
+      } else {
+        addJob(id);
+        return [...prevSelected, id];
+      }
+    });
+
+    setElements(elements.map((el) => (el.id === id ? { ...el, expanded: !el.expanded } : el)));
+  };
 
   const renderItem = useCallback(
     ({ item }: { item: Element }) => {
@@ -113,6 +111,7 @@ const JobsScreen = () => {
       <Text style={[defaultStyles.textCenter, { marginVertical: 20 }]}>
         Selecciona las localidades en las que trabajas
       </Text>
+
       <FlatList
         style={styles.list}
         data={elements}
