@@ -29,21 +29,25 @@ Semana 11/12 - 17/12
 [x] Pendientes varios
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
-[] Logica de ubicaciones nueva
-[] Perfil 100% funcional
 Semana 1/1 - 7/1
+[] Logica de ubicaciones nueva
+[] Test Me cubro
+[] Perfil 100% funcional
+[] Vista desde usuario 100% funcional
+[] Tablas actualizadas
 Semana 8/1 - 14/1
 Semana 15/1 - 21/1
+Semana 22/1 - 28/1
 [] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
 [] Favoritos
-Semana 22/1 - 28/1
 Semana 29/1 - 4/2
-[] Promos
 Semana 5/2 - 11/2
+[] Promos
 Semana 12/2 - 18/2
-[] Tech
 Semana 19/2 - 25/2
+[] Estilos
 Semana 26/2 - 4/3
+[] Tech
 
 PENDIENTES VARIOS
 [] Rutas dinamicas
@@ -63,6 +67,7 @@ PENDIENTES VARIOS
 [] Barra de busqueda estilo rappi
 [] Mejorar mensajes de error
 [] Mejorar manejo de Zod
+[] Palabras clave
 
 FEATURES
 [] Sidebar
