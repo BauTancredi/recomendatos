@@ -6,13 +6,13 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/Texts";
-import { useProviderStore } from "@/stores/useOnboardingStore";
+import { TEXT_CONSTANTS } from "@/constants/texts";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
 const AddressScreen = () => {
   const router = useRouter();
-  const setAddress = useProviderStore((state) => state.setAddress);
-  const address = useProviderStore((state) => state.address);
+  const setAddress = useOnboardingStore((state) => state.setAddress);
+  const address = useOnboardingStore((state) => state.address);
 
   useEffect(() => {
     return () => {
