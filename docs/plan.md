@@ -29,20 +29,24 @@ Semana 11/12 - 17/12
 [x] Pendientes varios
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
-[] Logica de ubicaciones nueva
+Semana 1/1 - 7/1
+[x] Logica de ubicaciones nueva
 [x] Test Me cubro
-[] Perfil 100% funcional
 [] Solicitar valoracion
 [] Editar campos
 [] Galeria
 [] Reseñas
 [] Localidades
+[] Perfil 100% funcional
 [] Vista desde usuario 100% funcional
 [] Tablas actualizadas
+[] TODO: "Update user location"
 Semana 8/1 - 14/1
 Semana 15/1 - 21/1
 Semana 22/1 - 28/1
 [] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
+[] App 100% funcional
+[] Cargar csv con data fake
 [] Favoritos
 Semana 29/1 - 4/2
 Semana 5/2 - 11/2
