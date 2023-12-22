@@ -4,11 +4,6 @@ export interface Option {
   children?: Option[];
 }
 
-export interface SelectedCombo {
-  zona: Option | null;
-  localidad: Option | null;
-}
-
 export interface Provincia {
   centroide: {
     lat: number;
@@ -26,4 +21,12 @@ export interface Municipio {
   id: string;
   nombre: string;
   provincia?: Provincia;
+}
+
+export interface Address {
+  location: {
+    lat: number | undefined;
+    lng: number | undefined;
+  };
+  description: string;
 }

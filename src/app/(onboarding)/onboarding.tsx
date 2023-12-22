@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { defaultStyles } from "@/constants/Styles";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
 const steps = {
   user: [
@@ -43,15 +44,12 @@ const steps = {
 const OnboardingScreen = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const router = useRouter();
+  const type = useOnboardingStore((state) => state.type);
 
-  const { type } = useLocalSearchParams<{
-    type: "user" | "provider";
-  }>();
-
-  const stepTwo = steps[type];
+  const typeSteps = steps[type as keyof typeof steps];
 
   const handleNext = () => {
-    if (currentStep < stepTwo.length - 1) {
+    if (currentStep < typeSteps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -72,12 +70,12 @@ const OnboardingScreen = () => {
 
   return (
     <View style={[defaultStyles.container, styles.container]}>
-      <Text style={styles.title}>{stepTwo[currentStep].title}</Text>
-      <Text style={styles.description}>{stepTwo[currentStep].description}</Text>
+      <Text style={styles.title}>{typeSteps[currentStep].title}</Text>
+      <Text style={styles.description}>{typeSteps[currentStep].description}</Text>
       <Button title="Back" onPress={handleBack} disabled={currentStep === 0} />
 
-      <Button title="Next" onPress={handleNext} disabled={currentStep === stepTwo.length - 1} />
-      {currentStep === stepTwo.length - 1 && <Button title="Comenzar" onPress={handleContinue} />}
+      <Button title="Next" onPress={handleNext} disabled={currentStep === typeSteps.length - 1} />
+      {currentStep === typeSteps.length - 1 && <Button title="Comenzar" onPress={handleContinue} />}
     </View>
   );
 };

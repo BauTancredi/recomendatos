@@ -29,10 +29,14 @@ Semana 11/12 - 17/12
 [x] Pendientes varios
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
-Semana 1/1 - 7/1
 [] Logica de ubicaciones nueva
 [x] Test Me cubro
 [] Perfil 100% funcional
+[] Solicitar valoracion
+[] Editar campos
+[] Galeria
+[] Reseñas
+[] Localidades
 [] Vista desde usuario 100% funcional
 [] Tablas actualizadas
 Semana 8/1 - 14/1
@@ -69,6 +73,7 @@ PENDIENTES VARIOS
 [] Mejorar manejo de Zod
 [] Palabras clave
 [] WebBrowser.openBrowserAsync("https://checkout.mecubro.com/1054224691/step1B");
+[] Deuda tecnica
 
 FEATURES
 [] Sidebar

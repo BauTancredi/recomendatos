@@ -1,4 +1,3 @@
-import { useUser } from "@clerk/clerk-expo";
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
@@ -18,6 +17,7 @@ import CheckboxButton from "../buttons/CheckboxButton";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import RadioButton from "@/components/buttons/RadioButton";
 import { Municipio, Provincia } from "@/interfaces/location";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
 interface MunicipiosBottomSheetProps {
   bottomSheetRef: MutableRefObject<BottomSheet | null>;
@@ -49,7 +49,7 @@ const MunicipiosBottomSheet = React.forwardRef<BottomSheet, MunicipiosBottomShee
     ref
   ) => {
     const snapPoints = useMemo(() => ["95%"], []);
-    const { user } = useUser();
+    const { type } = useOnboardingStore((state) => state);
 
     const renderBackdrop = useCallback(
       (props: BottomSheetBackdropProps) => (
@@ -120,9 +120,7 @@ const MunicipiosBottomSheet = React.forwardRef<BottomSheet, MunicipiosBottomShee
             <BottomSheetFlatList
               data={selectedProvincia?.id === "02" ? filteredLocalidadesCABA : filteredMunicipios}
               keyExtractor={(i: Municipio) => i.id}
-              renderItem={
-                user?.unsafeMetadata.type === "provider" ? renderCheckboxItem : renderItem
-              }
+              renderItem={type === "provider" ? renderCheckboxItem : renderItem}
             />
           )}
 

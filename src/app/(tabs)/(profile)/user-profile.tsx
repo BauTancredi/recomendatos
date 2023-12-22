@@ -25,6 +25,7 @@ import SectionTitle from "@/components/text/SectionTitle";
 import { defaultStyles } from "@/constants/Styles";
 import useProviderQuery from "@/hooks/useProviderQuery";
 import { MenuItem } from "@/interfaces";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
 const images = [
   {
@@ -43,7 +44,7 @@ const UserProfileScreen = () => {
   const { signOut } = useAuth();
   const router = useRouter();
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const isProvider = user?.unsafeMetadata.isProvider;
+  const { type } = useOnboardingStore((state) => state);
 
   const menuItems: MenuItem[] = [
     {
@@ -92,7 +93,7 @@ const UserProfileScreen = () => {
 
   return (
     <>
-      {!isProvider ? (
+      {type === "provider" ? (
         <ProviderProfile
           user={user!}
           menuItems={menuItems}
@@ -100,7 +101,7 @@ const UserProfileScreen = () => {
           bottomSheetRef={bottomSheetRef}
         />
       ) : (
-        <UserProfile user={user} menuItems={menuItems} />
+        <UserProfile user={user!} menuItems={menuItems} />
       )}
     </>
   );

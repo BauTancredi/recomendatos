@@ -1,7 +1,7 @@
 import { useUser } from "@clerk/clerk-expo";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Text, View } from "react-native";
 
 import MunicipiosBottomSheet from "@/components/bottom/MunicipiosBottomSheet";
@@ -12,19 +12,29 @@ import { TEXT_CONSTANTS } from "@/constants/texts";
 import useFilterSearch from "@/hooks/useFilterSearch";
 import useProvinciasAndMunicipios from "@/hooks/useProvinciasAndMunicipios";
 import { Municipio, Provincia } from "@/interfaces/location";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
-// [] Update tablas para multple municipios
-// [] Test flujo entero
+// [x] Update tablas para multple municipios
+// [x] Test flujo entero
+// [] Tablas actualizadas
 
 const LocationScreen = () => {
   const provinciasBottomSheetRef = useRef<BottomSheet>(null);
   const municipiosBottomSheetRef = useRef<BottomSheet>(null);
-  const { user } = useUser();
+
   const router = useRouter();
+
   const [search, setSearch] = useState("");
   const [selectedProvincia, setSelectedProvincia] = useState<Provincia | null>(null);
   const [selectedMunicipios, setSelectedMunicipios] = useState<Municipio[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { setProvincia, setMunicipios, type } = useOnboardingStore((state) => state);
+
+  useEffect(() => {
+    setProvincia(selectedProvincia);
+    setMunicipios(selectedMunicipios);
+  }, [selectedProvincia, selectedMunicipios]);
 
   const {
     provincias,
@@ -48,20 +58,15 @@ const LocationScreen = () => {
   };
 
   const handleContinue = async () => {
-    console.log("selectedProvincia: ", selectedProvincia);
-    console.log("selectedMunicipios: ", selectedMunicipios);
-    return;
     try {
       setIsLoading(true);
 
-      await user?.update({
-        unsafeMetadata: {
-          // searchLocation: selectedCombo,
-          finishedOnboarding: true,
-        },
-      });
-
-      router.push("/(tabs)/home");
+      if (type === "provider") {
+        router.push("/(onboarding)/bio");
+      } else {
+        //TODO: "Update user location"
+        router.push("/(tabs)/home");
+      }
     } catch (error) {
       console.error("Update error - Search Location: ", error);
     } finally {

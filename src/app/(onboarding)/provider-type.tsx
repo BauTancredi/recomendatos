@@ -3,10 +3,10 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView } from "react-native";
 
 import { defaultStyles } from "@/constants/Styles";
-import { useProviderStore } from "@/stores/useProviderStore";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
 const ProviderTypeScreen = () => {
-  const setType = useProviderStore((state) => state.setType);
+  const setProviderType = useOnboardingStore((state) => state.setProviderType);
   const router = useRouter();
 
   return (
@@ -19,7 +19,7 @@ const ProviderTypeScreen = () => {
         <TouchableOpacity
           style={defaultStyles.card}
           onPress={() => {
-            setType("provider");
+            setProviderType("professional");
             router.push("/(onboarding)/welcome-provider");
           }}
         >
@@ -32,7 +32,7 @@ const ProviderTypeScreen = () => {
         <TouchableOpacity
           style={defaultStyles.card}
           onPress={() => {
-            setType("shop");
+            setProviderType("shop");
             router.push("/(onboarding)/welcome-provider");
           }}
         >

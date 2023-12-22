@@ -6,7 +6,7 @@ import shops from "@/assets/data/shops.json";
 import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/Texts";
+import { TEXT_CONSTANTS } from "@/constants/texts";
 
 interface Element {
   id: string;
