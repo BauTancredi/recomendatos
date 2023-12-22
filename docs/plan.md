@@ -31,7 +31,7 @@ Semana 18/12 - 24/12
 Semana 25/12 - 31/12
 Semana 1/1 - 7/1
 [] Logica de ubicaciones nueva
-[] Test Me cubro
+[x] Test Me cubro
 [] Perfil 100% funcional
 [] Vista desde usuario 100% funcional
 [] Tablas actualizadas
@@ -68,6 +68,7 @@ PENDIENTES VARIOS
 [] Mejorar mensajes de error
 [] Mejorar manejo de Zod
 [] Palabras clave
+[] WebBrowser.openBrowserAsync("https://checkout.mecubro.com/1054224691/step1B");
 
 FEATURES
 [] Sidebar

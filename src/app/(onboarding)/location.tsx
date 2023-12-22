@@ -1,7 +1,7 @@
 import { useUser } from "@clerk/clerk-expo";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Text, View } from "react-native";
 
 import MunicipiosBottomSheet from "@/components/bottom/MunicipiosBottomSheet";
@@ -13,10 +13,6 @@ import useFilterSearch from "@/hooks/useFilterSearch";
 import useProvinciasAndMunicipios from "@/hooks/useProvinciasAndMunicipios";
 import { Municipio, Provincia } from "@/interfaces/location";
 
-// [x] Municipios
-// [x] CABA
-// [x] Multiples municipios para proveedores
-// [] Unico bottomSheet
 // [] Update tablas para multple municipios
 // [] Test flujo entero
 
@@ -52,6 +48,9 @@ const LocationScreen = () => {
   };
 
   const handleContinue = async () => {
+    console.log("selectedProvincia: ", selectedProvincia);
+    console.log("selectedMunicipios: ", selectedMunicipios);
+    return;
     try {
       setIsLoading(true);
 
