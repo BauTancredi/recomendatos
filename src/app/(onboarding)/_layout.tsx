@@ -99,18 +99,6 @@ const WelcomeLayout = () => {
           headerShadowVisible: false,
         }}
       />
-      <Stack.Screen
-        name="provider-location"
-        options={{
-          headerBackVisible: true,
-          headerBackTitle: "Atras",
-          headerTitle: "Localidades",
-          headerStyle: {
-            backgroundColor: "#fdffff",
-          },
-          headerShadowVisible: false,
-        }}
-      />
 
       <Stack.Screen
         name="shops"

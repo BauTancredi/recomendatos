@@ -77,7 +77,7 @@ const InitialLayout = () => {
 
     SplashScreen.hideAsync();
 
-    // router.replace("/(register)/attempt");
+    // router.replace("/(onboarding)/location");
     if (isSignedIn) {
       if (user?.hasVerifiedPhoneNumber) {
         if (!user?.unsafeMetadata.finishedOnboarding) {

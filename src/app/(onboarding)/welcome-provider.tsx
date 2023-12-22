@@ -3,17 +3,17 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
-import { TEXT_CONSTANTS } from "@/constants/Texts";
-import { useProviderStore } from "@/stores/useProviderStore";
+import { TEXT_CONSTANTS } from "@/constants/texts";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
 const WelcomeProviderScreen = () => {
   const router = useRouter();
-  const type = useProviderStore((state) => state.type);
+  const providerType = useOnboardingStore((state) => state.providerType);
 
   return (
     <View style={[defaultStyles.container, { gap: 50, alignItems: "center" }]}>
       <Text style={[defaultStyles.textCenter]}>
-        {type === "provider" ? "¡Bienvenido proveedor!" : "¡Bienvenido!"}
+        {providerType === "professional" ? "¡Bienvenido proveedor!" : "¡Bienvenido!"}
       </Text>
       <Image
         source={{ uri: "https://placehold.co/600x400/png" }}
@@ -23,16 +23,16 @@ const WelcomeProviderScreen = () => {
         ¿Listo para comenzar a trabajar?
       </Text>
 
-      {type === "provider" && (
+      {providerType === "professional" && (
         <Text style={[defaultStyles.textCenter]}>
           Completa tu perfil de proveedor con la información solicitada.
         </Text>
       )}
       <PrimaryButton
         onPress={() => {
-          if (type === "provider") {
+          if (providerType === "professional") {
             router.push("/(onboarding)/jobs");
-          } else if (type === "shop") {
+          } else if (providerType === "shop") {
             router.push("/(onboarding)/shops");
           }
         }}

@@ -7,7 +7,7 @@ import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/Texts";
-import { useProviderStore } from "@/stores/useProviderStore";
+import { useProviderStore } from "@/stores/useOnboardingStore";
 
 const AddressScreen = () => {
   const router = useRouter();

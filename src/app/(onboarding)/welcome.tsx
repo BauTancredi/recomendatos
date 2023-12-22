@@ -1,12 +1,12 @@
-import { useUser } from "@clerk/clerk-expo";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView } from "react-native";
 import { defaultStyles } from "@/constants/Styles";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 
 const WelcomeScreen = () => {
-  const { user } = useUser();
   const router = useRouter();
+  const setType = useOnboardingStore((state) => state.setType);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,17 +14,10 @@ const WelcomeScreen = () => {
     try {
       setIsLoading(true);
 
-      await user?.update({
-        unsafeMetadata: {
-          type,
-        },
-      });
+      setType(type);
 
       router.push({
         pathname: "/(onboarding)/onboarding",
-        params: {
-          type,
-        },
       });
     } catch (error) {
       console.error("Update error - User Type: ", error);

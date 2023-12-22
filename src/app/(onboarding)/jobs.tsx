@@ -8,7 +8,8 @@ import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
-import { useProviderStore } from "@/stores/useProviderStore";
+import { useCategoriesQuery } from "@/hooks/supabase";
+import { useOnboardingStore } from "@/stores/useOnboardingStore";
 interface Element {
   id: string;
   title: string;
@@ -17,12 +18,15 @@ interface Element {
 }
 
 const JobsScreen = () => {
-  const jobs = useProviderStore((state) => state.jobs);
-  const addJob = useProviderStore((state) => state.addJob);
-  const removeJob = useProviderStore((state) => state.removeJob);
+  const jobs = useOnboardingStore((state) => state.jobs);
+  const addJob = useOnboardingStore((state) => state.addJob);
+  const removeJob = useOnboardingStore((state) => state.removeJob);
 
   const [elements, setElements] = useState<Element[]>(availableJobs);
   const [selected, setSelected] = useState<string[]>(jobs);
+
+  const { data } = useCategoriesQuery();
+  console.log(data);
 
   const router = useRouter();
 
@@ -122,7 +126,7 @@ const JobsScreen = () => {
       <PrimaryButton
         text={TEXT_CONSTANTS.CONTINUE}
         onPress={() => {
-          router.push("/(onboarding)/provider-location");
+          router.push("/(onboarding)/location");
         }}
         disabled={selected.length === 0}
       />
