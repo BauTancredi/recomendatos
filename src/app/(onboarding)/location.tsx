@@ -1,9 +1,9 @@
-import { useUser } from "@clerk/clerk-expo";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
 import { Text, View } from "react-native";
 
+import ProgressSteps from "@/components/aux/ProgressSteps";
 import MunicipiosBottomSheet from "@/components/bottom/MunicipiosBottomSheet";
 import ProvinciasBottomSheet from "@/components/bottom/ProvinciasBottomSheet";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
@@ -13,10 +13,6 @@ import useFilterSearch from "@/hooks/useFilterSearch";
 import useProvinciasAndMunicipios from "@/hooks/useProvinciasAndMunicipios";
 import { Municipio, Provincia } from "@/interfaces/location";
 import { useOnboardingStore } from "@/stores/useOnboardingStore";
-
-// [x] Update tablas para multple municipios
-// [x] Test flujo entero
-// [] Tablas actualizadas
 
 const LocationScreen = () => {
   const provinciasBottomSheetRef = useRef<BottomSheet>(null);
@@ -76,6 +72,7 @@ const LocationScreen = () => {
 
   return (
     <View style={defaultStyles.container}>
+      {type === "provider" && <ProgressSteps progress={2} />}
       <Text style={defaultStyles.textCenter}>Ya casi estas!</Text>
       <Text style={defaultStyles.textCenter}>
         Indica tu localidad para encontrar proveedores que trabajen en tu zona.

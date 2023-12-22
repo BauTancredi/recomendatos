@@ -8,6 +8,7 @@ import ProgressSteps from "@/components/aux/ProgressSteps";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { defaultStyles } from "@/constants/Styles";
 import { TEXT_CONSTANTS } from "@/constants/texts";
+import { useCategoriesQuery } from "@/hooks/supabase";
 import { useOnboardingStore } from "@/stores/useOnboardingStore";
 interface Element {
   id: string;
@@ -23,6 +24,9 @@ const JobsScreen = () => {
 
   const [elements, setElements] = useState<Element[]>(availableJobs);
   const [selected, setSelected] = useState<string[]>(jobs);
+
+  const { data } = useCategoriesQuery();
+  console.log(data);
 
   const router = useRouter();
 

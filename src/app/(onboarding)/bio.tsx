@@ -19,10 +19,11 @@ const BioScreen = () => {
   const handleContinue = async () => {
     const { error } = await supabase.from("providers").upsert({
       bio,
-      address_description: address?.description,
-      address_lat: address?.location.lat,
-      address_lng: address?.location.lng,
+      // address_description: address?.description,
+      // address_lat: address?.location.lat,
+      // address_lng: address?.location.lng,
       provider_type: providerType,
+      address,
       province: provincia,
       locations: municipios,
       first_name: user?.firstName,

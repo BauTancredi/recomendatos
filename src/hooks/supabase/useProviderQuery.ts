@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { getProviderById } from "@/queries/getProviderById";
 import { getSupabase } from "@/utils/supabase";
 
-function useProviderQuery(providerId: string) {
+export function useProviderQuery(providerId: string) {
   const supabase = getSupabase();
 
   const queryKey = ["provider", providerId];
@@ -18,5 +18,3 @@ function useProviderQuery(providerId: string) {
     retry: false,
   });
 }
-
-export default useProviderQuery;
