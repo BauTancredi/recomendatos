@@ -37,6 +37,7 @@ Semana 1/1 - 7/1
 [] Galeria
 [] Reseñas
 [] Localidades
+[] Skeleton
 [] Perfil 100% funcional
 [] Vista desde usuario 100% funcional
 [] Tablas actualizadas

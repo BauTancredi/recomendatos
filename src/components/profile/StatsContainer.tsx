@@ -1,13 +1,29 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import StatsItem from "./StatsItem";
+import Colors from "@/constants/Colors";
 
 const StatsContainer = () => {
   return (
-    <View style={styles.statsContainer}>
-      <StatsItem title="RECOMENDATO" value="67" />
-      <StatsItem title="RESEÑAS" value="24" />
-      <StatsItem title="VALORACION" value="4.4" />
+    <View>
+      <View style={styles.statsContainer}>
+        <StatsItem title="RECOMENDATO" value="67" />
+        <StatsItem title="RESEÑAS" value="24" />
+        <StatsItem title="VALORACION" value="4.4" />
+      </View>
+      <TouchableOpacity>
+        <Text
+          style={{
+            color: Colors.grey,
+            fontFamily: "mon-sb",
+            fontSize: 12,
+            textAlign: "center",
+            textDecorationLine: "underline",
+          }}
+        >
+          Ver todas las reseñas
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -31,5 +47,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    marginBottom: 5,
   },
 });

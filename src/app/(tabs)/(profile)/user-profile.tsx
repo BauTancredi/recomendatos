@@ -1,13 +1,13 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { UserResource } from "@clerk/types";
-import { Ionicons, Entypo } from "@expo/vector-icons";
+import { Ionicons, Entypo, FontAwesome } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
 import * as Haptics from "expo-haptics";
 import * as Linking from "expo-linking";
 import { Stack, useRouter } from "expo-router";
 import React, { useRef, useState } from "react";
 // import ContentLoader, { Facebook } from "react-content-loader";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Button } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import ImageView from "react-native-image-viewing";
 import Animated, { FadeInLeft } from "react-native-reanimated";
@@ -22,6 +22,7 @@ import StatsContainer from "@/components/profile/StatsContainer";
 // import { TextSkeleton } from "@/components/skeleton";
 import SectionSubtitle from "@/components/text/SectionSubtitle";
 import SectionTitle from "@/components/text/SectionTitle";
+import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 import { useProviderQuery } from "@/hooks/supabase";
 import { MenuItem } from "@/interfaces";
@@ -93,7 +94,7 @@ const UserProfileScreen = () => {
 
   return (
     <>
-      {type === "provider" ? (
+      {type !== "provider" ? (
         <ProviderProfile
           user={user!}
           menuItems={menuItems}
@@ -216,29 +217,83 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
       >
         <ProviderCard user={user} />
 
+        <TouchableOpacity
+          onPress={() => {}}
+          style={{
+            borderColor: Colors.grey,
+            borderWidth: 1,
+            width: "100%",
+            alignItems: "center",
+            padding: 10,
+            borderRadius: 10,
+            flexDirection: "row",
+            justifyContent: "center",
+            gap: 10,
+          }}
+        >
+          <FontAwesome name="star-o" size={24} color="black" />
+          <Text
+            style={{
+              fontFamily: "mon",
+              fontSize: 16,
+            }}
+          >
+            Solicitar valoracion
+          </Text>
+        </TouchableOpacity>
         <View style={styles.buttonContainer}>
-          <PrimaryButton
-            text="Editar Perfil"
+          <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              // router.push("/edit-user-profile");
+              bottomSheetRef.current?.expand();
             }}
-            styles={{
+            style={{
+              borderColor: Colors.grey,
+              borderWidth: 1,
               width: "49%",
-              marginTop: 0,
+              alignItems: "center",
+              padding: 10,
+              borderRadius: 20,
+              justifyContent: "center",
+              gap: 10,
             }}
-          />
-          <PrimaryButton
-            text="Compartir Perfil"
+          >
+            <Ionicons name="pencil" size={24} color="black" />
+            <Text
+              style={{
+                fontFamily: "mon",
+                fontSize: 16,
+              }}
+            >
+              Editar
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              // router.push("/edit-user-profile");
+              bottomSheetRef.current?.expand();
             }}
-            styles={{
+            style={{
+              borderColor: Colors.grey,
+              borderWidth: 1,
               width: "49%",
-              marginTop: 0,
+              alignItems: "center",
+              padding: 10,
+              borderRadius: 20,
+              justifyContent: "center",
+              gap: 10,
             }}
-          />
+          >
+            <FontAwesome name="share" size={24} color="black" />
+            <Text
+              style={{
+                fontFamily: "mon",
+                fontSize: 16,
+              }}
+            >
+              Compartir
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <StatsContainer />
@@ -290,18 +345,18 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
             <SectionTitle title="Localidades" />
             <View style={{ gap: 10 }}>
               <View>
-                <SectionSubtitle title="Zona Norte" />
+                <SectionSubtitle title="Ciudad autonoma de Buenos Aires" />
                 <View style={styles.chipsContainer}>
-                  {Array.from({ length: 9 }).map((_, index) => (
+                  {Array.from({ length: 1 }).map((_, index) => (
                     // <TextSkeleton width={100} height={30} radius={15} />
-                    <Chip key={index} title="Tigre" />
+                    <Chip key={index} title="Recoleta" />
                   ))}
                 </View>
               </View>
               <View>
-                <SectionSubtitle title="Zona Oeste" />
+                <SectionSubtitle title="Buenos Aires" />
                 <View style={styles.chipsContainer}>
-                  {Array.from({ length: 2 }).map((_, index) => (
+                  {Array.from({ length: 1 }).map((_, index) => (
                     <Chip key={index} title="Tigre" />
                   ))}
                 </View>

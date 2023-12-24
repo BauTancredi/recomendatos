@@ -2,7 +2,8 @@ import { UserResource } from "@clerk/types";
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
-import { TextSkeleton } from "@/components/skeleton";
+// import { TextSkeleton } from "@/components/skeleton";
+import Colors from "@/constants/Colors";
 
 interface ProviderCardProps {
   user: UserResource;
@@ -10,36 +11,43 @@ interface ProviderCardProps {
 
 const ProviderCard: React.FC<ProviderCardProps> = ({ user }) => {
   return (
-    <View style={styles.card}>
+    <View
+      style={{
+        alignItems: "center",
+        gap: 10,
+      }}
+    >
       <Image style={styles.profileImage} source={{ uri: user?.imageUrl }} />
-      <View
+      <Text
         style={{
-          width: "70%",
-          gap: 10,
+          fontFamily: "mon-sb",
+          fontSize: 18,
         }}
       >
-        <Text>
-          {user?.firstName} {user?.lastName}
-        </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            gap: 10,
-          }}
-        >
-          {/* <TextSkeleton width={100} height={10} radius={0} /> */}
-          <Text>Plomero</Text>
-        </View>
-        <Text
-          style={{
-            verticalAlign: "bottom",
-          }}
-        >
-          Activo desde&nbsp;
-          {new Date(user?.createdAt!).toLocaleDateString("en-AR")}
-        </Text>
+        {user?.firstName} {user?.lastName}
+      </Text>
+      <View
+        style={{
+          flexDirection: "row",
+          flexWrap: "wrap",
+          gap: 5,
+          justifyContent: "center",
+        }}
+      >
+        {/* <TextSkeleton width={100} height={10} radius={0} /> */}
+        {Array.from({ length: 3 }).flatMap((_, i, arr) => [
+          <Text key={i}>Plomero</Text>,
+          i < arr.length - 1 && <Text>-</Text>,
+        ])}
       </View>
+      <Text
+        style={{
+          color: Colors.grey,
+        }}
+      >
+        Activo desde&nbsp;
+        {new Date(user.createdAt!).toLocaleDateString("en-AR")}
+      </Text>
     </View>
   );
 };
