@@ -1,11 +1,13 @@
+import { router } from "expo-router";
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import Colors from "@/constants/Colors";
 
 interface SectionTitleProps {
   title: string;
+  onPress?: any;
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ title }) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({ title, onPress }) => {
   return (
     <View
       style={{
@@ -23,6 +25,9 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title }) => {
             fontSize: 14,
             color: Colors.grey,
             textDecorationLine: "underline",
+          }}
+          onPress={() => {
+            onPress && onPress();
           }}
         >
           Editar

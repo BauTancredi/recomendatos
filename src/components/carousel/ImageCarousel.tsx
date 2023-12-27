@@ -1,9 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
+import BottomSheet from "@gorhom/bottom-sheet";
 import * as ImagePicker from "expo-image-picker";
+import { router } from "expo-router";
 import React from "react";
 import { ScrollView, Image, View, TouchableOpacity, StyleProp, ImageStyle } from "react-native";
 
 // import ImageSkeleton from "../skeleton/ImageSkeleton";
+import ImagePickerBottomSheet from "../bottom/ImagePickerBottomSheet";
 import SectionTitle from "../text/SectionTitle";
 import { processImage } from "@/utils/image";
 
@@ -13,6 +16,7 @@ interface ImageCarouselProps {
   setIsImageViewerVisible?: (visible: boolean) => void;
   images?: any[];
   setImageIndex?: (index: number) => void;
+  openImagePicker?: () => void;
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({
@@ -21,7 +25,9 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   setIsImageViewerVisible,
   images,
   setImageIndex,
+  openImagePicker,
 }) => {
+  const bottomSheetRef = React.useRef<BottomSheet>(null);
   const launchGallery = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -49,7 +55,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
         width: "100%",
       }}
     >
-      <SectionTitle title={carouselTitle} />
+      <SectionTitle
+        title={carouselTitle}
+        onPress={() => {
+          router.push("/gallery");
+        }}
+      />
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -70,7 +81,10 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
               borderWidth: 1,
             },
           ]}
-          onPress={launchGallery}
+          onPress={() => {
+            // bottomSheetRef.current?.expand();
+            openImagePicker?.();
+          }}
         >
           <Ionicons name="add" size={24} color="black" />
         </TouchableOpacity>

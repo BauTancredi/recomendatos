@@ -2,6 +2,7 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetFlatList,
+  BottomSheetSectionList,
 } from "@gorhom/bottom-sheet";
 import React, { MutableRefObject, useCallback, useMemo } from "react";
 import {
@@ -67,6 +68,30 @@ const ProvinciasBottomSheet = React.forwardRef<BottomSheet, ProvinciasBottomShee
       [selectedProvincia]
     );
 
+    const renderSectionHeader = useCallback(
+      ({
+        section,
+      }: {
+        section: {
+          title: string;
+          data: Provincia[];
+        };
+      }) => (
+        <View style={styles.sectionHeaderContainer}>
+          <Text style={{ fontFamily: "mon", fontSize: 16 }}>{section.title}</Text>
+        </View>
+      ),
+      []
+    );
+
+    const sections = [
+      { title: "Seleccionadas", data: selectedProvincia ? [selectedProvincia] : [] },
+      {
+        title: "Provincias",
+        data: filteredProvincias.filter((provincia) => provincia !== selectedProvincia),
+      },
+    ];
+
     return (
       <BottomSheet
         ref={bottomSheetRef}
@@ -91,10 +116,12 @@ const ProvinciasBottomSheet = React.forwardRef<BottomSheet, ProvinciasBottomShee
           {isProvinciasLoading ? (
             <ActivityIndicator />
           ) : (
-            <BottomSheetFlatList
+            <BottomSheetSectionList
               data={filteredProvincias}
               keyExtractor={(i: Provincia) => i.id}
               renderItem={renderItem}
+              sections={sections}
+              renderSectionHeader={renderSectionHeader}
             />
           )}
 
@@ -130,5 +157,10 @@ const styles = StyleSheet.create({
     height: 50,
     borderBottomWidth: 1,
     width: "100%",
+  },
+  sectionHeaderContainer: {
+    backgroundColor: "white",
+    // padding: 6,
+    paddingVertical: 6,
   },
 });

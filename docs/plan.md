@@ -30,29 +30,31 @@ Semana 11/12 - 17/12
 Semana 18/12 - 24/12
 Semana 25/12 - 31/12
 Semana 1/1 - 7/1
+Semana 8/1 - 14/1
 [x] Logica de ubicaciones nueva
 [x] Test Me cubro
-[] Solicitar valoracion
-[] Editar campos
-[] Galeria
-[] Reseñas
+[x] Solicitar valoracion
+[x] Direccion
+[x] Galeria
+[x] Bio
 [] Localidades
+[] Reseñas
+[] Compartir app
+[] Perfil 100% funcional (id)
 [] Skeleton
-[] Perfil 100% funcional
 [] Vista desde usuario 100% funcional
 [] Tablas actualizadas
 [] TODO: "Update user location"
-Semana 8/1 - 14/1
+[] Linter
 Semana 15/1 - 21/1
 Semana 22/1 - 28/1
-[] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header)
-[] App 100% funcional
-[] Cargar csv con data fake
-[] Favoritos
 Semana 29/1 - 4/2
 Semana 5/2 - 11/2
-[] Promos
+[] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header, Promos)
+[] App 100% funcional
+[] Cargar csv con data fake
 Semana 12/2 - 18/2
+[] Favoritos
 Semana 19/2 - 25/2
 [] Estilos
 Semana 26/2 - 4/3

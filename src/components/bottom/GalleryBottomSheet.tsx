@@ -6,18 +6,16 @@ import { View, TouchableOpacity, Text } from "react-native";
 
 import Colors from "@/constants/Colors";
 
-interface ImagePickerBottomSheetProps {
+interface GalleryBottomSheetProps {
   // Define the props for your custom bottom sheet here
-  user?: UserResource;
   launchCamera: () => void;
   launchGallery: () => void;
-  deletePhoto?: () => void;
   title?: string;
 }
 
-const ImagePickerBottomSheet = React.forwardRef<BottomSheet, ImagePickerBottomSheetProps>(
-  ({ user, launchCamera, launchGallery, deletePhoto, title }, bottomSheetRef) => {
-    const snapPoints = useMemo(() => ["32%"], []);
+const GalleryBottomSheet = React.forwardRef<BottomSheet, GalleryBottomSheetProps>(
+  ({ launchCamera, launchGallery, title }, bottomSheetRef) => {
+    const snapPoints = useMemo(() => ["25%"], []);
 
     const renderBackdrop = useCallback(
       (props: BottomSheetBackdropProps) => (
@@ -59,21 +57,10 @@ const ImagePickerBottomSheet = React.forwardRef<BottomSheet, ImagePickerBottomSh
             <Ionicons name="image" size={24} color="black" />
             <Text>Seleccionar de la galeria</Text>
           </TouchableOpacity>
-
-          {deletePhoto && (
-            <TouchableOpacity
-              onPress={deletePhoto}
-              style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
-              disabled={!user?.hasImage}
-            >
-              <Ionicons name="trash" size={24} color={!user?.hasImage ? "grey" : Colors.error} />
-              <Text style={{ color: !user?.hasImage ? "grey" : Colors.error }}>Eliminar foto</Text>
-            </TouchableOpacity>
-          )}
         </View>
       </BottomSheet>
     );
   }
 );
 
-export default ImagePickerBottomSheet;
+export default GalleryBottomSheet;

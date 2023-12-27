@@ -2,6 +2,7 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetFlatList,
+  BottomSheetSectionList,
 } from "@gorhom/bottom-sheet";
 import React, { MutableRefObject, useCallback, useMemo } from "react";
 import {
@@ -74,6 +75,28 @@ const MunicipiosBottomSheet = React.forwardRef<BottomSheet, MunicipiosBottomShee
       [selectedMunicipios]
     );
 
+    const renderSectionHeader = useCallback(
+      ({ section }) => (
+        <View style={styles.sectionHeaderContainer}>
+          <Text style={{ fontFamily: "mon", fontSize: 16 }}>{section.title}</Text>
+        </View>
+      ),
+      []
+    );
+
+    const isCABASelected = selectedProvincia?.id === "02";
+    const notSelectedData = isCABASelected
+      ? filteredLocalidadesCABA.filter((localidad) => !selectedMunicipios.includes(localidad))
+      : filteredMunicipios.filter((municipio) => !selectedMunicipios.includes(municipio));
+
+    const sections = [
+      { title: "Seleccionadas:", data: selectedMunicipios ? selectedMunicipios : [] },
+      {
+        title: "Localidades:",
+        data: notSelectedData,
+      },
+    ];
+
     const renderCheckboxItem = useCallback(
       ({ item }: { item: Municipio }) => (
         <TouchableOpacity
@@ -117,10 +140,12 @@ const MunicipiosBottomSheet = React.forwardRef<BottomSheet, MunicipiosBottomShee
           {isMunicipiosLoading || isLocalidadesLoading ? (
             <ActivityIndicator />
           ) : (
-            <BottomSheetFlatList
+            <BottomSheetSectionList
               data={selectedProvincia?.id === "02" ? filteredLocalidadesCABA : filteredMunicipios}
               keyExtractor={(i: Municipio) => i.id}
-              renderItem={type === "provider" ? renderCheckboxItem : renderItem}
+              renderItem={type === "provider" ? renderCheckboxItem : renderCheckboxItem}
+              sections={sections}
+              renderSectionHeader={renderSectionHeader}
             />
           )}
 
@@ -156,5 +181,10 @@ const styles = StyleSheet.create({
     height: 50,
     borderBottomWidth: 1,
     width: "100%",
+  },
+  sectionHeaderContainer: {
+    backgroundColor: "white",
+    // padding: 6,
+    paddingVertical: 6,
   },
 });

@@ -42,6 +42,33 @@ const ProfileLayout = () => {
           presentation: "modal",
         }}
       />
+
+      <Stack.Screen
+        name="edit-address"
+        options={{
+          headerTitle: "Editar Dirección",
+        }}
+      />
+
+      <Stack.Screen
+        name="gallery"
+        options={{
+          headerTitle: "Galeria",
+        }}
+      />
+
+      <Stack.Screen
+        name="edit-bio"
+        options={{
+          headerTitle: "Biografía",
+        }}
+      />
+      <Stack.Screen
+        name="edit-locations"
+        options={{
+          headerTitle: "Localidades",
+        }}
+      />
     </Stack>
   );
 };

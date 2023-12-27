@@ -4,7 +4,8 @@ import { Ionicons, Entypo, FontAwesome } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
 import * as Haptics from "expo-haptics";
 import * as Linking from "expo-linking";
-import { Stack, useRouter } from "expo-router";
+import { Stack, router, useRouter } from "expo-router";
+import * as Sharing from "expo-sharing";
 import React, { useRef, useState } from "react";
 // import ContentLoader, { Facebook } from "react-content-loader";
 import { Text, View, StyleSheet, TouchableOpacity, Button } from "react-native";
@@ -15,6 +16,7 @@ import Animated, { FadeInLeft } from "react-native-reanimated";
 import Chip from "@/components/aux/Chip";
 import ImageFooter from "@/components/aux/ImageFooter";
 import EditProfileBottomSheet from "@/components/bottom/EditProfileBottomSheet";
+import GalleryBottomSheet from "@/components/bottom/GalleryBottomSheet";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import ImageCarousel from "@/components/carousel/ImageCarousel";
 import { UserCard, ProviderCard, UserSettings } from "@/components/profile";
@@ -44,7 +46,8 @@ const UserProfileScreen = () => {
   const { user } = useUser();
   const { signOut } = useAuth();
   const router = useRouter();
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  const settingsBottomSheetRef = useRef<BottomSheet>(null);
+  const galleryBottomSheetRef = useRef<BottomSheet>(null);
   const { type } = useOnboardingStore((state) => state);
 
   const menuItems: MenuItem[] = [
@@ -52,7 +55,7 @@ const UserProfileScreen = () => {
       title: "Editar Perfil",
       icon: <Ionicons name="person-circle-outline" size={24} color="black" />,
       onPress: () => {
-        bottomSheetRef.current?.close();
+        settingsBottomSheetRef.current?.close();
         router.push("/edit-user-profile");
       },
     },
@@ -60,7 +63,7 @@ const UserProfileScreen = () => {
       title: "Configuración",
       icon: <Ionicons name="settings-outline" size={24} color="black" />,
       onPress: () => {
-        bottomSheetRef.current?.close();
+        settingsBottomSheetRef.current?.close();
         router.push("/user-settings");
       },
     },
@@ -68,7 +71,7 @@ const UserProfileScreen = () => {
       title: "Quiero ser proveedor",
       icon: <Entypo name="tools" size={24} color="black" />,
       onPress: () => {
-        bottomSheetRef.current?.close();
+        settingsBottomSheetRef.current?.close();
         console.log("Quiero ser proveedor");
       },
     },
@@ -76,7 +79,7 @@ const UserProfileScreen = () => {
       title: "Dudas y sugerencias",
       icon: <Ionicons name="mail-outline" size={24} color="black" />,
       onPress: () => {
-        bottomSheetRef.current?.close();
+        settingsBottomSheetRef.current?.close();
         Linking.openURL("whatsapp://send?text=putoelquelee&phone=5491128320754");
       },
     },
@@ -84,7 +87,7 @@ const UserProfileScreen = () => {
       title: "Cerrar sesión",
       icon: <Ionicons name="log-out-outline" size={24} color="black" />,
       onPress: () => {
-        bottomSheetRef.current?.close();
+        settingsBottomSheetRef.current?.close();
         signOut();
       },
     },
@@ -99,7 +102,8 @@ const UserProfileScreen = () => {
           user={user!}
           menuItems={menuItems}
           data={data}
-          bottomSheetRef={bottomSheetRef}
+          settingsBottomSheetRef={settingsBottomSheetRef}
+          galleryBottomSheetRef={galleryBottomSheetRef}
         />
       ) : (
         <UserProfile user={user!} menuItems={menuItems} />
@@ -175,16 +179,23 @@ interface ProviderProfileProps {
   user: UserResource;
   menuItems: MenuItem[];
   data: any;
-  bottomSheetRef: React.RefObject<BottomSheet>;
+  settingsBottomSheetRef: React.RefObject<BottomSheet>;
+  galleryBottomSheetRef: React.RefObject<BottomSheet>;
 }
 const ProviderProfile: React.FC<ProviderProfileProps> = ({
   user,
   menuItems,
   data,
-  bottomSheetRef,
+  settingsBottomSheetRef,
+  galleryBottomSheetRef,
 }) => {
   const [isImageViewerVisible, setIsImageViewerVisible] = useState(false);
   const [currentImageIndex, setImageIndex] = useState(0);
+
+  const openImagePicker = () => {
+    galleryBottomSheetRef.current?.expand();
+  };
+
   return (
     <>
       <Stack.Screen
@@ -193,7 +204,7 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
             return (
               <TouchableOpacity
                 onPress={() => {
-                  bottomSheetRef.current?.expand();
+                  settingsBottomSheetRef.current?.expand();
                 }}
               >
                 <Ionicons name="ellipsis-horizontal" size={24} color="black" />
@@ -245,7 +256,7 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              bottomSheetRef.current?.expand();
+              router.push("/edit-user-profile");
             }}
             style={{
               borderColor: Colors.grey,
@@ -271,7 +282,9 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              bottomSheetRef.current?.expand();
+              Sharing.shareAsync("https://www.google.com", {
+                dialogTitle: "Compartir",
+              });
             }}
             style={{
               borderColor: Colors.grey,
@@ -304,7 +317,12 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
               width: "100%",
             }}
           >
-            <SectionTitle title="Dirección" />
+            <SectionTitle
+              title="Dirección"
+              onPress={() => {
+                router.push("/edit-address");
+              }}
+            />
             <View style={styles.directionContainer}>
               {/* <TextSkeleton width={300} height={30} radius={15} /> */}
               <Ionicons name="location-outline" size={16} color="black" />
@@ -326,6 +344,7 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           setIsImageViewerVisible={setIsImageViewerVisible}
           images={images}
           setImageIndex={setImageIndex}
+          openImagePicker={openImagePicker}
         />
 
         <ImageView
@@ -342,7 +361,10 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
 
         {data?.data.type !== "shop" && (
           <View style={styles.locationsContainer}>
-            <SectionTitle title="Localidades" />
+            <SectionTitle
+              title="Localidades"
+              onPress={() => router.push("/(tabs)/(profile)/edit-locations")}
+            />
             <View style={{ gap: 10 }}>
               <View>
                 <SectionSubtitle title="Ciudad autonoma de Buenos Aires" />
@@ -370,11 +392,22 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
             width: "100%",
           }}
         >
-          <SectionTitle title="Biografia" />
+          <SectionTitle
+            title="Biografia"
+            onPress={() => {
+              router.push("/edit-bio");
+            }}
+          />
           <TextInput multiline style={styles.bioInput} value={data?.data.bio} editable={false} />
         </View>
       </Animated.ScrollView>
-      <EditProfileBottomSheet ref={bottomSheetRef} menuItems={menuItems} />
+      <EditProfileBottomSheet ref={settingsBottomSheetRef} menuItems={menuItems} />
+      <GalleryBottomSheet
+        ref={galleryBottomSheetRef}
+        launchCamera={() => console.log("launchCamera")}
+        launchGallery={() => console.log("launchGallery")}
+        title="Agregar imagenes"
+      />
     </>
   );
 };

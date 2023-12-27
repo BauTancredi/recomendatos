@@ -30,10 +30,10 @@ const BioScreen = () => {
       last_name: user?.lastName,
     });
 
-    if (error) {
-      console.log("Supabase error:", error);
-      return;
-    }
+    // if (error) {
+    //   console.log("Supabase error:", error);
+    //   return;
+    // }
 
     // for (const job of providerStore.jobs) {
     //   const { error } = await supabase.from("provider_job").insert({

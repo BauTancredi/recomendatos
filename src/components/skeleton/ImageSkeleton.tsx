@@ -2,17 +2,22 @@ import React from "react";
 import ContentLoader from "react-content-loader/native";
 import { Rect } from "react-native-svg";
 
-const ImageSkeleton = () => {
+interface ImageSkeletonProps {
+  width?: number;
+  height?: number;
+}
+
+const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ width, height }) => {
   return (
     <ContentLoader
       speed={2}
-      width={150}
-      height={200}
-      viewBox="0 0 150 200"
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
     >
-      <Rect x="0" y="0" rx="15" ry="15" width="150" height="200" />
+      <Rect x="0" y="0" rx="15" ry="15" width={width} height={height} />
     </ContentLoader>
   );
 };

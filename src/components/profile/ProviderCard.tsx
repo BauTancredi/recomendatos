@@ -46,7 +46,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({ user }) => {
         }}
       >
         Activo desde&nbsp;
-        {new Date(user.createdAt!).toLocaleDateString("en-AR")}
+        {/* {new Date(user.createdAt!).toLocaleDateString("en-AR")} */}
       </Text>
     </View>
   );
