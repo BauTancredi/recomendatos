@@ -38,7 +38,7 @@ Semana 8/1 - 14/1
 [x] Galeria
 [x] Bio
 [x] Localidades
-[] Compartir app
+[x] Compartir app
 [] Reseñas
 [] Perfil 100% funcional (id)
 [] Skeleton
