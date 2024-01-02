@@ -5,10 +5,9 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import * as Haptics from "expo-haptics";
 import * as Linking from "expo-linking";
 import { Stack, router, useRouter } from "expo-router";
-import * as Sharing from "expo-sharing";
 import React, { useRef, useState } from "react";
 // import ContentLoader, { Facebook } from "react-content-loader";
-import { Text, View, StyleSheet, TouchableOpacity, Button } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Button, Share } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import ImageView from "react-native-image-viewing";
 import Animated, { FadeInLeft } from "react-native-reanimated";
@@ -29,6 +28,7 @@ import { defaultStyles } from "@/constants/Styles";
 import { useProviderQuery } from "@/hooks/supabase";
 import { MenuItem } from "@/interfaces";
 import { useOnboardingStore } from "@/stores/useOnboardingStore";
+import { onShare } from "@/utils/share";
 
 const images = [
   {
@@ -282,9 +282,7 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              Sharing.shareAsync("https://www.google.com", {
-                dialogTitle: "Compartir",
-              });
+              onShare("https://google.com");
             }}
             style={{
               borderColor: Colors.grey,
