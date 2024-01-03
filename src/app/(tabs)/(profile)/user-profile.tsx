@@ -282,7 +282,7 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              onShare("https://google.com");
+              // Linking.openURL("whatsapp://send?text=hola&phone=5491141643790");
             }}
             style={{
               borderColor: Colors.grey,

@@ -69,6 +69,12 @@ const ProfileLayout = () => {
           headerTitle: "Localidades",
         }}
       />
+      <Stack.Screen
+        name="reviews"
+        options={{
+          headerTitle: "Valoración",
+        }}
+      />
     </Stack>
   );
 };

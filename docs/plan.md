@@ -38,8 +38,9 @@ Semana 8/1 - 14/1
 [x] Galeria
 [x] Bio
 [x] Localidades
-[x] Compartir app
 [] Reseñas
+[] Dejar reseña
+[] Compartir app
 [] Perfil 100% funcional (id)
 [] Skeleton
 [] Vista desde usuario 100% funcional
@@ -61,6 +62,8 @@ Semana 26/2 - 4/3
 [] Tech
 
 PENDIENTES VARIOS
+[] Image Url
+[] Update supabase when update clerk
 [] Rutas dinamicas
 [] Mejores proveedores de tu zona
 [] Not found page

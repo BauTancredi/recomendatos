@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import StatsItem from "./StatsItem";
@@ -12,7 +13,7 @@ const StatsContainer = () => {
         <StatsItem title="VALORACION" value="4.4" />
       </View>
       <TouchableOpacity>
-        <Text
+        <Link
           style={{
             color: Colors.grey,
             fontFamily: "mon-sb",
@@ -20,9 +21,10 @@ const StatsContainer = () => {
             textAlign: "center",
             textDecorationLine: "underline",
           }}
+          href="/reviews"
         >
           Ver todas las reseñas
-        </Text>
+        </Link>
       </TouchableOpacity>
     </View>
   );
