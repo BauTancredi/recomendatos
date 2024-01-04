@@ -39,8 +39,7 @@ Semana 8/1 - 14/1
 [x] Bio
 [x] Localidades
 [x] Reseñas
-[] Dejar reseña
-[] Compartir app
+[x] Dejar reseña
 [] Perfil 100% funcional (id)
 [] Skeleton
 [] Vista desde usuario 100% funcional
@@ -49,19 +48,25 @@ Semana 8/1 - 14/1
 [] Linter
 Semana 15/1 - 21/1
 Semana 22/1 - 28/1
+[] Pendientes varios
 Semana 29/1 - 4/2
 Semana 5/2 - 11/2
+Semana 12/2 - 18/2
+Semana 19/2 - 25/2
 [] Home (Banners, Barra de busqueda, Categorias destacadas, Que estas buscando hoy, Mejores proveedores de la zona, Header, Promos)
 [] App 100% funcional
 [] Cargar csv con data fake
-Semana 12/2 - 18/2
-[] Favoritos
-Semana 19/2 - 25/2
-[] Estilos
 Semana 26/2 - 4/3
+[] Favoritos
+Semana 4/3 - 10/3
+Semana 11/3 - 17/3
+[] Estilos
+Semana 18/3 - 24/3
+Semana 25/3 - 31/3
 [] Tech
 
 PENDIENTES VARIOS
+[] Compartir app
 [] Image Url
 [] Update supabase when update clerk
 [] Rutas dinamicas

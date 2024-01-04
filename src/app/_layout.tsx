@@ -70,14 +70,14 @@ const InitialLayout = () => {
     };
 
     fetchTokenAndInitialize();
-  }, [getToken]);
+  }, []);
 
   useEffect(() => {
     if (!isLoaded) return;
 
     SplashScreen.hideAsync();
 
-    router.replace("/(tabs)/(profile)/leave-review");
+    router.replace("/(tabs)/(profile)/user-profile");
     // if (isSignedIn) {
     //   if (user?.hasVerifiedPhoneNumber) {
     //     if (!user?.unsafeMetadata.finishedOnboarding) {

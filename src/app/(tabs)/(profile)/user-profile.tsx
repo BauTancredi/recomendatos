@@ -282,7 +282,12 @@ const ProviderProfile: React.FC<ProviderProfileProps> = ({
           <TouchableOpacity
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              // Linking.openURL("whatsapp://send?text=hola&phone=5491141643790");
+              const message = "Check out this cool app!";
+
+              const url = "exp://127.0.0.1:8081"; // replace with the actual URL to your app
+              const encodedMessage = encodeURIComponent(`${message} ${url}`);
+
+              Linking.openURL(`whatsapp://send?text=${url}&phone=5491141643790`);
             }}
             style={{
               borderColor: Colors.grey,
