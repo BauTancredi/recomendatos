@@ -77,7 +77,7 @@ const InitialLayout = () => {
 
     SplashScreen.hideAsync();
 
-    router.replace("/(tabs)/(profile)/user-profile");
+    router.replace("/(tabs)/(profile)/leave-review");
     // if (isSignedIn) {
     //   if (user?.hasVerifiedPhoneNumber) {
     //     if (!user?.unsafeMetadata.finishedOnboarding) {

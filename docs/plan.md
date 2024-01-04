@@ -38,7 +38,7 @@ Semana 8/1 - 14/1
 [x] Galeria
 [x] Bio
 [x] Localidades
-[] Reseñas
+[x] Reseñas
 [] Dejar reseña
 [] Compartir app
 [] Perfil 100% funcional (id)

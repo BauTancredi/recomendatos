@@ -75,6 +75,12 @@ const ProfileLayout = () => {
           headerTitle: "Valoración",
         }}
       />
+      <Stack.Screen
+        name="leave-review"
+        options={{
+          headerTitle: "Valorar",
+        }}
+      />
     </Stack>
   );
 };
